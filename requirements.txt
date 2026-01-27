@@ -1,0 +1,3 @@
+easyocr
+opencv-python
+numpy
