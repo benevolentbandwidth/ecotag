@@ -10,6 +10,8 @@ import {
 import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
 import { colors } from "../src/theme";
+import { MetricsProvider } from "../src/context/MetricsContext";
+import { CameraWarmupProvider } from "../src/context/CameraWarmupContext";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -32,18 +34,20 @@ export default function RootLayout() {
   }
 
   return (
-    <>
-      <StatusBar style="dark" />
-      <Stack
-        screenOptions={{
-          headerShown: false,
-          contentStyle: { backgroundColor: colors.background },
-        }}
-      >
-        <Stack.Screen name="(tabs)" />
-        <Stack.Screen name="results" />
-        <Stack.Screen name="loading" />
-      </Stack>
-    </>
+    <MetricsProvider>
+      <CameraWarmupProvider>
+        <StatusBar style="dark" />
+        <Stack
+          screenOptions={{
+            headerShown: false,
+            contentStyle: { backgroundColor: colors.background },
+          }}
+        >
+          <Stack.Screen name="(tabs)" />
+          <Stack.Screen name="results" />
+          <Stack.Screen name="loading" />
+        </Stack>
+      </CameraWarmupProvider>
+    </MetricsProvider>
   );
 }

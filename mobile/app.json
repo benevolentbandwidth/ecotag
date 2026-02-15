@@ -24,7 +24,19 @@
     "plugins": [
       "expo-router",
       "expo-font",
-      "expo-asset"
+      "expo-asset",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "EcoTag needs camera access to scan garment labels."
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "EcoTag needs photo library access to upload label images."
+        }
+      ]
     ]
   }
 }

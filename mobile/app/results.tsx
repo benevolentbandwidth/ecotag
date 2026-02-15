@@ -1,19 +1,30 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
-import { useRouter } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 import { colors, typography, spacing } from "../src/theme";
 import { CO2Gauge } from "../src/components/CO2Gauge";
 import { BreakdownRow } from "../src/components/BreakdownRow";
 import { PrimaryButton } from "../src/components/PrimaryButton";
-import { BREAKDOWN_LABELS, BREAKDOWN_ORDER, CO2Breakdown } from "../src/types/api";
+import { BREAKDOWN_LABELS, BREAKDOWN_ORDER, ScanResponse } from "../src/types/api";
 import { MOCK_HISTORY } from "../src/constants/mock";
 
 export default function ResultsScreen() {
   const router = useRouter();
-  const mockItem = MOCK_HISTORY[0];
-  const { result } = mockItem;
+  const { data } = useLocalSearchParams<{ data?: string }>();
+
+  const result = useMemo(() => {
+    if (data) {
+      try {
+        const parsed = JSON.parse(data) as ScanResponse;
+        return parsed.result;
+      } catch {
+        // fall through to mock
+      }
+    }
+    return MOCK_HISTORY[0].result;
+  }, [data]);
 
   return (
     <SafeAreaView style={styles.safe} edges={["top"]}>
