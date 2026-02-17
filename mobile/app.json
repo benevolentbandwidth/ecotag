@@ -1,0 +1,30 @@
+{
+  "expo": {
+    "name": "EcoTag",
+    "slug": "ecotag",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "ecotag",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "backgroundColor": "#FAFAFA"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "org.benevolentbandwidth.ecotag"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#FAFAFA"
+      },
+      "package": "org.benevolentbandwidth.ecotag"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-font",
+      "expo-asset"
+    ]
+  }
+}
