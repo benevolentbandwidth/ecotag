@@ -4,3 +4,4 @@ node_modules/
 .expo/
 *.log
 .env
+**/benchmarks/results/
