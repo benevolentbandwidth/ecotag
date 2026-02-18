@@ -9,7 +9,7 @@ import { ShutterButton } from "./ShutterButton";
 import { colors, typography, spacing } from "../theme";
 
 interface Props {
-  onCapture: (base64: string) => void;
+  onCapture: (imageUri: string) => void;
 }
 
 export function CameraView({ onCapture }: Props) {
@@ -23,14 +23,13 @@ export function CameraView({ onCapture }: Props) {
 
     const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ["images"],
-      base64: true,
       quality: 0.8,
     });
 
-    if (!result.canceled && result.assets[0]?.base64) {
+    if (!result.canceled && result.assets[0]?.uri) {
       metrics.mark("captureStart");
       metrics.mark("captureEnd");
-      onCapture(result.assets[0].base64);
+      onCapture(result.assets[0].uri);
     }
   };
 
@@ -62,13 +61,13 @@ export function CameraView({ onCapture }: Props) {
     setCapturing(true);
     metrics.mark("captureStart");
 
-    const photo = await cameraRef.current.takePictureAsync({ base64: true });
+    const photo = await cameraRef.current.takePictureAsync({ quality: 0.8 });
 
     metrics.mark("captureEnd");
     setCapturing(false);
 
-    if (photo?.base64) {
-      onCapture(photo.base64);
+    if (photo?.uri) {
+      onCapture(photo.uri);
     }
   };
 

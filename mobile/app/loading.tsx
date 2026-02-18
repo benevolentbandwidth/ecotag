@@ -1,12 +1,16 @@
 import React, { useEffect, useRef } from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useRouter } from "expo-router";
-import { colors, spacing } from "../src/theme";
+import { colors, spacing, typography } from "../src/theme";
 import { SkeletonRect } from "../src/components/SkeletonRect";
 import { ProgressBar } from "../src/components/ProgressBar";
 import { useMetrics } from "../src/context/MetricsContext";
-import { consumePendingScanImage, submitScan } from "../src/services/api";
+import {
+  consumePendingScanImage,
+  NormalizedApiError,
+  tagImage,
+} from "../src/services/api";
 
 export default function LoadingScreen() {
   const router = useRouter();
@@ -18,26 +22,47 @@ export default function LoadingScreen() {
     started.current = true;
 
     async function run() {
-      const base64 = consumePendingScanImage();
-      if (!base64) {
-        router.replace("/results");
+      const imageUri = consumePendingScanImage();
+      if (!imageUri) {
+        router.replace({
+          pathname: "/results",
+          params: {
+            status: "error",
+            errorCode: "MISSING_IMAGE",
+            errorMessage: "No image was found to upload.",
+          },
+        });
         return;
       }
 
       metrics.mark("uploadStart");
       try {
-        const response = await submitScan(base64);
+        const response = await tagImage(imageUri);
         metrics.mark("uploadEnd");
         metrics.logToConsole();
         router.replace({
           pathname: "/results",
-          params: { data: JSON.stringify(response) },
+          params: {
+            status: "success",
+            data: JSON.stringify(response),
+          },
         });
       } catch (err) {
-        console.error("[EcoTag] Upload failed:", err);
+        const normalized = err as NormalizedApiError;
+        console.error("[EcoTag] Upload failed:", {
+          error: normalized,
+          imageUri,
+        });
         metrics.mark("uploadEnd");
         metrics.logToConsole();
-        router.replace("/results");
+        router.replace({
+          pathname: "/results",
+          params: {
+            status: "error",
+            errorCode: normalized.code ?? "UNKNOWN",
+            errorMessage: normalized.message,
+          },
+        });
       }
     }
 
@@ -47,6 +72,7 @@ export default function LoadingScreen() {
   return (
     <SafeAreaView style={styles.safe} edges={["top"]}>
       <View style={styles.content}>
+        <Text style={styles.title}>Analyzing your garment tag...</Text>
         <SkeletonRect width="60%" height={32} />
         <SkeletonRect width="100%" height={120} />
         <SkeletonRect width="100%" height={20} />
@@ -73,6 +99,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.screenH,
     paddingTop: spacing.elementV * 2,
     gap: spacing.elementV,
+  },
+  title: {
+    ...typography.h2,
+    color: colors.text,
   },
   progressContainer: {
     marginTop: spacing.elementV,

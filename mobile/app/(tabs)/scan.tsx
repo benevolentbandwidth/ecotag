@@ -12,8 +12,8 @@ export default function ScanScreen() {
   const metrics = useMetrics();
 
   const handleCapture = useCallback(
-    (base64: string) => {
-      setPendingScanImage(base64);
+    (imageUri: string) => {
+      setPendingScanImage(imageUri);
       router.push("/loading");
     },
     [router],
