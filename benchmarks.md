@@ -71,3 +71,27 @@ Optimize the Loop: We can drop latency by running the 5 variants in parallel or 
 **Parallelization:** Python's multiprocessing could allow us to run the 5 filters simultaneously, potentially capping latency.
 
 **Test Different CPUs**: Utilizing
+
+# Cache Benchmark Summary
+
+Run settings: 200 runs, concurrency 4.
+
+Key formulas:
+- `latency_overhead_ms = avg_embedding_ms + avg_lookup_ms`
+- `overall_wrong_response_rate = semantic_false_positive_count / runs`
+
+|            Metric            | No Cache        | Exact           | Semantic + CLIP | Tiered          |                  Notes                 |
+|:----------------------------:|-----------------|-----------------|-----------------|-----------------|:--------------------------------------:|
+| Success Rate                 | 100%            | 100%            | 100%            | 100%            | 200 / 200 successful runs each         |
+| Mean Latency (ms)            | 1706.34         | 877.16          | 703.93          | 457.98          | Tiered fastest overall                 |
+| Overall Hit Rate             | 0%              | 62%             | 63%             | 63%             | Semantic and tiered tied on hit rate   |
+| Miss Rate                    | 100%            | 38%             | 37%             | 37%             | —                                      |
+| Exact Hit Rate / Count       | 0% / 0          | 62% / 124       | 0% / 0          | 60% / 120       | —                                      |
+| Semantic Hit Rate / Count    | 0% / 0          | 0% / 0          | 63% / 126       | 3% / 6          | Tiered semantic fallback minimal       |
+| Semantic False Positive Rate | N/A             | N/A             | 4.76%           | 100%            | Tiered semantic layer noisy            |
+| Overall Wrong Response Rate  | 0%              | 0%              | 3%              | 3%              | Driven by semantic errors              |
+| Embedding Cost (ms)          | 0.00            | 0.00            | 262.35          | 114.72          | Semantic overhead                      |
+| Lookup Cost (ms)             | 0.00            | 12.23           | 29.61           | 17.11           | Cache search cost                      |
+| Latency Overhead (ms)        | 0.00            | 12.23           | 291.96          | 131.83          | —                                      |
+
+Note: All these runs were from COLD starts

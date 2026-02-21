@@ -111,3 +111,61 @@ EXPO_PUBLIC_API_BASE_URL=http://YOUR_IP:3001 npm run start
 
 - Mobile uploads images to `POST /api/tag` as `multipart/form-data` with field `image`.
 - If backend AI provider/API key is missing, backend may return `502` (`UPSTREAM_ERROR`).
+
+## Test Semantic Cache Without API Keys
+
+You can test cache hit rate, false positives, and cache overhead without OpenAI keys by enabling mock OCR mode.
+
+1. Install backend dependencies:
+
+```bash
+cd backend
+npm install
+```
+
+2. Start backend in mock+cache mode:
+
+```bash
+MOCK_OCR=1 CACHE_ENABLED=1 node server.js
+```
+
+3. Run benchmark against local image set:
+
+```bash
+node benchmarks/vlm_benchmark.js \
+  --url http://localhost:3001/api/tag \
+  --images-dir ../cropped_tags \
+  --runs 200 \
+  --concurrency 4
+```
+
+The benchmark script now resets backend cache automatically at the start of each run
+by calling `POST /api/cache/reset`, so repeating the same benchmark command starts
+from a cold cache each time.
+
+Useful cache env vars:
+
+- `CACHE_SIMILARITY_THRESHOLD` (default `0.90`)
+- `CACHE_DB_PATH` (default `./cache/ecotag-cache.sqlite`)
+- `CACHE_MAX_ENTRIES` (default `5000`)
+- `CACHE_FINGERPRINT_VERSION` (default `v1`)
+- `CACHE_MODE` (`exact`, `semantic`, `tiered`; default `tiered`)
+- `CACHE_SEMANTIC_EMBEDDER` (`clip` or `fingerprint`; default `clip`)
+- `CACHE_SEMANTIC_CLIP_MODEL` (default `Xenova/clip-vit-base-patch32`)
+- `CACHE_SEMANTIC_FALLBACK` (`none` or `fingerprint`; default `none`)
+
+Benchmark commands by mode:
+
+```bash
+# Baseline (cache off)
+MOCK_OCR=1 CACHE_ENABLED=0 node server.js
+
+# Exact-only cache
+MOCK_OCR=1 CACHE_ENABLED=1 CACHE_MODE=exact node server.js
+
+# Semantic-only cache
+MOCK_OCR=1 CACHE_ENABLED=1 CACHE_MODE=semantic node server.js
+
+# Tiered cache (exact + semantic)
+MOCK_OCR=1 CACHE_ENABLED=1 CACHE_MODE=tiered node server.js
+```

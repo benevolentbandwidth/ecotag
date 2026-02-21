@@ -5,3 +5,14 @@ node_modules/
 *.log
 .env
 **/benchmarks/results/
+
+backend/cache/_tmp_semantic_sim.sqlite
+backend/cache/bench-exact.sqlite
+backend/cache/bench-sem-clip.sqlite
+backend/cache/bench-tiered-clip.sqlite
+backend/cache/ecotag-cache.sqlite
+backend/cache/exact.sqlite
+backend/cache/semantic.sqlite
+backend/cache/test-cache-service.sqlite
+backend/cache/test-tag-e2e.sqlite
+backend/uploads/

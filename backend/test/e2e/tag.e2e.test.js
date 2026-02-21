@@ -9,10 +9,23 @@ import {
   __resetTagExtractorForTest,
   __setTagExtractorForTest,
 } from "../../api/tag.js";
+import { __resetCacheForTest } from "../../cache/service.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const fixtureImage = path.resolve(__dirname, "../test_image.jpg");
+const originalEnv = {
+  CACHE_ENABLED: process.env.CACHE_ENABLED,
+  CACHE_MODE: process.env.CACHE_MODE,
+  CACHE_SEMANTIC_EMBEDDER: process.env.CACHE_SEMANTIC_EMBEDDER,
+  CACHE_SEMANTIC_CLIP_MODEL: process.env.CACHE_SEMANTIC_CLIP_MODEL,
+  CACHE_SEMANTIC_FALLBACK: process.env.CACHE_SEMANTIC_FALLBACK,
+  MOCK_OCR: process.env.MOCK_OCR,
+  CACHE_SIMILARITY_THRESHOLD: process.env.CACHE_SIMILARITY_THRESHOLD,
+  CACHE_DB_PATH: process.env.CACHE_DB_PATH,
+  CACHE_MAX_ENTRIES: process.env.CACHE_MAX_ENTRIES,
+  CACHE_FINGERPRINT_VERSION: process.env.CACHE_FINGERPRINT_VERSION,
+};
 
 const mockParsed = {
   country: "Portugal",
@@ -30,10 +43,32 @@ const mockParsed = {
 
 test.beforeEach(() => {
   __resetTagExtractorForTest();
+  process.env.CACHE_ENABLED = "0";
+  process.env.CACHE_MODE = "tiered";
+  process.env.CACHE_SEMANTIC_EMBEDDER = "fingerprint";
+  process.env.CACHE_SEMANTIC_CLIP_MODEL = "Xenova/clip-vit-base-patch32";
+  process.env.CACHE_SEMANTIC_FALLBACK = "none";
+  process.env.MOCK_OCR = "0";
+  process.env.CACHE_SIMILARITY_THRESHOLD = "0.9";
+  process.env.CACHE_DB_PATH = "./cache/test-tag-e2e.sqlite";
+  process.env.CACHE_MAX_ENTRIES = "1000";
+  process.env.CACHE_FINGERPRINT_VERSION = "e2e-v1";
+  __resetCacheForTest();
 });
 
 test.after(() => {
   __resetTagExtractorForTest();
+  __resetCacheForTest();
+  process.env.CACHE_ENABLED = originalEnv.CACHE_ENABLED;
+  process.env.CACHE_MODE = originalEnv.CACHE_MODE;
+  process.env.CACHE_SEMANTIC_EMBEDDER = originalEnv.CACHE_SEMANTIC_EMBEDDER;
+  process.env.CACHE_SEMANTIC_CLIP_MODEL = originalEnv.CACHE_SEMANTIC_CLIP_MODEL;
+  process.env.CACHE_SEMANTIC_FALLBACK = originalEnv.CACHE_SEMANTIC_FALLBACK;
+  process.env.MOCK_OCR = originalEnv.MOCK_OCR;
+  process.env.CACHE_SIMILARITY_THRESHOLD = originalEnv.CACHE_SIMILARITY_THRESHOLD;
+  process.env.CACHE_DB_PATH = originalEnv.CACHE_DB_PATH;
+  process.env.CACHE_MAX_ENTRIES = originalEnv.CACHE_MAX_ENTRIES;
+  process.env.CACHE_FINGERPRINT_VERSION = originalEnv.CACHE_FINGERPRINT_VERSION;
 });
 
 function assertTagResponseContract(body) {
@@ -123,6 +158,70 @@ test("POST /api/tag normalizes malformed care and still returns 200", async (t) 
   assert.equal(res.body.parsed.care.drying, null);
   assert.equal(res.body.parsed.care.ironing, null);
   assert.equal(res.body.parsed.care.dry_cleaning, null);
+});
+
+test("POST /api/tag mock mode first request is MISS", async () => {
+  process.env.CACHE_ENABLED = "1";
+  process.env.CACHE_MODE = "tiered";
+  process.env.MOCK_OCR = "1";
+
+  const res = await request(app).post("/api/tag").attach("image", fixtureImage);
+
+  assert.equal(res.status, 200);
+  assertTagResponseContract(res.body);
+  assert.equal(res.headers["x-cache-mode"], "tiered");
+  assert.equal(res.headers["x-cache-embedder"], "fingerprint");
+  assert.equal(res.headers["x-cache-status"], "MISS");
+  assert.equal(res.headers["x-cache-false-positive"], "NA");
+});
+
+test("POST /api/tag mock mode second request is HIT_EXACT", async () => {
+  process.env.CACHE_ENABLED = "1";
+  process.env.CACHE_MODE = "exact";
+  process.env.MOCK_OCR = "1";
+
+  const first = await request(app).post("/api/tag").attach("image", fixtureImage);
+  assert.equal(first.status, 200);
+  assert.equal(first.headers["x-cache-mode"], "exact");
+  assert.equal(first.headers["x-cache-embedder"], "none");
+  assert.equal(first.headers["x-cache-status"], "MISS");
+
+  const second = await request(app).post("/api/tag").attach("image", fixtureImage);
+  assert.equal(second.status, 200);
+  assert.equal(second.headers["x-cache-mode"], "exact");
+  assert.equal(second.headers["x-cache-embedder"], "none");
+  assert.equal(second.headers["x-cache-status"], "HIT_EXACT");
+});
+
+test("POST /api/tag semantic mode second request is HIT_SEMANTIC", async () => {
+  process.env.CACHE_ENABLED = "1";
+  process.env.CACHE_MODE = "semantic";
+  process.env.MOCK_OCR = "1";
+
+  const first = await request(app).post("/api/tag").attach("image", fixtureImage);
+  assert.equal(first.status, 200);
+  assert.equal(first.headers["x-cache-mode"], "semantic");
+  assert.equal(first.headers["x-cache-embedder"], "fingerprint");
+  assert.equal(first.headers["x-cache-status"], "MISS");
+
+  const second = await request(app).post("/api/tag").attach("image", fixtureImage);
+  assert.equal(second.status, 200);
+  assert.equal(second.headers["x-cache-mode"], "semantic");
+  assert.equal(second.headers["x-cache-embedder"], "fingerprint");
+  assert.equal(second.headers["x-cache-status"], "HIT_SEMANTIC");
+});
+
+test("POST /api/tag cache disabled forces MISS", async () => {
+  process.env.CACHE_ENABLED = "0";
+  process.env.MOCK_OCR = "1";
+
+  const first = await request(app).post("/api/tag").attach("image", fixtureImage);
+  const second = await request(app).post("/api/tag").attach("image", fixtureImage);
+
+  assert.equal(first.status, 200);
+  assert.equal(second.status, 200);
+  assert.equal(first.headers["x-cache-status"], "MISS");
+  assert.equal(second.headers["x-cache-status"], "MISS");
 });
 
 const liveEnabled = process.env.E2E_LIVE === "1" && !!process.env.OPENAI_API_KEY;

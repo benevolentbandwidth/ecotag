@@ -4,9 +4,32 @@
 
 `POST /api/tag`
 
+`POST /api/cache/reset`
+
 Notes:
 - The route is defined as `/tag` in `backend/api/tag.js` and mounted at `/api` by `backend/server.js`.
 - Content type should be `multipart/form-data`.
+- Response JSON shape is unchanged when cache is enabled.
+- Cache behavior can be toggled with env vars:
+  - `CACHE_ENABLED=1|0` (default `1`)
+  - `CACHE_MODE=exact|semantic|tiered` (default `tiered`)
+  - `CACHE_SEMANTIC_EMBEDDER=clip|fingerprint` (default `clip`)
+  - `CACHE_SEMANTIC_CLIP_MODEL` (default `Xenova/clip-vit-base-patch32`)
+  - `CACHE_SEMANTIC_FALLBACK=none|fingerprint` (default `none`)
+- `MOCK_OCR=1|0` (default `0`)
+
+`POST /api/cache/reset` clears all local cache entries and returns:
+
+```json
+{
+  "ok": true,
+  "cache_enabled": true,
+  "cleared_entries": 123
+}
+```
+
+The benchmark harness (`backend/benchmarks/vlm_benchmark.js`) calls this endpoint
+automatically at the start of each benchmark run.
 
 ## Request
 
@@ -51,6 +74,19 @@ Notes:
   }
 }
 ```
+
+### Response Headers
+
+`POST /api/tag` also returns cache observability headers:
+
+- `X-Cache-Status`: `MISS | HIT_EXACT | HIT_SEMANTIC`
+- `X-Cache-Mode`: `exact | semantic | tiered`
+- `X-Cache-Embedder`: `clip | fingerprint | fingerprint_fallback | none`
+- `X-Cache-Similarity`: semantic similarity score for semantic hits (blank otherwise)
+- `X-Cache-Embedding-Ms`: image fingerprint computation time in ms
+- `X-Cache-Lookup-Ms`: cache lookup time in ms
+- `X-Cache-False-Positive`: `0 | 1 | NA` (`0/1` only on semantic hits in `MOCK_OCR=1`)
+- `X-Cache-RSS-MB`: process RSS memory in MB
 
 ## Error Shape
 
