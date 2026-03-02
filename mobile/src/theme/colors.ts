@@ -7,7 +7,7 @@ export const colors = {
   text: "#000",
   border: "#E0E0E0",
   disabled: "#A6A6A6",
-  primaryPressed: "#17412D",
+  primaryPressed: "#336D3D",
   primaryPressedLight: "#51a860",
   destructive: "#D94D4D",
   destructiveLight: "#FFAFA4",
