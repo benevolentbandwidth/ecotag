@@ -2,9 +2,41 @@ import * as FileSystem from "expo-file-system/legacy";
 import * as Crypto from "expo-crypto";
 import { getDb } from "./db";
 import { TagApiResponse } from "../types/api";
+import { SQLiteDatabase } from "expo-sqlite";
 
 // change the max entries for cache here
-const CACHE_MAX_ENTRIES = 100;
+const CACHE_MAX_ENTRIES = 50;
+
+// inactivity TTL: cache is cleared if no activity for this duration
+const TTL_MS = 20 * 60 * 1000; // 20 minutes
+const LAST_ACTIVITY_KEY = "cache_last_activity";
+
+// get the last activity time for the cache
+function getLastActivity(db: SQLiteDatabase): number {
+  const row = db.getFirstSync<{ value: string }>(
+    "SELECT value FROM settings WHERE key = ?",
+    LAST_ACTIVITY_KEY,
+  );
+  return row ? parseInt(row.value, 10) : 0;
+}
+
+// update the last activity time for the cache
+function updateLastActivity(db: SQLiteDatabase): void {
+  db.runSync(
+    "INSERT OR REPLACE INTO settings (key, value) VALUES (?, ?)",
+    LAST_ACTIVITY_KEY,
+    String(Date.now()),
+  );
+}
+
+// clear the cache if it has been inactive for too long
+function clearCacheIfExpired(db: SQLiteDatabase): void {
+  const lastActivity = getLastActivity(db);
+  if (lastActivity > 0 && Date.now() - lastActivity > TTL_MS) {
+    db.runSync("DELETE FROM image_cache");
+    console.log("[EcoTag Cache] Inactivity TTL expired, cache cleared");
+  }
+}
 
 // create a hash of the image uri
 async function hashImageUri(imageUri: string): Promise<string> {
@@ -19,12 +51,14 @@ async function hashImageUri(imageUri: string): Promise<string> {
 // if the cache is miss, return null
 export async function lookupCache(imageUri: string): Promise<TagApiResponse | null> {
   try {
-    const hash = await hashImageUri(imageUri);
     const db = getDb();
+    clearCacheIfExpired(db);
+    const hash = await hashImageUri(imageUri);
     const row = db.getFirstSync<{ response_json: string }>(
       "SELECT response_json FROM image_cache WHERE image_hash = ?",
       hash,
     );
+    updateLastActivity(db);
     if (!row) {
       console.log("[EcoTag Cache] MISS", hash.slice(0, 8));
       return null;
@@ -43,8 +77,9 @@ export async function lookupCache(imageUri: string): Promise<TagApiResponse | nu
 // stores the hash of the image uri, the response, and the creation time
 export async function storeCache(imageUri: string, response: TagApiResponse): Promise<void> {
   try {
-    const hash = await hashImageUri(imageUri);
     const db = getDb();
+    clearCacheIfExpired(db);
+    const hash = await hashImageUri(imageUri);
     // insert or replace the cache entry
     db.runSync(
       `INSERT OR REPLACE INTO image_cache (image_hash, response_json, created_at)
@@ -60,6 +95,7 @@ export async function storeCache(imageUri: string, response: TagApiResponse): Pr
        )`,
       CACHE_MAX_ENTRIES,
     );
+    updateLastActivity(db);
   } catch (err) {
     console.warn("[EcoTag] Local cache store failed:", err);
   }
