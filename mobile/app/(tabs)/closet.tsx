@@ -48,6 +48,7 @@ export default function ClosetScreen() {
   const [items, setItems] = useState<ScanRecord[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [editMode, setEditMode] = useState(false);
+  const [compareMode, setCompareMode] = useState(false);
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
 
   const refresh = useCallback(() => {
@@ -64,6 +65,7 @@ export default function ClosetScreen() {
     useCallback(() => {
       refresh();
       setEditMode(false);
+      setCompareMode(false);
       setSelectedIds(new Set());
     }, [refresh]),
   );
@@ -89,11 +91,13 @@ export default function ClosetScreen() {
     deleteScans([...selectedIds]);
     setSelectedIds(new Set());
     setEditMode(false);
+    setCompareMode(false);
     refresh();
   }, [selectedIds, refresh]);
 
   const handleCancel = useCallback(() => {
     setEditMode(false);
+    setCompareMode(false);
     setSelectedIds(new Set());
   }, []);
 
@@ -193,6 +197,24 @@ export default function ClosetScreen() {
           showsVerticalScrollIndicator={false}
           renderItem={renderItem}
           ItemSeparatorComponent={renderSeparator}
+          ListHeaderComponent={
+            !editMode ? (
+              <Pressable
+                style={styles.compareButton}
+                onPress={() => {
+                  setEditMode(true);
+                  setCompareMode(true);
+                }}
+              >
+                <Text style={styles.compareButtonText}>Start a Comparison</Text>
+                <Ionicons
+                  name="swap-horizontal-outline"
+                  size={28}
+                  color={colors.white}
+                />
+              </Pressable>
+            ) : null
+          }
           ListEmptyComponent={
             <Text style={styles.emptySearch}>No results found</Text>
           }
@@ -211,14 +233,45 @@ export default function ClosetScreen() {
           <Pressable
             style={[
               styles.editBarButton,
-              selectedIds.size === 0 && styles.editBarButtonDisabled,
+              selectedIds.size < 2 && styles.editBarButtonDisabled,
             ]}
-            onPress={handleDelete}
-            disabled={selectedIds.size === 0}
+            disabled={selectedIds.size < 2}
+            onPress={() => {
+              const selectedGarments = items.filter((item) =>
+                selectedIds.has(item.id),
+              );
+              router.push({
+                pathname: "/comparison",
+                params: {
+                  selectedGarments: JSON.stringify(selectedGarments),
+                },
+              });
+            }}
           >
-            <Ionicons name="trash-outline" size={24} color={colors.destructive} />
-            <Text style={styles.editBarLabel}>Delete</Text>
+            <Ionicons
+              name="git-compare-outline"
+              size={24}
+              color={selectedIds.size >= 2 ? colors.primary : colors.disabled}
+            />
+            <Text style={styles.editBarLabel}>Compare</Text>
           </Pressable>
+          {!compareMode && (
+            <Pressable
+              style={[
+                styles.editBarButton,
+                selectedIds.size === 0 && styles.editBarButtonDisabled,
+              ]}
+              onPress={handleDelete}
+              disabled={selectedIds.size === 0}
+            >
+              <Ionicons
+                name="trash-outline"
+                size={24}
+                color={colors.destructive}
+              />
+              <Text style={styles.editBarLabel}>Delete</Text>
+            </Pressable>
+          )}
         </View>
       )}
     </SafeAreaView>
@@ -296,15 +349,32 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginTop: 40,
   },
+  compareButton: {
+    backgroundColor: colors.primary,
+    borderRadius: spacing.radius,
+    paddingVertical: 16,
+    paddingHorizontal: 20,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 10,
+    marginBottom: spacing.elementV,
+  },
+  compareButtonText: {
+    ...typography.subtitle1,
+    color: colors.white,
+  },
   editBar: {
     flexDirection: "row",
     justifyContent: "center",
-    gap: 20,
+    gap: 12,
     paddingBottom: 110,
     paddingTop: 10,
+    paddingHorizontal: spacing.screenH,
   },
   editBarButton: {
-    width: 120,
+    flex: 1,
+    maxWidth: 110,
     height: 70,
     backgroundColor: colors.background,
     borderRadius: spacing.radius,
@@ -322,9 +392,10 @@ const styles = StyleSheet.create({
   },
   editBarLabel: {
     fontFamily: typography.h1.fontFamily,
-    fontSize: 16,
-    lineHeight: 20,
-    letterSpacing: 0.32,
+    fontSize: 14,
+    lineHeight: 18,
+    letterSpacing: 0.28,
     color: colors.text,
+    textAlign: "center",
   },
 });

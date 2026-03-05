@@ -1,5 +1,5 @@
 import React from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View, Animated } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { colors, typography, spacing } from "../theme";
 
@@ -27,41 +27,85 @@ export function GarmentCard({
   onToggleSelect,
 }: Props) {
   const handlePress = editMode ? onToggleSelect : onPress;
+  const slideAnim = React.useRef(new Animated.Value(0)).current;
+  const checkboxAnim = React.useRef(new Animated.Value(0)).current;
+
+  React.useEffect(() => {
+    if (editMode) {
+      // Slide badge first, then fade in checkbox after badge clears
+      Animated.timing(slideAnim, {
+        toValue: 1,
+        duration: 200,
+        useNativeDriver: true,
+      }).start();
+      const timer = setTimeout(() => {
+        Animated.timing(checkboxAnim, {
+          toValue: 1,
+          duration: 150,
+          useNativeDriver: true,
+        }).start();
+      }, 200);
+      return () => clearTimeout(timer);
+    } else {
+      // Slide badge back and hide checkbox simultaneously
+      Animated.timing(slideAnim, {
+        toValue: 0,
+        duration: 200,
+        useNativeDriver: true,
+      }).start();
+      Animated.timing(checkboxAnim, {
+        toValue: 0,
+        duration: 100,
+        useNativeDriver: true,
+      }).start();
+    }
+  }, [editMode, slideAnim, checkboxAnim]);
 
   return (
     <Pressable
-      style={[styles.card, editMode && styles.cardDimmed]}
+      style={[styles.card, editMode && !selected && styles.cardDimmed]}
       onPress={handlePress}
     >
-      {editMode && (
-        <View
-          style={[
-            styles.checkbox,
-            selected && styles.checkboxSelected,
-          ]}
-        >
-          {selected && (
-            <Ionicons name="checkmark" size={18} color={colors.white} />
-          )}
-        </View>
-      )}
+      <Animated.View
+        style={[
+          styles.checkbox,
+          selected && styles.checkboxSelected,
+          { opacity: checkboxAnim },
+        ]}
+      >
+        {selected && (
+          <Ionicons name="checkmark" size={18} color={colors.white} />
+        )}
+      </Animated.View>
       <View style={styles.header}>
         <View style={styles.titleRow}>
-          <Text style={[styles.name, editMode && styles.textDimmed]}>
-            {name}
-          </Text>
-          <View style={styles.co2Badge}>
-            <Text style={styles.co2Text}>{score.toFixed(1)} kg</Text>
-          </View>
+          <Text style={styles.name}>{name}</Text>
+          <Animated.View
+            style={[
+              styles.co2Badge,
+              {
+                transform: [
+                  {
+                    translateX: slideAnim.interpolate({
+                      inputRange: [0, 1],
+                      outputRange: [0, -36], // slide left to clear the checkbox
+                    }),
+                  },
+                ],
+              },
+            ]}
+          >
+            <Text style={styles.co2Text}>{score.toFixed(0)} kg</Text>
+          </Animated.View>
         </View>
-        <Text style={[styles.type, editMode && styles.textDimmed]}>{type}</Text>
+        <Text style={styles.type}>{type}</Text>
       </View>
-      <Text style={[styles.description, editMode && styles.textDimmed]}>
-        {description}
-      </Text>
-      <Text style={[styles.timestamp, editMode && styles.textDimmed]}>
-        {timestamp}
-      </Text>
+      <View style={styles.bottomRow}>
+        <Text style={styles.description} numberOfLines={2}>
+          {description}
+        </Text>
+        <Text style={styles.timestamp}>{timestamp}</Text>
+      </View>
     </Pressable>
   );
 }
@@ -70,13 +114,13 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: colors.white,
     borderRadius: spacing.radius,
-    borderWidth: spacing.strokeWidth,
-    borderColor: colors.primary,
+    borderWidth: 1,
+    borderColor: colors.border,
     padding: 14,
     gap: 6,
   },
   cardDimmed: {
-    opacity: 0.75,
+    opacity: 0.4,
   },
   checkbox: {
     position: "absolute",
@@ -102,22 +146,22 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingRight: 28,
   },
   name: {
-    ...typography.subtitle1,
+    ...typography.h2,
     color: colors.text,
     flex: 1,
+    paddingRight: 36,
   },
   co2Badge: {
-    backgroundColor: colors.primaryMid,
+    backgroundColor: colors.primary,
     borderRadius: spacing.radius,
     paddingHorizontal: 10,
-    paddingVertical: 3,
+    paddingVertical: 4,
     marginLeft: 8,
   },
   co2Text: {
-    ...typography.button,
+    ...typography.subtitle2,
     color: colors.white,
   },
   type: {
@@ -128,10 +172,17 @@ const styles = StyleSheet.create({
   description: {
     ...typography.body,
     color: colors.text,
+    flex: 1,
   },
   timestamp: {
     ...typography.bodySmall,
     color: colors.disabled,
+  },
+  bottomRow: {
+    flexDirection: "row",
+    alignItems: "flex-end",
+    justifyContent: "space-between",
+    gap: spacing.elementH,
   },
   textDimmed: {
     opacity: 0.5,
