@@ -5,14 +5,15 @@ import { colors, typography, spacing } from "../theme";
 interface Props {
   label: string;
   kgValue: number;
+  badgeText?: string;
 }
 
-export function BreakdownRow({ label, kgValue }: Props) {
+export function BreakdownRow({ label, kgValue, badgeText }: Props) {
   return (
     <View style={styles.card}>
       <Text style={styles.label}>{label}</Text>
       <View style={styles.badge}>
-        <Text style={styles.badgeText}>{Math.round(kgValue)} kg</Text>
+        <Text style={styles.badgeText}>{badgeText ?? `${Math.round(kgValue)} kg`}</Text>
       </View>
     </View>
   );

@@ -9,6 +9,7 @@ import { CO2Gauge } from "../src/components/CO2Gauge";
 import { BreakdownRow } from "../src/components/BreakdownRow";
 import { TagApiResponse, BREAKDOWN_LABELS, BREAKDOWN_ORDER } from "../src/types/api";
 import { getScanById, toggleClosetStatus } from "../src/storage/scans";
+import { estimateLifespan } from "../src/utils/lifespan";
 
 function getFriendlyErrorMessage(code?: string, fallback?: string): string {
   if (code === "MISSING_IMAGE") {
@@ -80,6 +81,19 @@ export default function ResultsScreen() {
     }));
   }, [emissions]);
 
+  const lifespan = useMemo(() => {
+    if (!successPayload?.parsed || !successPayload?.emissions) return null;
+    return estimateLifespan(successPayload.parsed, successPayload.emissions);
+  }, [successPayload]);
+
+  const [breakdownScrollEnabled, setBreakdownScrollEnabled] = useState(false);
+  const [breakdownContainerH, setBreakdownContainerH] = useState(0);
+  const [breakdownContentH, setBreakdownContentH] = useState(0);
+
+  useEffect(() => {
+    setBreakdownScrollEnabled(breakdownContentH > breakdownContainerH);
+  }, [breakdownContentH, breakdownContainerH]);
+
   return (
     <SafeAreaView style={styles.safe} edges={["top"]}>
       <View style={styles.header}>
@@ -104,44 +118,69 @@ export default function ResultsScreen() {
         </Pressable>
       </View>
 
-      <ScrollView
-        contentContainerStyle={styles.content}
-        showsVerticalScrollIndicator={false}
-      >
-        {isSuccess ? (
-          <>
+      {isSuccess ? (
+        <>
+          <View style={styles.fixedContent}>
             <CO2Gauge totalKgCO2e={emissions!.total_kgco2e} />
 
-            <Text style={styles.sectionTitle}>Carbon Emission Breakdown</Text>
-
-            <View style={styles.breakdownList}>
-              {breakdownRows.map((row) => (
-                <BreakdownRow
-                  key={row.key}
-                  label={row.label}
-                  kgValue={row.value}
-                />
-              ))}
+            <View style={styles.statRow}>
+              <View style={styles.statCol}>
+                <View style={styles.statCard}>
+                  <Text style={styles.statValue}>
+                    ${lifespan?.costSavingsUsd ?? 0}
+                  </Text>
+                  <Ionicons name="cash-outline" size={20} color={colors.white} />
+                </View>
+                <Text style={styles.statLabel}>Est. Cost Savings</Text>
+              </View>
+              <View style={styles.statCol}>
+                <View style={styles.statCard}>
+                  <Text style={styles.statValue}>
+                    {lifespan?.yearsAvg ?? "—"} years
+                  </Text>
+                  <Ionicons name="trending-up-outline" size={20} color={colors.white} />
+                </View>
+                <Text style={styles.statLabel}>Est. Lifetime</Text>
+              </View>
             </View>
-          </>
-        ) : (
-          <View style={styles.errorCard}>
-            <Text style={styles.errorTitle}>We couldn't analyze that image</Text>
-            <Text style={styles.errorMessage}>{friendlyMessage}</Text>
-            {errorCode ? (
-              <Text style={styles.errorCode}>Error code: {errorCode}</Text>
-            ) : null}
-          </View>
-        )}
 
-        <View style={styles.scanAnotherWrapper}>
-          <PrimaryButton
-            label="Scan Another"
-            icon="leaf-outline"
-            onPress={() => router.replace("/scan")}
-          />
+            <Text style={styles.sectionTitle}>Carbon Emission Breakdown</Text>
+          </View>
+
+          <ScrollView
+            style={styles.scroll}
+            contentContainerStyle={styles.breakdownScroll}
+            showsVerticalScrollIndicator={false}
+            scrollEnabled={breakdownScrollEnabled}
+            onLayout={(e) => setBreakdownContainerH(e.nativeEvent.layout.height)}
+            onContentSizeChange={(_, h) => setBreakdownContentH(h)}
+          >
+            {breakdownRows.map((row) => (
+              <BreakdownRow
+                key={row.key}
+                label={row.label}
+                kgValue={row.value}
+              />
+            ))}
+          </ScrollView>
+        </>
+      ) : (
+        <View style={styles.errorCard}>
+          <Text style={styles.errorTitle}>We couldn't analyze that image</Text>
+          <Text style={styles.errorMessage}>{friendlyMessage}</Text>
+          {errorCode ? (
+            <Text style={styles.errorCode}>Error code: {errorCode}</Text>
+          ) : null}
         </View>
-      </ScrollView>
+      )}
+
+      <View style={styles.bottomBar}>
+        <PrimaryButton
+          label="Scan Another"
+          image={require("../assets/images/landing_page/screen_logo.png")}
+          onPress={() => router.replace("/scan")}
+        />
+      </View>
     </SafeAreaView>
   );
 }
@@ -183,23 +222,68 @@ const styles = StyleSheet.create({
   plusBadgeActive: {
     backgroundColor: colors.primary,
   },
-  content: {
+  scroll: {
+    flex: 1,
+  },
+  fixedContent: {
     paddingHorizontal: spacing.screenH,
     paddingTop: spacing.elementV * 2,
-    paddingBottom: 40,
+  },
+  breakdownScroll: {
+    paddingHorizontal: spacing.screenH,
+    paddingTop: 16,
+    gap: 10,
+    paddingBottom: 16,
   },
   sectionTitle: {
     ...typography.subtitle1,
     color: colors.text,
     letterSpacing: 0.32,
-    marginTop: 40,
+    marginTop: 32,
   },
-  breakdownList: {
-    marginTop: 16,
-    gap: 10,
+  statRow: {
+    flexDirection: "row",
+    gap: 12,
+    marginTop: 28,
   },
-  scanAnotherWrapper: {
-    marginTop: 30,
+  statCol: {
+    flex: 1,
+    alignItems: "center",
+    gap: 8,
+  },
+  statCard: {
+    width: "100%",
+    backgroundColor: colors.primaryMid,
+    borderRadius: spacing.radius,
+    paddingHorizontal: 14,
+    paddingVertical: 14,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 8,
+  },
+  statValueRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  statValue: {
+    fontFamily: "Figtree_700Bold",
+    fontSize: 20,
+    lineHeight: 26,
+    color: colors.white,
+  },
+  statLabel: {
+    fontFamily: "Figtree_400Regular",
+    fontSize: 12,
+    lineHeight: 16,
+    color: colors.text,
+  },
+  bottomBar: {
+    paddingHorizontal: spacing.screenH,
+    paddingTop: 16,
+    paddingBottom: 36,
+    backgroundColor: colors.background,
   },
   errorCard: {
     borderWidth: 1,
