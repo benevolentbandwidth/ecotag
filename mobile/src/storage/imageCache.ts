@@ -73,6 +73,18 @@ export async function lookupCache(imageUri: string): Promise<TagApiResponse | nu
   }
 }
 
+// clears all entries from the image cache and resets the activity timer
+export function clearCache(): void {
+  try {
+    const db = getDb();
+    db.runSync("DELETE FROM image_cache");
+    db.runSync("DELETE FROM settings WHERE key = ?", LAST_ACTIVITY_KEY);
+    console.log("[EcoTag Cache] Cache manually cleared");
+  } catch (err) {
+    console.warn("[EcoTag] Local cache clear failed:", err);
+  }
+}
+
 // uses FIFO to evict the oldest cache entry (creation time) when the cache is full
 // stores the hash of the image uri, the response, and the creation time
 export async function storeCache(imageUri: string, response: TagApiResponse): Promise<void> {
