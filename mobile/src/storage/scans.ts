@@ -1,7 +1,12 @@
 import { getDb } from "./db";
 import { NewScanRecord, ScanRecord } from "./types";
 
-const ALLOWED_TOP_LEVEL_KEYS = new Set(["parsed", "emissions", "error"]);
+const ALLOWED_TOP_LEVEL_KEYS = new Set([
+  "parsed",
+  "emissions",
+  "error",
+  "benchmark",
+]);
 const BLOCKED_KEYS = new Set([
   "image",
   "dataUrl",
@@ -124,10 +129,7 @@ export function searchScans(
 export function deleteScans(ids: string[]): void {
   if (ids.length === 0) return;
   const placeholders = ids.map(() => "?").join(",");
-  getDb().runSync(
-    `DELETE FROM scans WHERE id IN (${placeholders})`,
-    ...ids,
-  );
+  getDb().runSync(`DELETE FROM scans WHERE id IN (${placeholders})`, ...ids);
 }
 
 export function clearAllScans(): void {

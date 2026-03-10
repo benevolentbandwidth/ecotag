@@ -146,7 +146,11 @@ export async function tagImage(imageUri: string): Promise<TagImageResult> {
       display_name: buildDisplayName(cached.parsed),
       category: null,
       error_code: null,
-      result: { parsed: cached.parsed, emissions: cached.emissions },
+      result: {
+        parsed: cached.parsed,
+        emissions: cached.emissions,
+        benchmark: cached.benchmark,
+      },
     });
     return { response: cached, scanId };
   }
@@ -229,7 +233,11 @@ export async function tagImage(imageUri: string): Promise<TagImageResult> {
     display_name: buildDisplayName(response.parsed),
     category: null,
     error_code: null,
-    result: { parsed: response.parsed, emissions: response.emissions },
+    result: {
+      parsed: response.parsed,
+      emissions: response.emissions,
+      benchmark: response.benchmark,
+    },
   });
 
   return { response, scanId };

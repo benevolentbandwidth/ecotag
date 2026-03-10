@@ -35,17 +35,61 @@ function MiniTreeIcon() {
   );
 }
 
-function getScoreColor(kgCO2: number): string {
-  if (kgCO2 < 5) return colors.primary;
-  if (kgCO2 < 15) return "#F5A623";
-  return colors.destructive;
+function getScoreColor(garment: Garment): string {
+  const benchmarkKg = parseBenchmark(garment.result_json);
+  const score = computeScore(garment.co2e_grams / 1000, benchmarkKg);
+  if (score < 0) return colors.disabled;
+  if (score < 40) return colors.destructive;
+  if (score < 60) return "#F5A623";
+  return colors.primary;
 }
 
-function getOverallRating(avgKg: number): { label: string; color: string } {
-  if (avgKg < 3) return { label: "Excellent", color: colors.primary };
-  if (avgKg < 8) return { label: "Good", color: colors.primary };
-  if (avgKg < 15) return { label: "Average", color: "#F5A623" };
-  return { label: "Poor", color: colors.destructive };
+function computeScore(
+  totalKg: number,
+  benchmarkKg: number | undefined,
+): number {
+  if (!benchmarkKg) return -1;
+  return Math.max(0, Math.min(100, (1 - totalKg / (2 * benchmarkKg)) * 100));
+}
+
+function scoreToRating(score: number): { label: string; color: string } {
+  if (score < 0) return { label: "N/A", color: colors.disabled };
+  if (score < 40) return { label: "Poor", color: "#D94D4D" };
+  if (score < 60) return { label: "Average", color: "#F5A623" };
+  return { label: "Great", color: "#336D3D" };
+}
+
+function getEcoRating(garment: Garment): { label: string; color: string } {
+  const benchmarkKg = parseBenchmark(garment.result_json);
+  const score = computeScore(garment.co2e_grams / 1000, benchmarkKg);
+  return scoreToRating(score);
+}
+
+function parseBenchmark(resultJson?: string): number | undefined {
+  if (!resultJson) return undefined;
+  try {
+    const data = JSON.parse(resultJson) as {
+      benchmark?: { benchmark_kgco2e: number };
+    };
+    return data.benchmark?.benchmark_kgco2e;
+  } catch {
+    return undefined;
+  }
+}
+
+function getOverallRating(garments: Garment[]): {
+  label: string;
+  color: string;
+} {
+  if (garments.length === 0) return { label: "N/A", color: colors.disabled };
+  const scores = garments.map((g) => {
+    const benchmarkKg = parseBenchmark(g.result_json);
+    return computeScore(g.co2e_grams / 1000, benchmarkKg);
+  });
+  const validScores = scores.filter((s) => s >= 0);
+  if (validScores.length === 0) return { label: "N/A", color: colors.disabled };
+  const avgScore = validScores.reduce((a, b) => a + b, 0) / validScores.length;
+  return scoreToRating(avgScore);
 }
 
 export default function ComparisonView() {
@@ -57,7 +101,7 @@ export default function ComparisonView() {
 
   const totalKg = garments.reduce((sum, g) => sum + g.co2e_grams / 1000, 0);
   const avgKg = garments.length > 0 ? totalKg / garments.length : 0;
-  const rating = getOverallRating(avgKg);
+  const rating = getOverallRating(garments);
 
   return (
     <SafeAreaView style={styles.safe} edges={["top"]}>
@@ -78,8 +122,8 @@ export default function ComparisonView() {
         <View style={styles.cardsRow}>
           {garments.map((g, idx) => {
             const co2Kg = g.co2e_grams / 1000;
-            const badgeColor = getScoreColor(co2Kg);
-            const itemRating = getOverallRating(co2Kg);
+            const badgeColor = getScoreColor(g);
+            const itemRating = getEcoRating(g);
             return (
               <View key={g.id} style={styles.cardWrapper}>
                 {/* Index circle */}

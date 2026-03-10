@@ -9,6 +9,7 @@ interface Props {
   score: number;
   description: string;
   timestamp: string;
+  rating?: { label: string; color: string };
   onPress?: () => void;
   editMode?: boolean;
   selected?: boolean;
@@ -21,6 +22,7 @@ export function GarmentCard({
   score,
   description,
   timestamp,
+  rating,
   onPress,
   editMode,
   selected,
@@ -95,11 +97,17 @@ export function GarmentCard({
               },
             ]}
           >
-            <Text style={styles.co2Text}>{score.toFixed(0)} kg</Text>
+            <Text style={styles.co2Label}>Score</Text>
+            <Text style={styles.co2Text}>{score}</Text>
           </Animated.View>
         </View>
         <Text style={styles.type}>{type}</Text>
       </View>
+      {rating && (
+        <View style={[styles.ratingPill, { backgroundColor: rating.color }]}>
+          <Text style={styles.ratingText}>{rating.label}</Text>
+        </View>
+      )}
       <View style={styles.bottomRow}>
         <Text style={styles.description} numberOfLines={2}>
           {description}
@@ -159,10 +167,19 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 4,
     marginLeft: 8,
+    alignItems: "center",
+  },
+  co2Label: {
+    ...typography.bodySmall,
+    color: colors.white,
+    fontSize: 10,
+    lineHeight: 12,
   },
   co2Text: {
     ...typography.subtitle2,
     color: colors.white,
+    fontSize: 20,
+    lineHeight: 24,
   },
   type: {
     ...typography.bodySmall,
@@ -177,6 +194,17 @@ const styles = StyleSheet.create({
   timestamp: {
     ...typography.bodySmall,
     color: colors.disabled,
+  },
+  ratingPill: {
+    alignSelf: "flex-start",
+    borderRadius: 12,
+    paddingHorizontal: 10,
+    paddingVertical: 3,
+  },
+  ratingText: {
+    ...typography.bodySmall,
+    color: colors.white,
+    fontWeight: "700",
   },
   bottomRow: {
     flexDirection: "row",
