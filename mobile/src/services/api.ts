@@ -14,6 +14,23 @@ export interface NormalizedApiError {
   message: string;
 }
 
+interface GarmentMetadata {
+  name: string | null;
+  type: string | null;
+}
+
+function normalizeGarmentValue(value: string): string | null {
+  const trimmed = value.trim();
+  return trimmed.length > 0 ? trimmed : null;
+}
+
+function pickDisplayName(
+  parsedName: string | null,
+  providedName: string | null,
+): string {
+  return providedName ?? parsedName ?? "Tag scan";
+}
+
 function stripTrailingSlash(value: string): string {
   return value.replace(/\/+$/, "");
 }
@@ -137,14 +154,23 @@ function normalizeErrorPayload(
   };
 }
 
-export async function tagImage(imageUri: string): Promise<TagImageResult> {
+export async function tagImage(
+  imageUri: string,
+  garmentName = "",
+  garmentType = "",
+): Promise<TagImageResult> {
+  const metadata: GarmentMetadata = {
+    name: normalizeGarmentValue(garmentName),
+    type: normalizeGarmentValue(garmentType),
+  };
+
   const cached = await lookupCache(imageUri);
   if (cached) {
     const scanId = recordScan({
       success: 1,
       co2e_grams: Math.round(cached.emissions.total_kgco2e * 1000),
-      display_name: buildDisplayName(cached.parsed),
-      category: null,
+      display_name: pickDisplayName(buildDisplayName(cached.parsed), metadata.name),
+      category: metadata.type,
       error_code: null,
       result: { parsed: cached.parsed, emissions: cached.emissions },
     });
@@ -188,8 +214,8 @@ export async function tagImage(imageUri: string): Promise<TagImageResult> {
         recordScan({
           success: 0,
           co2e_grams: 0,
-          display_name: "Tag scan",
-          category: null,
+          display_name: pickDisplayName("Tag scan", metadata.name),
+          category: metadata.type,
           error_code: body.error.code ?? null,
           result: { error: body.error },
         });
@@ -226,8 +252,8 @@ export async function tagImage(imageUri: string): Promise<TagImageResult> {
   const scanId = recordScan({
     success: 1,
     co2e_grams: Math.round(response.emissions.total_kgco2e * 1000),
-    display_name: buildDisplayName(response.parsed),
-    category: null,
+    display_name: pickDisplayName(buildDisplayName(response.parsed), metadata.name),
+    category: metadata.type,
     error_code: null,
     result: { parsed: response.parsed, emissions: response.emissions },
   });
