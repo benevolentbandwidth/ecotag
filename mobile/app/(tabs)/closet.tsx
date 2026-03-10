@@ -4,19 +4,10 @@ import { useFocusEffect, useRouter } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 import { colors, typography, spacing } from "../../src/theme";
-import {
-  listScans,
-  listClosetItems,
-  searchScans,
-  deleteScans,
-} from "../../src/storage/scans";
+import { listScans, searchScans, deleteScans } from "../../src/storage/scans";
 import { ScanRecord } from "../../src/storage/types";
 import { GarmentCard } from "../../src/components/GarmentCard";
 import { SearchBar } from "../../src/components/SearchBar";
-import {
-  ViewToggleDropdown,
-  ClosetView,
-} from "../../src/components/ViewToggleDropdown";
 
 function formatRelativeTime(timestamp: number): string {
   const diffMs = Date.now() - timestamp;
@@ -42,6 +33,7 @@ function buildDescription(resultJson: string | null): string {
   }
 }
 
+export default function ScansScreen() {
 function computeEcoRating(
   resultJson: string | null,
 ): { label: string; color: string; score: number } | undefined {
@@ -67,7 +59,6 @@ function computeEcoRating(
 
 export default function ClosetScreen() {
   const router = useRouter();
-  const [currentView, setCurrentView] = useState<ClosetView>("closet");
   const [items, setItems] = useState<ScanRecord[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [editMode, setEditMode] = useState(false);
@@ -76,13 +67,11 @@ export default function ClosetScreen() {
 
   const refresh = useCallback(() => {
     if (searchQuery.trim()) {
-      setItems(searchScans(searchQuery, currentView === "closet"));
-    } else if (currentView === "closet") {
-      setItems(listClosetItems());
+      setItems(searchScans(searchQuery, false));
     } else {
       setItems(listScans());
     }
-  }, [currentView, searchQuery]);
+  }, [searchQuery]);
 
   useFocusEffect(
     useCallback(() => {
@@ -164,33 +153,23 @@ export default function ClosetScreen() {
     [],
   );
 
-  const isClosetEmpty =
-    currentView === "closet" && items.length === 0 && !searchQuery.trim();
+  const isScansEmpty = items.length === 0 && !searchQuery.trim();
 
   return (
     <SafeAreaView style={styles.safe} edges={["top"]}>
       <View style={styles.headerRow}>
-        <ViewToggleDropdown
-          currentView={currentView}
-          onChangeView={(view) => {
-            setCurrentView(view);
-            setEditMode(false);
-            setSelectedIds(new Set());
-            setSearchQuery("");
-          }}
-        />
+        <Text style={styles.title}>Your Scans</Text>
         {items.length > 0 && (
           <Pressable
             style={styles.editButton}
             onPress={() => setEditMode(true)}
           >
-            <Text style={styles.editText}>Edit</Text>
             <Ionicons name="pencil" size={16} color={colors.text} />
           </Pressable>
         )}
       </View>
 
-      {!isClosetEmpty && (
+      {!isScansEmpty && (
         <View style={styles.searchContainer}>
           <SearchBar
             value={searchQuery}
@@ -200,11 +179,9 @@ export default function ClosetScreen() {
         </View>
       )}
 
-      {isClosetEmpty ? (
+      {isScansEmpty ? (
         <View style={styles.emptyContainer}>
-          <Text style={styles.emptyTitle}>
-            You have no items in your closet.
-          </Text>
+          <Text style={styles.emptyTitle}>You have no scans.</Text>
           <Text style={styles.emptySubtitle}>Want to add one?</Text>
           <Pressable
             style={styles.scanButton}
@@ -315,14 +292,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.screenH,
     paddingTop: spacing.elementV,
   },
-  editButton: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 5,
+  title: {
+    ...typography.h1,
+    textAlign: "center",
+    flex: 1,
   },
-  editText: {
-    ...typography.link,
-    color: colors.text,
+  editButton: {
+    position: "absolute",
+    right: spacing.screenH,
+    top: spacing.elementV,
   },
   searchContainer: {
     paddingHorizontal: spacing.screenH,
