@@ -51,7 +51,9 @@ export function estimateEmissions(parsed) {
   breakdown.manufacturing = weight * mfgEntry.kgco2_per_kg;
 
   // Washing, Drying, Ironing, Dry Cleaning
-  // Only allow structured care object
+  // Scale per-use CO₂ by garment's share of a typical wash load (~5 kg).
+  const LOAD_SIZE_KG = 5;
+  const garmentShare = weight / LOAD_SIZE_KG;
   let washingCO2 = 0,
     dryingCO2 = 0,
     ironingCO2 = 0,
@@ -65,16 +67,20 @@ export function estimateEmissions(parsed) {
       parsed.care.dry_cleaning)
   ) {
     if (parsed.care.washing && WASHING[parsed.care.washing]) {
-      washingCO2 = washes * WASHING[parsed.care.washing].kgco2_per_use;
+      washingCO2 =
+        washes * WASHING[parsed.care.washing].kgco2_per_use * garmentShare;
     }
     if (parsed.care.drying && WASHING[parsed.care.drying]) {
-      dryingCO2 = washes * WASHING[parsed.care.drying].kgco2_per_use;
+      dryingCO2 =
+        washes * WASHING[parsed.care.drying].kgco2_per_use * garmentShare;
     }
     if (parsed.care.ironing && WASHING[parsed.care.ironing]) {
-      ironingCO2 = washes * WASHING[parsed.care.ironing].kgco2_per_use;
+      ironingCO2 =
+        washes * WASHING[parsed.care.ironing].kgco2_per_use * garmentShare;
     }
     if (parsed.care.dry_cleaning && WASHING[parsed.care.dry_cleaning]) {
-      dryCleanCO2 = washes * WASHING[parsed.care.dry_cleaning].kgco2_per_use;
+      dryCleanCO2 =
+        washes * WASHING[parsed.care.dry_cleaning].kgco2_per_use * garmentShare;
     }
   } else {
     throw new Error(
