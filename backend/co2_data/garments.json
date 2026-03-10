@@ -1,0 +1,4 @@
+{
+  "_comment": "Default garment weight and lifetime wash count used for all CO₂ estimates. Sources: BSR Apparel Industry Life Cycle Carbon Mapping (2009), average across t-shirt, jeans, shirt, dress, jacket categories.",
+  "_default": { "weight_kg": 0.35, "lifetime_washes": 50 }
+}
