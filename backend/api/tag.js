@@ -6,6 +6,7 @@ import multer from "multer";
 import * as gpt from "../ai/gpt.js";
 import { extractMockTagFromImageBuffer } from "../ai/mock.js";
 import { estimateEmissions } from "../ai/emissions.js";
+import { getBenchmark } from "../ai/benchmarks.js";
 import fs from "node:fs";
 import path from "node:path";
 import { isMockOcrEnabled } from "../cache/config.js";
@@ -110,16 +111,16 @@ router.post("/tag", upload.single("image"), async (req, res) => {
 
     try {
       const emissions = estimateEmissions(parsed);
-      return res.json({ parsed, emissions });
+      const benchmark = getBenchmark();
+      return res.json({ parsed, emissions, benchmark });
     } catch (err) {
       if (
         err instanceof Error &&
         err.message.includes("Care instructions must be a structured object")
       ) {
-        const emissions = estimateEmissions(
-          withFallbackCareForEmissions(parsed),
-        );
-        return res.json({ parsed, emissions });
+        const emissions = estimateEmissions(withFallbackCareForEmissions(parsed));
+        const benchmark = getBenchmark();
+        return res.json({ parsed, emissions, benchmark });
       }
       throw err;
     }

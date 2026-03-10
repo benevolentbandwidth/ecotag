@@ -10,12 +10,27 @@ const loadJson = (f) =>
 
 const MATERIALS = loadJson("materials.json");
 const MANUFACTURING = loadJson("manufacturing.json");
-
 const WASHING = loadJson("washing.json");
+const GARMENTS = loadJson("garments.json");
 
 export function estimateEmissions(parsed) {
   const breakdown = {};
-  const DEFAULT_WEIGHT_KG = 1;
+
+  const garment = GARMENTS["_default"];
+  const weight = garment.weight_kg;
+
+  // Lifetime washes: weighted average from fiber blend using only cited values.
+  // Fibers without a cited lifetime_washes fall back to garments.json _default.
+  let washes = garment.lifetime_washes;
+  if (parsed.materials && parsed.materials.length > 0) {
+    washes = parsed.materials.reduce((sum, { fiber, pct }) => {
+      const key = fiber.toLowerCase();
+      const entry = MATERIALS[key] || MATERIALS["cotton"];
+      const fiberWashes = entry.lifetime_washes ?? garment.lifetime_washes;
+      return sum + (pct / 100) * fiberWashes;
+    }, 0);
+    washes = Math.round(washes);
+  }
 
   // Materials
   let matFactor = 0;
@@ -28,16 +43,14 @@ export function estimateEmissions(parsed) {
   } else {
     matFactor = MATERIALS["cotton"].kgco2_per_kg;
   }
-  breakdown.materials = DEFAULT_WEIGHT_KG * matFactor;
+  breakdown.materials = weight * matFactor;
 
   // Manufacturing
   const countryKey = (parsed.country || "china").toLowerCase();
   const mfgEntry = MANUFACTURING[countryKey] || MANUFACTURING["china"];
-  breakdown.manufacturing = DEFAULT_WEIGHT_KG * mfgEntry.kgco2_per_kg;
+  breakdown.manufacturing = weight * mfgEntry.kgco2_per_kg;
 
   // Washing, Drying, Ironing, Dry Cleaning
-  const washes = WASHING.default_washes_life || 48;
-
   // Only allow structured care object
   let washingCO2 = 0,
     dryingCO2 = 0,
@@ -82,7 +95,7 @@ export function estimateEmissions(parsed) {
       Object.entries(breakdown).map(([k, v]) => [k, Math.round(v * 100) / 100]),
     ),
     assumptions: {
-      weight_kg: DEFAULT_WEIGHT_KG,
+      weight_kg: weight,
       origin: parsed.country || "unknown",
       washes_lifetime: washes,
     },
