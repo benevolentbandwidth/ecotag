@@ -27,6 +27,16 @@ export interface TagEmissions {
 export interface TagApiResponse {
   parsed: ParsedTag;
   emissions: TagEmissions;
+  benchmark?: BenchmarkResult;
+}
+
+/** Benchmark comparison against a global average garment */
+export interface BenchmarkResult {
+  /** CO₂e in kg for a typical average garment (60% cotton / 40% polyester, China, warm wash + low tumble dry).
+   *  Uses the same fixed weight (350g) as the scanned item. Lifetime washes differ: the benchmark
+   *  uses the cotton/polyester fiber-weighted default (50), while the scanned item's washes vary
+   *  by its actual fiber blend. */
+  benchmark_kgco2e: number;
 }
 
 /** Maps breakdown keys to human-readable row labels */

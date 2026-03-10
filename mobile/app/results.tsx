@@ -4,7 +4,6 @@ import { useLocalSearchParams, useRouter } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { colors, typography, spacing } from "../src/theme";
-import { PrimaryButton } from "../src/components/PrimaryButton";
 import { CO2Gauge } from "../src/components/CO2Gauge";
 import { BreakdownRow } from "../src/components/BreakdownRow";
 import {
@@ -29,6 +28,16 @@ function getFriendlyErrorMessage(code?: string, fallback?: string): string {
     return "Something went wrong on our side. Please try again.";
   }
   return fallback || "Unable to analyze this image right now. Please retry.";
+}
+
+function formatCareKey(key: string): string {
+  return key.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
+function getPillLabel(pct: number): string {
+  if (pct < 40) return "Poor";
+  if (pct < 60) return "Average";
+  return "Great";
 }
 
 export default function ResultsScreen() {
@@ -79,19 +88,54 @@ export default function ResultsScreen() {
   const breakdownRows = useMemo(() => {
     if (!emissions?.breakdown) return [];
     const bd = emissions.breakdown;
+    const total = emissions.total_kgco2e;
+    const parsed = successPayload?.parsed;
+
+    const subtitleFor = (key: string): string => {
+      if (key === "materials" && parsed?.materials?.length) {
+        return parsed.materials
+          .map(({ fiber, pct }) => `${pct}% ${fiber}`)
+          .join(", ");
+      }
+      if (key === "manufacturing" && parsed?.country) {
+        return parsed.country;
+      }
+      if (parsed?.care && typeof parsed.care === "object") {
+        const careKey = key as keyof typeof parsed.care;
+        if (parsed.care[careKey]) {
+          return formatCareKey(parsed.care[careKey] as string);
+        }
+      }
+      return "";
+    };
+
     return BREAKDOWN_ORDER.filter(
       (key) => typeof bd[key] === "number" && bd[key] > 0,
-    ).map((key) => ({
-      key,
-      label: BREAKDOWN_LABELS[key] ?? key,
-      value: bd[key],
-    }));
-  }, [emissions]);
+    ).map((key) => {
+      const pct = total > 0 ? Math.round((bd[key] / total) * 100) : 0;
+      return {
+        key,
+        label: BREAKDOWN_LABELS[key] ?? key,
+        value: bd[key],
+        subtitle: subtitleFor(key),
+        pillLabel: getPillLabel(pct),
+      };
+    });
+  }, [emissions, successPayload]);
 
   const lifespan = useMemo(() => {
     if (!successPayload?.parsed || !successPayload?.emissions) return null;
     return estimateLifespan(successPayload.parsed, successPayload.emissions);
   }, [successPayload]);
+
+  const ecoRating = useMemo(() => {
+    const total = emissions?.total_kgco2e;
+    const benchmark = successPayload?.benchmark?.benchmark_kgco2e;
+    if (total == null || !benchmark) return null;
+    const score = Math.max(0, Math.min(100, (1 - total / (2 * benchmark)) * 100));
+    const label = score < 40 ? "Poor" : score < 60 ? "Average" : "Great";
+    return { score: Math.round(score), label };
+  }, [emissions, successPayload]);
 
   const [breakdownScrollEnabled, setBreakdownScrollEnabled] = useState(false);
   const [breakdownContainerH, setBreakdownContainerH] = useState(0);
@@ -167,8 +211,35 @@ export default function ResultsScreen() {
                 key={row.key}
                 label={row.label}
                 kgValue={row.value}
+                subtitle={row.subtitle}
+                pillLabel={row.pillLabel}
               />
             ))}
+            {ecoRating && (
+              <View
+                style={[
+                  styles.ratingCard,
+                  ecoRating.label === "Great" && styles.ratingGreat,
+                  ecoRating.label === "Average" && styles.ratingAverage,
+                  ecoRating.label === "Poor" && styles.ratingPoor,
+                ]}
+              >
+                <View>
+                  <Text style={styles.ratingLabel}>Eco Rating</Text>
+                  <Text style={styles.ratingSubtitle}>vs. average garment</Text>
+                </View>
+                <View style={styles.ratingBadge}>
+                  <Text style={styles.ratingScore}>{ecoRating.score}%</Text>
+                  <Text style={styles.ratingLabelRight}>{ecoRating.label}</Text>
+                </View>
+              </View>
+            )}
+            <Pressable
+              style={({ pressed }) => [styles.scanButton, pressed && styles.scanButtonPressed]}
+              onPress={() => router.replace("/scan")}
+            >
+              <Text style={styles.scanButtonText}>Scan Another</Text>
+            </Pressable>
           </ScrollView>
         </>
       ) : (
@@ -181,13 +252,7 @@ export default function ResultsScreen() {
         </View>
       )}
 
-      <View style={styles.bottomBar}>
-        <PrimaryButton
-          label="Scan Another"
-          image={require("../assets/images/landing_page/screen_logo.png")}
-          onPress={() => router.replace("/scan")}
-        />
-      </View>
+      <View style={styles.bottomBar} />
     </SafeAreaView>
   );
 }
@@ -237,10 +302,10 @@ const styles = StyleSheet.create({
     paddingTop: spacing.elementV * 2,
   },
   breakdownScroll: {
-    paddingHorizontal: spacing.screenH,
+    paddingHorizontal: spacing.screenH * 2,
     paddingTop: 16,
     gap: 10,
-    paddingBottom: 16,
+    paddingBottom: 48,
   },
   sectionTitle: {
     ...typography.subtitle1,
@@ -287,9 +352,7 @@ const styles = StyleSheet.create({
     color: colors.text,
   },
   bottomBar: {
-    paddingHorizontal: spacing.screenH,
-    paddingTop: 16,
-    paddingBottom: 36,
+    height: 36,
     backgroundColor: colors.background,
   },
   errorCard: {
@@ -311,5 +374,85 @@ const styles = StyleSheet.create({
   errorCode: {
     ...typography.bodySmall,
     color: colors.text,
+  },
+  ratingCard: {
+    borderRadius: 10,
+    paddingVertical: 16,
+    paddingHorizontal: 20,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginTop: 4,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.12,
+    shadowRadius: 4,
+    elevation: 3,
+  },
+  ratingGreat: {
+    backgroundColor: "#D6F0DA",
+  },
+  ratingAverage: {
+    backgroundColor: "#FFF5CC",
+  },
+  ratingPoor: {
+    backgroundColor: colors.destructiveLight,
+  },
+  ratingLabel: {
+    fontFamily: "Figtree_700Bold",
+    fontSize: 14,
+    lineHeight: 18,
+    color: colors.text,
+    letterSpacing: 0.2,
+  },
+  ratingSubtitle: {
+    fontFamily: "Figtree_400Regular",
+    fontSize: 11,
+    lineHeight: 14,
+    color: colors.disabled,
+    marginTop: 2,
+  },
+  ratingBadge: {
+    alignItems: "flex-end",
+    gap: 4,
+  },
+  ratingScore: {
+    fontFamily: "Figtree_700Bold",
+    fontSize: 22,
+    lineHeight: 28,
+    color: colors.text,
+  },
+  ratingLabelRight: {
+    fontFamily: "Figtree_700Bold",
+    fontSize: 13,
+    lineHeight: 17,
+    color: colors.text,
+    textTransform: "uppercase",
+    letterSpacing: 1,
+  },
+  scanButton: {
+    backgroundColor: colors.primary,
+    borderRadius: 10,
+    paddingHorizontal: 15,
+    paddingVertical: 16,
+    marginTop: 25,
+    marginHorizontal: spacing.screenH * 2.5,
+    alignItems: "center",
+    justifyContent: "center",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 4,
+  },
+  scanButtonPressed: {
+    opacity: 0.85,
+  },
+  scanButtonText: {
+    fontFamily: "Figtree_700Bold",
+    fontSize: 16,
+    lineHeight: 20,
+    color: colors.white,
+    letterSpacing: 0.32,
   },
 });
