@@ -59,7 +59,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="closet"
         options={{
-          title: "Closet",
+          title: "Your Scans",
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons
               name="wardrobe-outline"

@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 import { colors, typography, spacing } from "../src/theme";
 import { CO2Gauge } from "../src/components/CO2Gauge";
 import { BreakdownRow } from "../src/components/BreakdownRow";
@@ -11,7 +11,6 @@ import {
   BREAKDOWN_LABELS,
   BREAKDOWN_ORDER,
 } from "../src/types/api";
-import { getScanById, toggleClosetStatus } from "../src/storage/scans";
 import { estimateLifespan } from "../src/utils/lifespan";
 
 function getFriendlyErrorMessage(code?: string, fallback?: string): string {
@@ -50,24 +49,6 @@ export default function ResultsScreen() {
       errorMessage?: string;
       scanId?: string;
     }>();
-
-  const [isInCloset, setIsInCloset] = useState(false);
-
-  useEffect(() => {
-    if (scanId) {
-      const scan = getScanById(scanId);
-      if (scan) {
-        setIsInCloset(scan.in_closet === 1);
-      }
-    }
-  }, [scanId]);
-
-  const handleToggleCloset = () => {
-    if (!scanId) return;
-    const next = !isInCloset;
-    toggleClosetStatus(scanId, next);
-    setIsInCloset(next);
-  };
 
   const successPayload = useMemo(() => {
     if (data) {
@@ -132,7 +113,10 @@ export default function ResultsScreen() {
     const total = emissions?.total_kgco2e;
     const benchmark = successPayload?.benchmark?.benchmark_kgco2e;
     if (total == null || !benchmark) return null;
-    const score = Math.max(0, Math.min(100, (1 - total / (2 * benchmark)) * 100));
+    const score = Math.max(
+      0,
+      Math.min(100, (1 - total / (2 * benchmark)) * 100),
+    );
     const label = score < 40 ? "Poor" : score < 60 ? "Average" : "Great";
     return { score: Math.round(score), label };
   }, [emissions, successPayload]);
@@ -152,22 +136,7 @@ export default function ResultsScreen() {
           <Ionicons name="close" size={28} color={colors.text} />
         </Pressable>
         <Text style={styles.headerTitle}>Results</Text>
-        <Pressable style={styles.hangerButton} onPress={handleToggleCloset}>
-          <MaterialCommunityIcons
-            name="hanger"
-            size={28}
-            color={isInCloset ? colors.primary : colors.text}
-          />
-          <View
-            style={[styles.plusBadge, isInCloset && styles.plusBadgeActive]}
-          >
-            <Ionicons
-              name="add"
-              size={14}
-              color={isInCloset ? colors.white : colors.text}
-            />
-          </View>
-        </Pressable>
+        <View style={{ width: 28 }} />
       </View>
 
       {isSuccess ? (
@@ -181,7 +150,11 @@ export default function ResultsScreen() {
                   <Text style={styles.statValue}>
                     ${lifespan?.costSavingsUsd ?? 0}
                   </Text>
-                  <Ionicons name="cash-outline" size={20} color={colors.white} />
+                  <Ionicons
+                    name="cash-outline"
+                    size={20}
+                    color={colors.white}
+                  />
                 </View>
                 <Text style={styles.statLabel}>Est. Cost Savings</Text>
               </View>
@@ -190,7 +163,11 @@ export default function ResultsScreen() {
                   <Text style={styles.statValue}>
                     {lifespan?.yearsAvg ?? "—"} years
                   </Text>
-                  <Ionicons name="trending-up-outline" size={20} color={colors.white} />
+                  <Ionicons
+                    name="trending-up-outline"
+                    size={20}
+                    color={colors.white}
+                  />
                 </View>
                 <Text style={styles.statLabel}>Est. Lifetime</Text>
               </View>
@@ -203,7 +180,9 @@ export default function ResultsScreen() {
             contentContainerStyle={styles.breakdownScroll}
             showsVerticalScrollIndicator={false}
             scrollEnabled={breakdownScrollEnabled}
-            onLayout={(e) => setBreakdownContainerH(e.nativeEvent.layout.height)}
+            onLayout={(e) =>
+              setBreakdownContainerH(e.nativeEvent.layout.height)
+            }
             onContentSizeChange={(_, h) => setBreakdownContentH(h)}
           >
             {breakdownRows.map((row) => (
@@ -235,7 +214,10 @@ export default function ResultsScreen() {
               </View>
             )}
             <Pressable
-              style={({ pressed }) => [styles.scanButton, pressed && styles.scanButtonPressed]}
+              style={({ pressed }) => [
+                styles.scanButton,
+                pressed && styles.scanButtonPressed,
+              ]}
               onPress={() => router.replace("/scan")}
             >
               <Text style={styles.scanButtonText}>Scan Another</Text>
