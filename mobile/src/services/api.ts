@@ -172,7 +172,11 @@ export async function tagImage(
       display_name: pickDisplayName(buildDisplayName(cached.parsed), metadata.name),
       category: metadata.type,
       error_code: null,
-      result: { parsed: cached.parsed, emissions: cached.emissions },
+      result: {
+        parsed: cached.parsed,
+        emissions: cached.emissions,
+        benchmark: cached.benchmark,
+      },
     });
     return { response: cached, scanId };
   }
@@ -255,7 +259,11 @@ export async function tagImage(
     display_name: pickDisplayName(buildDisplayName(response.parsed), metadata.name),
     category: metadata.type,
     error_code: null,
-    result: { parsed: response.parsed, emissions: response.emissions },
+    result: {
+      parsed: response.parsed,
+      emissions: response.emissions,
+      benchmark: response.benchmark,
+    },
   });
 
   return { response, scanId };

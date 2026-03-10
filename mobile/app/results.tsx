@@ -132,7 +132,10 @@ export default function ResultsScreen() {
     const total = emissions?.total_kgco2e;
     const benchmark = successPayload?.benchmark?.benchmark_kgco2e;
     if (total == null || !benchmark) return null;
-    const score = Math.max(0, Math.min(100, (1 - total / (2 * benchmark)) * 100));
+    const score = Math.max(
+      0,
+      Math.min(100, (1 - total / (2 * benchmark)) * 100),
+    );
     const label = score < 40 ? "Poor" : score < 60 ? "Average" : "Great";
     return { score: Math.round(score), label };
   }, [emissions, successPayload]);
@@ -181,7 +184,11 @@ export default function ResultsScreen() {
                   <Text style={styles.statValue}>
                     ${lifespan?.costSavingsUsd ?? 0}
                   </Text>
-                  <Ionicons name="cash-outline" size={20} color={colors.white} />
+                  <Ionicons
+                    name="cash-outline"
+                    size={20}
+                    color={colors.white}
+                  />
                 </View>
                 <Text style={styles.statLabel}>Est. Cost Savings</Text>
               </View>
@@ -190,7 +197,11 @@ export default function ResultsScreen() {
                   <Text style={styles.statValue}>
                     {lifespan?.yearsAvg ?? "—"} years
                   </Text>
-                  <Ionicons name="trending-up-outline" size={20} color={colors.white} />
+                  <Ionicons
+                    name="trending-up-outline"
+                    size={20}
+                    color={colors.white}
+                  />
                 </View>
                 <Text style={styles.statLabel}>Est. Lifetime</Text>
               </View>
@@ -203,7 +214,9 @@ export default function ResultsScreen() {
             contentContainerStyle={styles.breakdownScroll}
             showsVerticalScrollIndicator={false}
             scrollEnabled={breakdownScrollEnabled}
-            onLayout={(e) => setBreakdownContainerH(e.nativeEvent.layout.height)}
+            onLayout={(e) =>
+              setBreakdownContainerH(e.nativeEvent.layout.height)
+            }
             onContentSizeChange={(_, h) => setBreakdownContentH(h)}
           >
             {breakdownRows.map((row) => (
@@ -235,7 +248,10 @@ export default function ResultsScreen() {
               </View>
             )}
             <Pressable
-              style={({ pressed }) => [styles.scanButton, pressed && styles.scanButtonPressed]}
+              style={({ pressed }) => [
+                styles.scanButton,
+                pressed && styles.scanButtonPressed,
+              ]}
               onPress={() => router.replace("/scan")}
             >
               <Text style={styles.scanButtonText}>Scan Another</Text>
