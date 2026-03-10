@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { Image, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Alert, Image, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { useFocusEffect, useRouter } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { colors, typography, spacing } from "../../src/theme";
@@ -7,6 +7,7 @@ import { PrimaryButton } from "../../src/components/PrimaryButton";
 import { InfoCard } from "../../src/components/InfoCard";
 import { listScans } from "../../src/storage/scans";
 import { ScanRecord } from "../../src/storage/types";
+import { clearCache } from "../../src/storage/imageCache";
 
 export default function HomeScreen() {
   const router = useRouter();
@@ -108,6 +109,16 @@ export default function HomeScreen() {
         <Text style={styles.footer}>
           Built with ❤️ for Humanity.{"\n"}The Benevolent Bandwidth Foundation.
         </Text>
+        <Pressable
+          onPress={() =>
+            Alert.alert("Clear Cache", "Are you sure you want to clear the image cache?", [
+              { text: "Cancel", style: "cancel" },
+              { text: "Clear", style: "destructive", onPress: clearCache },
+            ])
+          }
+        >
+          <Text style={styles.clearCache}>Clear Cache</Text>
+        </Pressable>
       </ScrollView>
     </SafeAreaView>
   );
@@ -245,5 +256,12 @@ const styles = StyleSheet.create({
     color: colors.disabled,
     textAlign: "center",
     marginTop: spacing.elementV,
+  },
+  clearCache: {
+    ...typography.bodySmall,
+    fontFamily: "Figtree_700Bold",
+    color: colors.text,
+    textAlign: "center",
+    textDecorationLine: "underline",
   },
 });

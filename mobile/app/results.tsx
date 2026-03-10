@@ -151,14 +151,6 @@ export default function ResultsScreen() {
                 <Text style={styles.statLabel}>Est. Lifetime</Text>
               </View>
             </View>
-          </>
-        ) : (
-          <View style={styles.errorCard}>
-            <Text style={styles.errorTitle}>
-              We couldn't analyze that image
-            </Text>
-            <Text style={styles.errorMessage}>{friendlyMessage}</Text>
-
             <Text style={styles.sectionTitle}>Carbon Emission Breakdown</Text>
           </View>
 
