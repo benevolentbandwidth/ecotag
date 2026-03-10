@@ -34,6 +34,30 @@ function buildDescription(resultJson: string | null): string {
 }
 
 export default function ScansScreen() {
+function computeEcoRating(
+  resultJson: string | null,
+): { label: string; color: string; score: number } | undefined {
+  if (!resultJson) return undefined;
+  try {
+    const data = JSON.parse(resultJson) as {
+      emissions?: { total_kgco2e: number };
+      benchmark?: { benchmark_kgco2e: number };
+    };
+    const total = data.emissions?.total_kgco2e;
+    const benchmark = data.benchmark?.benchmark_kgco2e;
+    if (total == null || !benchmark) return undefined;
+    const score = Math.round(
+      Math.max(0, Math.min(100, (1 - total / (2 * benchmark)) * 100)),
+    );
+    if (score < 40) return { label: "Poor", color: "#D94D4D", score };
+    if (score < 60) return { label: "Average", color: "#F5A623", score };
+    return { label: "Great", color: "#336D3D", score };
+  } catch {
+    return undefined;
+  }
+}
+
+export default function ClosetScreen() {
   const router = useRouter();
   const [items, setItems] = useState<ScanRecord[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
@@ -94,13 +118,15 @@ export default function ScansScreen() {
   const renderItem = useCallback(
     ({ item }: { item: ScanRecord }) => {
       const co2Kg = item.co2e_grams / 1000;
+      const rating = computeEcoRating(item.result_json);
       return (
         <GarmentCard
           name={item.display_name ?? "Tag scan"}
           type={item.category ?? "Garment"}
-          score={co2Kg}
+          score={rating?.score ?? Math.round(co2Kg)}
           description={buildDescription(item.result_json)}
           timestamp={formatRelativeTime(item.created_at)}
+          rating={rating}
           editMode={editMode}
           selected={selectedIds.has(item.id)}
           onToggleSelect={() => handleToggleSelect(item.id)}
