@@ -71,6 +71,8 @@ export default function ResultsScreen() {
     const bd = emissions.breakdown;
     const total = emissions.total_kgco2e;
     const parsed = successPayload?.parsed;
+    // Use new benchmark_breakdown field from API
+    const benchmarkBreakdown = (successPayload && (successPayload.benchmark_breakdown || successPayload.benchmark?.benchmark_breakdown)) || {};
 
     const subtitleFor = (key: string): string => {
       if (key === "materials" && parsed?.materials?.length) {
@@ -90,16 +92,29 @@ export default function ResultsScreen() {
       return "";
     };
 
+    // New pill label logic: compare to benchmark breakdown
+
+    function getPillLabelVsBenchmark(value: number, benchmarkValue: number | undefined): string {
+      if (benchmarkValue === 0 || benchmarkValue === undefined) {
+        if (value === 0) return "Great";
+        return "Poor";
+      }
+      const ratio = value / benchmarkValue;
+      if (ratio > 1.2) return "Poor";
+      if (ratio > 0.8) return "Average";
+      return "Great";
+    }
+
     return BREAKDOWN_ORDER.filter(
       (key) => typeof bd[key] === "number" && bd[key] > 0,
     ).map((key) => {
-      const pct = total > 0 ? Math.round((bd[key] / total) * 100) : 0;
+      const benchmarkValue = benchmarkBreakdown[key];
       return {
         key,
         label: BREAKDOWN_LABELS[key] ?? key,
         value: bd[key],
         subtitle: subtitleFor(key),
-        pillLabel: getPillLabel(pct),
+        pillLabel: getPillLabelVsBenchmark(bd[key], benchmarkValue),
       };
     });
   }, [emissions, successPayload]);

@@ -6,7 +6,10 @@ const ALLOWED_TOP_LEVEL_KEYS = new Set([
   "emissions",
   "error",
   "benchmark",
+  "benchmark_kgco2e",
+  "benchmark_breakdown",
 ]);
+
 const BLOCKED_KEYS = new Set([
   "image",
   "dataUrl",
@@ -21,16 +24,13 @@ function sanitizeResult(input: unknown): string | null {
   if (!input || typeof input !== "object" || Array.isArray(input)) {
     return null;
   }
-
   const source = input as Record<string, unknown>;
   const out: Record<string, unknown> = {};
-
   for (const [key, value] of Object.entries(source)) {
     if (!ALLOWED_TOP_LEVEL_KEYS.has(key)) continue;
     if (BLOCKED_KEYS.has(key)) continue;
     out[key] = value;
   }
-
   return Object.keys(out).length > 0 ? JSON.stringify(out) : null;
 }
 

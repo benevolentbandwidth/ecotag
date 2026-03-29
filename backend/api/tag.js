@@ -112,7 +112,12 @@ router.post("/tag", upload.single("image"), async (req, res) => {
     try {
       const emissions = estimateEmissions(parsed);
       const benchmark = getBenchmark();
-      return res.json({ parsed, emissions, benchmark });
+      return res.json({
+        parsed,
+        emissions,
+        benchmark_kgco2e: benchmark.benchmark_kgco2e,
+        benchmark_breakdown: benchmark.benchmark_breakdown,
+      });
     } catch (err) {
       if (
         err instanceof Error &&
@@ -120,7 +125,12 @@ router.post("/tag", upload.single("image"), async (req, res) => {
       ) {
         const emissions = estimateEmissions(withFallbackCareForEmissions(parsed));
         const benchmark = getBenchmark();
-        return res.json({ parsed, emissions, benchmark });
+        return res.json({
+          parsed,
+          emissions,
+          benchmark_kgco2e: benchmark.benchmark_kgco2e,
+          benchmark_breakdown: benchmark.benchmark_breakdown,
+        });
       }
       throw err;
     }

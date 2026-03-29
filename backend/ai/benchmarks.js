@@ -29,17 +29,24 @@ const AVERAGE_GARMENT_PROFILE = {
 // Pre-computed once at module load — stays in sync with co2_data/ automatically.
 // Wrapped in try/catch: a missing or malformed data file logs a clear error rather
 // than crashing the server process on startup.
+
 let GLOBAL_BENCHMARK = null;
+let GLOBAL_BENCHMARK_BREAKDOWN = null;
 try {
-  GLOBAL_BENCHMARK = estimateEmissions(AVERAGE_GARMENT_PROFILE).total_kgco2e;
+  const emissions = estimateEmissions(AVERAGE_GARMENT_PROFILE);
+  GLOBAL_BENCHMARK = emissions.total_kgco2e;
+  GLOBAL_BENCHMARK_BREAKDOWN = emissions.breakdown;
 } catch (err) {
   console.error("[EcoTag] Failed to compute global benchmark at startup:", err);
 }
 
 /**
- * Returns the global average garment benchmark CO₂e, or null if startup failed.
- * @returns {{ benchmark_kgco2e: number | null }}
+ * Returns the global average garment benchmark CO₂e and breakdown, or null if startup failed.
+ * @returns {{ benchmark_kgco2e: number | null, benchmark_breakdown: Record<string, number> | null }}
  */
 export function getBenchmark() {
-  return { benchmark_kgco2e: GLOBAL_BENCHMARK };
+  return {
+    benchmark_kgco2e: GLOBAL_BENCHMARK,
+    benchmark_breakdown: GLOBAL_BENCHMARK_BREAKDOWN,
+  };
 }

@@ -35,15 +35,31 @@ function MiniTreeIcon() {
   );
 }
 
-function getScoreColor(garment: Garment): string {
-  const benchmarkKg = parseBenchmark(garment.result_json);
-  const score = computeScore(garment.co2e_grams / 1000, benchmarkKg);
-  if (score < 0) return colors.disabled;
-  if (score < 40) return colors.destructive;
-  if (score < 60) return "#F5A623";
-  return colors.primary;
-}
+// ---------------------------------------------------------------------------
+// Helpers — kept in sync with ResultsScreen logic
+// ---------------------------------------------------------------------------
 
+
+function parseBenchmark(resultJson?: string | null): number | undefined {
+  if (!resultJson) return undefined;
+  try {
+    const data = JSON.parse(resultJson) as {
+      benchmark_kgco2e?: number;             // top-level (current API shape)
+      benchmark?: { benchmark_kgco2e?: number }; // nested (legacy, just in case)
+    };
+    console.log("Parsed benchmark from result_json:", data);
+    return data.benchmark_kgco2e ?? data.benchmark?.benchmark_kgco2e;
+  } catch {
+    return undefined;
+  }
+}
+ 
+
+/**
+ * Mirrors the ecoRating useMemo in ResultsScreen:
+ *   score = clamp(0..100, (1 - total / (2 * benchmark)) * 100)
+ * Returns -1 when benchmark is unavailable.
+ */
 function computeScore(
   totalKg: number,
   benchmarkKg: number | undefined,
@@ -52,6 +68,7 @@ function computeScore(
   return Math.max(0, Math.min(100, (1 - totalKg / (2 * benchmarkKg)) * 100));
 }
 
+/** Mirrors the label/threshold logic in ResultsScreen's ecoRating useMemo. */
 function scoreToRating(score: number): { label: string; color: string } {
   if (score < 0) return { label: "N/A", color: colors.disabled };
   if (score < 40) return { label: "Poor", color: "#D94D4D" };
@@ -59,38 +76,44 @@ function scoreToRating(score: number): { label: string; color: string } {
   return { label: "Great", color: "#336D3D" };
 }
 
-function getEcoRating(garment: Garment): { label: string; color: string } {
-  const benchmarkKg = parseBenchmark(garment.result_json);
-  const score = computeScore(garment.co2e_grams / 1000, benchmarkKg);
-  return scoreToRating(score);
-}
-
-function parseBenchmark(resultJson?: string): number | undefined {
-  if (!resultJson) return undefined;
-  try {
-    const data = JSON.parse(resultJson) as {
-      benchmark?: { benchmark_kgco2e: number };
-    };
-    return data.benchmark?.benchmark_kgco2e;
-  } catch {
-    return undefined;
-  }
-}
-
-function getOverallRating(garments: Garment[]): {
+function getEcoRating(garment: Garment): {
+  score: number;
   label: string;
   color: string;
 } {
-  if (garments.length === 0) return { label: "N/A", color: colors.disabled };
+  const benchmarkKg = parseBenchmark(garment.result_json);
+  const score = computeScore(garment.co2e_grams / 1000, benchmarkKg);
+  return { score: Math.round(score), ...scoreToRating(score) };
+}
+
+function getScoreColor(garment: Garment): string {
+  const { score } = getEcoRating(garment);
+  if (score < 0) return colors.disabled;
+  if (score < 40) return colors.destructive;
+  if (score < 60) return "#F5A623";
+  return colors.primary;
+}
+
+function getOverallRating(garments: Garment[]): {
+  score: number;
+  label: string;
+  color: string;
+} {
+  const noData = { score: -1, label: "N/A", color: colors.disabled };
+  if (garments.length === 0) return noData;
+
   const scores = garments.map((g) => {
     const benchmarkKg = parseBenchmark(g.result_json);
     return computeScore(g.co2e_grams / 1000, benchmarkKg);
   });
   const validScores = scores.filter((s) => s >= 0);
-  if (validScores.length === 0) return { label: "N/A", color: colors.disabled };
+  if (validScores.length === 0) return noData;
+
   const avgScore = validScores.reduce((a, b) => a + b, 0) / validScores.length;
-  return scoreToRating(avgScore);
+  return { score: Math.round(avgScore), ...scoreToRating(avgScore) };
 }
+
+// ---------------------------------------------------------------------------
 
 export default function ComparisonView() {
   const router = useRouter();
@@ -102,6 +125,7 @@ export default function ComparisonView() {
   const totalKg = garments.reduce((sum, g) => sum + g.co2e_grams / 1000, 0);
   const avgKg = garments.length > 0 ? totalKg / garments.length : 0;
   const rating = getOverallRating(garments);
+  console.log("Garments in comparison:", garments);
 
   return (
     <SafeAreaView style={styles.safe} edges={["top"]}>
@@ -154,6 +178,11 @@ export default function ComparisonView() {
                   >
                     {itemRating.label}
                   </Text>
+                  {itemRating.score >= 0 && (
+                    <Text style={[styles.cardScore, { color: itemRating.color }]}>
+                      {itemRating.score}%
+                    </Text>
+                  )}
                 </View>
               </View>
             );
@@ -187,7 +216,12 @@ export default function ComparisonView() {
                 <Text style={[styles.summaryValue, { color: rating.color }]}>
                   {rating.label}
                 </Text>
-                <Text style={styles.summaryLabel}>Rating</Text>
+                {rating.score >= 0 && (
+                  <Text style={[styles.summaryScore, { color: rating.color }]}>
+                    {rating.score}%
+                  </Text>
+                )}
+                <Text style={styles.summaryLabel}>Eco Rating</Text>
               </View>
             </View>
           </View>
@@ -301,6 +335,12 @@ const styles = StyleSheet.create({
     marginTop: 2,
     textAlign: "center",
   },
+  cardScore: {
+    fontFamily: typography.h1.fontFamily,
+    fontSize: 11,
+    textAlign: "center",
+    opacity: 0.75,
+  },
   summaryCard: {
     backgroundColor: colors.white,
     borderRadius: spacing.radius,
@@ -336,6 +376,12 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: colors.text,
     textAlign: "center",
+  },
+  summaryScore: {
+    fontFamily: typography.h1.fontFamily,
+    fontSize: 13,
+    textAlign: "center",
+    opacity: 0.75,
   },
   summaryLabel: {
     ...typography.bodySmall,

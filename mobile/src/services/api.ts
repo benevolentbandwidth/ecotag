@@ -35,10 +35,6 @@ function stripTrailingSlash(value: string): string {
   return value.replace(/\/+$/, "");
 }
 
-// Order of precedence:
-// 1) EXPO_PUBLIC_API_BASE_URL
-// 2) Expo dev host IP with backend port 3001
-// 3) localhost fallback
 function getApiBase(): string {
   const configuredBase = process.env.EXPO_PUBLIC_API_BASE_URL?.trim();
   if (configuredBase) {
@@ -46,7 +42,7 @@ function getApiBase(): string {
   }
 
   if (__DEV__) {
-    const hostUri = Constants.expoConfig?.hostUri; // e.g. "192.168.86.53:8081"
+    const hostUri = Constants.expoConfig?.hostUri;
     const host = hostUri?.split(":")[0] ?? "localhost";
     return `http://${host}:3001`;
   }
@@ -57,7 +53,6 @@ function getApiBase(): string {
 const API_BASE = getApiBase();
 const TAG_ENDPOINT = `${API_BASE}/api/tag`;
 
-// Module-level pending image URI store to avoid passing large route params
 let pendingImage: string | null = null;
 
 export function setPendingScanImage(imageUri: string): void {
@@ -175,7 +170,9 @@ export async function tagImage(
       result: {
         parsed: cached.parsed,
         emissions: cached.emissions,
-        benchmark: cached.benchmark,
+        // Pass top-level benchmark fields matching the API response shape
+        benchmark_kgco2e: cached.benchmark_kgco2e,
+        benchmark_breakdown: cached.benchmark_breakdown,
       },
     });
     return { response: cached, scanId };
@@ -262,7 +259,8 @@ export async function tagImage(
     result: {
       parsed: response.parsed,
       emissions: response.emissions,
-      benchmark: response.benchmark,
+      benchmark_kgco2e: response.benchmark_kgco2e,
+      benchmark_breakdown: response.benchmark_breakdown,
     },
   });
 

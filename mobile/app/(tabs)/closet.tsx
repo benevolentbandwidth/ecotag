@@ -33,7 +33,6 @@ function buildDescription(resultJson: string | null): string {
   }
 }
 
-export default function ScansScreen() {
 function computeEcoRating(
   resultJson: string | null,
 ): { label: string; color: string; score: number } | undefined {
@@ -41,10 +40,11 @@ function computeEcoRating(
   try {
     const data = JSON.parse(resultJson) as {
       emissions?: { total_kgco2e: number };
-      benchmark?: { benchmark_kgco2e: number };
+      benchmark_kgco2e?: number;             // top-level (current shape)
+      benchmark?: { benchmark_kgco2e?: number }; // nested (legacy fallback)
     };
     const total = data.emissions?.total_kgco2e;
-    const benchmark = data.benchmark?.benchmark_kgco2e;
+    const benchmark = data.benchmark_kgco2e ?? data.benchmark?.benchmark_kgco2e;
     if (total == null || !benchmark) return undefined;
     const score = Math.round(
       Math.max(0, Math.min(100, (1 - total / (2 * benchmark)) * 100)),

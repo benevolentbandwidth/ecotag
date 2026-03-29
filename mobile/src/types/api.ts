@@ -25,6 +25,8 @@ export interface TagEmissions {
 
 /** Response from backend POST /api/tag */
 export interface TagApiResponse {
+  benchmark_breakdown: any;
+  benchmark_kgco2e: any;
   parsed: ParsedTag;
   emissions: TagEmissions;
   benchmark?: BenchmarkResult;
