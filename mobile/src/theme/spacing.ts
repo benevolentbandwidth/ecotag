@@ -10,7 +10,7 @@ export const spacing = {
   /** Vertical spacing between sibling elements */
   elementV: 15,
   /** Horizontal screen margins */
-  screenH: 20,
+  screenH: 30,
   /** Border width for outlined/unfilled elements */
   strokeWidth: 1,
 } as const;

@@ -10,9 +10,10 @@ interface Props {
   image?: ImageSourcePropType;
   imageStyle?: ImageStyle;
   style?: ViewStyle;
+  rightNode?: React.ReactNode;
 }
 
-export function PrimaryButton({ label, onPress, icon, image, imageStyle, style }: Props) {
+export function PrimaryButton({ label, onPress, icon, image, imageStyle, style, rightNode }: Props) {
   const [pressed, setPressed] = useState(false);
 
   return (
@@ -39,6 +40,7 @@ export function PrimaryButton({ label, onPress, icon, image, imageStyle, style }
             resizeMode="contain"
           />
         )}
+        {rightNode && <View style={styles.rightNode}>{rightNode}</View>}
       </View>
     </Pressable>
   );
@@ -66,6 +68,9 @@ const styles = StyleSheet.create({
   image: {
     width: 18,
     height: 18,
+    marginLeft: spacing.iconTextGap,
+  },
+  rightNode: {
     marginLeft: spacing.iconTextGap,
   },
 });
