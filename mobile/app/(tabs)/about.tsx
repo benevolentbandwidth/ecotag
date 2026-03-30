@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   content: {
-    paddingHorizontal: spacing.screenH,
+    paddingHorizontal: 49,
     paddingBottom: 120,
     gap: spacing.elementV * 2,
   },

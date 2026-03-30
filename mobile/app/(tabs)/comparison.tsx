@@ -81,6 +81,7 @@ function getEcoRating(garment: Garment): {
   score: number;
   label: string;
   color: string;
+  bgColor: string;
 } {
   const benchmarkKg = parseBenchmark(garment.result_json);
   const score = computeScore(garment.co2e_grams / 1000, benchmarkKg);
