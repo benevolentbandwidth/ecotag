@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  Platform,
   View,
   Text,
   StyleSheet,
@@ -11,7 +12,7 @@ import { useLocalSearchParams, useRouter } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 import Svg, { Path } from "react-native-svg";
-import { colors, spacing, typography } from "../src/theme";
+import { colors, spacing, typography } from "../../src/theme";
 
 type Garment = {
   id: string;
@@ -235,6 +236,7 @@ export default function ComparisonView() {
         </Pressable>
       </View>
     </SafeAreaView>
+
   );
 }
 
@@ -264,7 +266,7 @@ const styles = StyleSheet.create({
   scrollContent: {
     paddingHorizontal: spacing.screenH,
     paddingTop: 8,
-    paddingBottom: 100,
+    paddingBottom: 24,
   },
   cardsRow: {
     flexDirection: "row",
@@ -390,16 +392,16 @@ const styles = StyleSheet.create({
     fontSize: 11,
   },
   bottomBar: {
-    position: "absolute",
-    bottom: 100,
-    left: 0,
-    right: 0,
+    paddingHorizontal: spacing.screenH,
+    paddingTop: 8,
+    paddingBottom: Platform.OS === "ios" ? 120 : 90,
     alignItems: "center",
+    backgroundColor: colors.background,
   },
   addButton: {
     backgroundColor: colors.primary,
     borderRadius: spacing.radius,
-    paddingHorizontal: 36,
+    paddingHorizontal: 48,
     paddingVertical: 14,
     minWidth: 200,
     alignItems: "center",

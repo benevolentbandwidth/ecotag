@@ -152,6 +152,10 @@ export default function TabLayout() {
         name="results"
         options={{ href: null }}
       />
+      <Tabs.Screen
+        name="comparison"
+        options={{ href: null }}
+      />
     </Tabs>
   );
 }
