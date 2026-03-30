@@ -6,10 +6,10 @@ import { colors, typography, spacing } from "../theme";
 interface Props {
   name: string;
   type: string;
-  score: number;
+  co2Kg: number;
   description: string;
   timestamp: string;
-  rating?: { label: string; color: string };
+  rating?: { label: string; color: string; bgColor: string };
   onPress?: () => void;
   editMode?: boolean;
   selected?: boolean;
@@ -19,7 +19,7 @@ interface Props {
 export function GarmentCard({
   name,
   type,
-  score,
+  co2Kg,
   description,
   timestamp,
   rating,
@@ -79,39 +79,38 @@ export function GarmentCard({
           <Ionicons name="checkmark" size={18} color={colors.white} />
         )}
       </Animated.View>
-      <View style={styles.header}>
-        <View style={styles.titleRow}>
-          <Text style={styles.name}>{name}</Text>
-          <Animated.View
-            style={[
-              styles.co2Badge,
-              {
-                transform: [
-                  {
-                    translateX: slideAnim.interpolate({
-                      inputRange: [0, 1],
-                      outputRange: [0, -36], // slide left to clear the checkbox
-                    }),
-                  },
-                ],
-              },
-            ]}
-          >
-            <Text style={styles.co2Label}>Score</Text>
-            <Text style={styles.co2Text}>{score}</Text>
-          </Animated.View>
+
+      <View style={styles.cardLeft}>
+        <View style={styles.cardMeta}>
+          <Text style={styles.name} numberOfLines={1}>{name}</Text>
+          <Text style={styles.type}>{type}</Text>
         </View>
-        <Text style={styles.type}>{type}</Text>
+        <Text style={styles.description} numberOfLines={2}>{description}</Text>
       </View>
-      {rating && (
-        <View style={[styles.ratingPill, { backgroundColor: rating.color }]}>
-          <Text style={styles.ratingText}>{rating.label}</Text>
-        </View>
-      )}
-      <View style={styles.bottomRow}>
-        <Text style={styles.description} numberOfLines={2}>
-          {description}
-        </Text>
+
+      <View style={styles.cardRight}>
+        <Animated.View
+          style={[
+            styles.co2Badge,
+            {
+              transform: [
+                {
+                  translateX: slideAnim.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: [0, -36],
+                  }),
+                },
+              ],
+            },
+          ]}
+        >
+          <Text style={styles.co2Text}>{co2Kg} kg</Text>
+        </Animated.View>
+        {rating && (
+          <View style={[styles.ratingPill, { backgroundColor: rating.bgColor }]}>
+            <Text style={[styles.ratingText, { color: rating.color }]}>{rating.label}</Text>
+          </View>
+        )}
         <Text style={styles.timestamp}>{timestamp}</Text>
       </View>
     </Pressable>
@@ -120,12 +119,20 @@ export function GarmentCard({
 
 const styles = StyleSheet.create({
   card: {
+    flexDirection: "row",
     backgroundColor: colors.white,
     borderRadius: spacing.radius,
     borderWidth: 1,
     borderColor: colors.border,
-    padding: 14,
-    gap: 6,
+    padding: 15,
+    gap: 15,
+    height: 125,
+    overflow: "hidden",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 4,
   },
   cardDimmed: {
     opacity: 0.4,
@@ -147,72 +154,67 @@ const styles = StyleSheet.create({
   checkboxSelected: {
     backgroundColor: colors.primary,
   },
-  header: {
-    gap: 2,
-  },
-  titleRow: {
-    flexDirection: "row",
-    alignItems: "center",
+  cardLeft: {
+    flex: 1,
     justifyContent: "space-between",
   },
+  cardMeta: {
+    gap: 2,
+  },
   name: {
-    ...typography.h2,
+    fontFamily: "Figtree_600SemiBold",
+    fontSize: 20,
+    lineHeight: 25,
+    letterSpacing: 0.4,
     color: colors.text,
-    flex: 1,
-    paddingRight: 36,
+  },
+  type: {
+    fontFamily: "Figtree_400Regular",
+    fontSize: 16,
+    lineHeight: 19,
+    color: colors.text,
+  },
+  description: {
+    fontFamily: "Figtree_400Regular",
+    fontSize: 14,
+    lineHeight: 17.5,
+    letterSpacing: 0.28,
+    color: colors.text,
+  },
+  cardRight: {
+    alignItems: "center",
+    justifyContent: "space-between",
   },
   co2Badge: {
     backgroundColor: colors.primary,
     borderRadius: spacing.radius,
-    paddingHorizontal: 10,
-    paddingVertical: 4,
-    marginLeft: 8,
+    paddingVertical: 8,
+    paddingHorizontal: 14,
     alignItems: "center",
   },
-  co2Label: {
-    ...typography.bodySmall,
-    color: colors.white,
-    fontSize: 10,
-    lineHeight: 12,
-  },
   co2Text: {
-    ...typography.subtitle2,
-    color: colors.white,
+    fontFamily: "Figtree_700Bold",
     fontSize: 20,
-    lineHeight: 24,
-  },
-  type: {
-    ...typography.bodySmall,
-    color: colors.disabled,
-    textTransform: "capitalize",
-  },
-  description: {
-    ...typography.body,
-    color: colors.text,
-    flex: 1,
-  },
-  timestamp: {
-    ...typography.bodySmall,
-    color: colors.disabled,
+    lineHeight: 26,
+    color: colors.white,
   },
   ratingPill: {
-    alignSelf: "flex-start",
-    borderRadius: 12,
-    paddingHorizontal: 10,
+    borderRadius: 26,
+    paddingHorizontal: 12,
     paddingVertical: 3,
   },
   ratingText: {
-    ...typography.bodySmall,
-    color: colors.white,
-    fontWeight: "700",
+    fontFamily: "Figtree_400Regular",
+    fontSize: 12,
+    lineHeight: 15,
+    letterSpacing: 0.24,
   },
-  bottomRow: {
-    flexDirection: "row",
-    alignItems: "flex-end",
-    justifyContent: "space-between",
-    gap: spacing.elementH,
-  },
-  textDimmed: {
-    opacity: 0.5,
+  timestamp: {
+    fontFamily: "Figtree_400Regular",
+    fontStyle: "italic",
+    fontSize: 16,
+    lineHeight: 19,
+    color: "#A6A6A6",
+    textAlign: "right",
   },
 });

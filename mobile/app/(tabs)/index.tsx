@@ -34,9 +34,9 @@ function computeEcoRating(
     const benchmark = data.benchmark_kgco2e ?? data.benchmark?.benchmark_kgco2e;
     if (total == null || !benchmark) return undefined;
     const score = Math.round(Math.max(0, Math.min(100, (1 - total / (2 * benchmark)) * 100)));
-    if (score < 40) return { label: "Poor", color: "#D94D4D", bgColor: "#FDECEC" };
-    if (score < 60) return { label: "Average", color: "#F5A623", bgColor: "#FEF3E2" };
-    return { label: "Good", color: "#336D3D", bgColor: "#E8F5EC" };
+    if (score < 40) return { label: "Poor", color: "#D94D4D", bgColor: "rgba(217, 77, 77, 0.3)" };
+    if (score < 60) return { label: "Average", color: "#F5A623", bgColor: "rgba(245, 166, 35, 0.3)" };
+    return { label: "Good", color: "#17412D", bgColor: "rgba(113, 213, 97, 0.5)" };
   } catch {
     return undefined;
   }
