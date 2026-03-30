@@ -75,7 +75,7 @@ function computeEcoRating(
     const score = Math.round(
       Math.max(0, Math.min(100, (1 - total / (2 * benchmark)) * 100)),
     );
-    if (score < 40) return { label: "Poor", color: "##F2614E", bgColor: "#FFAFA480", score };
+    if (score < 40) return { label: "Poor", color: "#F2614E", bgColor: "#FFAFA480", score };
     if (score < 60) return { label: "Average", color: "#F5A623", bgColor: "#FEEFBC", score };
     return { label: "Good", color: "#17412D", bgColor: "#71D56180", score };
   } catch {
