@@ -332,6 +332,7 @@ const styles = StyleSheet.create({
   searchContainer: {
     paddingHorizontal: spacing.screenH,
     paddingTop: 30,
+    paddingBottom: spacing.elementV,
   },
   listContainer: {
     flex: 1,
@@ -339,7 +340,7 @@ const styles = StyleSheet.create({
   list: {
     paddingHorizontal: spacing.screenH,
     paddingTop: 0,
-    paddingBottom: 40,
+    paddingBottom: 120,
   },
   separator: {
     height: spacing.elementV,
