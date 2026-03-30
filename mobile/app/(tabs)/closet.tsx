@@ -165,6 +165,7 @@ export default function ClosetScreen() {
                   status: "success",
                   data: item.result_json,
                   scanId: item.id,
+                  displayName: item.display_name ?? "",
                 },
               });
             }

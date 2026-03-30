@@ -148,6 +148,10 @@ export default function TabLayout() {
           tabBarLabel: ({ focused }) => <TabLabel label="About" focused={focused} />,
         }}
       />
+      <Tabs.Screen
+        name="results"
+        options={{ href: null }}
+      />
     </Tabs>
   );
 }

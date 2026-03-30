@@ -99,6 +99,7 @@ export default function HomeScreen() {
                           status: "success",
                           data: scan.result_json,
                           scanId: scan.id,
+                          displayName: scan.display_name ?? "",
                         },
                       });
                     }
