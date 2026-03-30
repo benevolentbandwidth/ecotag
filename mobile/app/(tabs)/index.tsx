@@ -16,6 +16,32 @@ const ScanIcon = () => (
   </Svg>
 );
 
+// compute the eco rating for the scan result
+// if the score is less than 40, return "Poor"
+// if the score is less than 60, return "Average"
+// otherwise, return "Good"
+function computeEcoRating(
+  resultJson: string | null,
+): { label: string; color: string; bgColor: string } | undefined {
+  if (!resultJson) return undefined;
+  try {
+    const data = JSON.parse(resultJson) as {
+      emissions?: { total_kgco2e: number };
+      benchmark_kgco2e?: number;
+      benchmark?: { benchmark_kgco2e?: number };
+    };
+    const total = data.emissions?.total_kgco2e;
+    const benchmark = data.benchmark_kgco2e ?? data.benchmark?.benchmark_kgco2e;
+    if (total == null || !benchmark) return undefined;
+    const score = Math.round(Math.max(0, Math.min(100, (1 - total / (2 * benchmark)) * 100)));
+    if (score < 40) return { label: "Poor", color: "#D94D4D", bgColor: "#FDECEC" };
+    if (score < 60) return { label: "Average", color: "#F5A623", bgColor: "#FEF3E2" };
+    return { label: "Good", color: "#336D3D", bgColor: "#E8F5EC" };
+  } catch {
+    return undefined;
+  }
+}
+
 export default function HomeScreen() {
   const router = useRouter();
   const [recentScans, setRecentScans] = useState<ScanRecord[]>([]);
@@ -60,6 +86,7 @@ export default function HomeScreen() {
               const ageHrs = ageMs / (1000 * 60 * 60);
               const when = ageHrs < 1 ? "<1 hr" : ageHrs < 24 ? `${Math.floor(ageHrs)} hrs` : new Date(scan.created_at).toLocaleDateString();
               const description = `This garment emits ${totalKg} kg of carbon dioxide.`;
+              const rating = computeEcoRating(scan.result_json);
               return (
                 <Pressable
                   key={scan.id}
@@ -77,15 +104,22 @@ export default function HomeScreen() {
                     }
                   }}
                 >
-                  <View style={styles.scanCardTop}>
-                    <Text style={styles.scanName}>{scan.display_name ?? "Tag scan"}</Text>
+                  <View style={styles.scanCardLeft}>
+                    <View style={styles.scanCardMeta}>
+                      <Text style={styles.scanName}>{scan.display_name ?? "Tag scan"}</Text>
+                      <Text style={styles.scanCategory}>{scan.category ? scan.category.toUpperCase() : "GARMENT"}</Text>
+                    </View>
+                    <Text style={styles.scanDescription} numberOfLines={2}>{description}</Text>
+                  </View>
+                  <View style={styles.scanCardRight}>
                     <View style={styles.scanBadge}>
                       <Text style={styles.scanBadgeText}>{totalKg} kg</Text>
                     </View>
-                  </View>
-                  {scan.category ? <Text style={styles.scanCategory}>{scan.category.toUpperCase()}</Text> : null}
-                  <View style={styles.scanCardBottom}>
-                    <Text style={styles.scanDescription} numberOfLines={2}>{description}</Text>
+                    {rating && (
+                      <View style={[styles.ratingPill, { backgroundColor: rating.bgColor }]}>
+                        <Text style={[styles.ratingText, { color: rating.color }]}>{rating.label}</Text>
+                      </View>
+                    )}
                     <Text style={styles.scanDate}>{when}</Text>
                   </View>
                 </Pressable>
@@ -168,50 +202,67 @@ const styles = StyleSheet.create({
   scanCard: {
     borderWidth: 1,
     borderColor: colors.border,
+    flexDirection: "row",
     borderRadius: spacing.radius,
     backgroundColor: colors.white,
     padding: spacing.elementV,
-    gap: 6,
+    gap: spacing.elementH,
+    height: 125,
+    overflow: "hidden",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 4,
   },
-  scanCardTop: {
-    flexDirection: "row",
+  scanCardLeft: {
+    flex: 1,
+    justifyContent: "space-between",
+  },
+  scanCardMeta: {
+    gap: 2,
+  },
+  scanCardRight: {
     alignItems: "center",
     justifyContent: "space-between",
-    gap: spacing.elementH,
   },
   scanName: {
     ...typography.h2,
     color: colors.text,
-    flex: 1,
   },
   scanBadge: {
     backgroundColor: colors.primary,
     borderRadius: spacing.radius,
-    paddingVertical: 4,
-    paddingHorizontal: 10,
+    paddingVertical: 8,
+    paddingHorizontal: 14,
+    alignItems: "center",
   },
   scanBadgeText: {
-    ...typography.subtitle2,
+    fontFamily: "Figtree_700Bold",
+    fontSize: 20,
+    lineHeight: 26,
     color: colors.white,
   },
   scanCategory: {
-    ...typography.bodySmall,
+    ...typography.subtitle1,
     color: colors.disabled,
-  },
-  scanCardBottom: {
-    flexDirection: "row",
-    alignItems: "flex-end",
-    justifyContent: "space-between",
-    gap: spacing.elementH,
   },
   scanDescription: {
     ...typography.body,
     color: colors.text,
-    flex: 1,
   },
   scanDate: {
     ...typography.bodySmall,
     color: colors.disabled,
+  },
+  ratingPill: {
+    borderRadius: 20,
+    paddingHorizontal: 10,
+    paddingVertical: 3,
+  },
+  ratingText: {
+    ...typography.bodySmall,
+    fontWeight: "600",
   },
   aboutCard: {
     flexDirection: "row",
