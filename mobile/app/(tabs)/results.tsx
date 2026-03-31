@@ -1,17 +1,16 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Platform, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Ionicons } from "@expo/vector-icons";
-import { colors, typography, spacing } from "../src/theme";
-import { CO2Gauge } from "../src/components/CO2Gauge";
-import { BreakdownRow } from "../src/components/BreakdownRow";
+import { colors, typography, spacing } from "../../src/theme";
+import { CO2Gauge } from "../../src/components/CO2Gauge";
+import { BreakdownRow } from "../../src/components/BreakdownRow";
 import {
   TagApiResponse,
   BREAKDOWN_LABELS,
   BREAKDOWN_ORDER,
-} from "../src/types/api";
-import { estimateLifespan } from "../src/utils/lifespan";
+} from "../../src/types/api";
+import { estimateLifespan } from "../../src/utils/lifespan";
 
 function getFriendlyErrorMessage(code?: string, fallback?: string): string {
   if (code === "MISSING_IMAGE") {
@@ -36,18 +35,19 @@ function formatCareKey(key: string): string {
 function getPillLabel(pct: number): string {
   if (pct < 40) return "Poor";
   if (pct < 60) return "Average";
-  return "Great";
+  return "Good";
 }
 
 export default function ResultsScreen() {
   const router = useRouter();
-  const { status, data, errorCode, errorMessage, scanId } =
+  const { status, data, errorCode, errorMessage, scanId, displayName } =
     useLocalSearchParams<{
       status?: string;
       data?: string;
       errorCode?: string;
       errorMessage?: string;
       scanId?: string;
+      displayName?: string;
     }>();
 
   const successPayload = useMemo(() => {
@@ -96,13 +96,13 @@ export default function ResultsScreen() {
 
     function getPillLabelVsBenchmark(value: number, benchmarkValue: number | undefined): string {
       if (benchmarkValue === 0 || benchmarkValue === undefined) {
-        if (value === 0) return "Great";
+        if (value === 0) return "Good";
         return "Poor";
       }
       const ratio = value / benchmarkValue;
       if (ratio > 1.2) return "Poor";
       if (ratio > 0.8) return "Average";
-      return "Great";
+      return "Good";
     }
 
     return BREAKDOWN_ORDER.filter(
@@ -132,7 +132,7 @@ export default function ResultsScreen() {
       0,
       Math.min(100, (1 - total / (2 * benchmark)) * 100),
     );
-    const label = score < 40 ? "Poor" : score < 60 ? "Average" : "Great";
+    const label = score < 40 ? "Poor" : score < 60 ? "Average" : "Good";
     return { score: Math.round(score), label };
   }, [emissions, successPayload]);
 
@@ -147,11 +147,11 @@ export default function ResultsScreen() {
   return (
     <SafeAreaView style={styles.safe} edges={["top"]}>
       <View style={styles.header}>
-        <Pressable onPress={() => router.back()} hitSlop={8}>
-          <Ionicons name="close" size={28} color={colors.text} />
+        <Pressable onPress={() => router.back()} hitSlop={8} style={styles.closeButton}>
+          <Text style={styles.closeX}>✕</Text>
         </Pressable>
-        <Text style={styles.headerTitle}>Results</Text>
-        <View style={{ width: 28 }} />
+        <Text style={styles.headerTitle} numberOfLines={1}>{displayName || "Garment"}</Text>
+        <View style={{ width: 36 }} />
       </View>
 
       {isSuccess ? (
@@ -160,30 +160,16 @@ export default function ResultsScreen() {
             <CO2Gauge totalKgCO2e={emissions!.total_kgco2e} />
 
             <View style={styles.statRow}>
-              <View style={styles.statCol}>
-                <View style={styles.statCard}>
-                  <Text style={styles.statValue}>
-                    ${lifespan?.costSavingsUsd ?? 0}
-                  </Text>
-                  <Ionicons
-                    name="cash-outline"
-                    size={20}
-                    color={colors.white}
-                  />
-                </View>
+              <View style={styles.statCard}>
+                <Text style={styles.statValue}>
+                  ${lifespan?.costSavingsUsd ?? 0}
+                </Text>
                 <Text style={styles.statLabel}>Est. Cost Savings</Text>
               </View>
-              <View style={styles.statCol}>
-                <View style={styles.statCard}>
-                  <Text style={styles.statValue}>
-                    {lifespan?.yearsAvg ?? "—"} years
-                  </Text>
-                  <Ionicons
-                    name="trending-up-outline"
-                    size={20}
-                    color={colors.white}
-                  />
-                </View>
+              <View style={styles.statCard}>
+                <Text style={styles.statValue}>
+                  {lifespan?.yearsAvg ?? "—"} years
+                </Text>
                 <Text style={styles.statLabel}>Est. Lifetime</Text>
               </View>
             </View>
@@ -213,7 +199,7 @@ export default function ResultsScreen() {
               <View
                 style={[
                   styles.ratingCard,
-                  ecoRating.label === "Great" && styles.ratingGreat,
+                  ecoRating.label === "Good" && styles.ratingGood,
                   ecoRating.label === "Average" && styles.ratingAverage,
                   ecoRating.label === "Poor" && styles.ratingPoor,
                 ]}
@@ -228,6 +214,8 @@ export default function ResultsScreen() {
                 </View>
               </View>
             )}
+          </ScrollView>
+          <View style={styles.bottomButtonWrapper}>
             <Pressable
               style={({ pressed }) => [
                 styles.scanButton,
@@ -237,7 +225,7 @@ export default function ResultsScreen() {
             >
               <Text style={styles.scanButtonText}>Scan Another</Text>
             </Pressable>
-          </ScrollView>
+          </View>
         </>
       ) : (
         <View style={styles.errorCard}>
@@ -248,8 +236,6 @@ export default function ResultsScreen() {
           ) : null}
         </View>
       )}
-
-      <View style={styles.bottomBar} />
     </SafeAreaView>
   );
 }
@@ -266,30 +252,23 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.screenH,
     paddingVertical: 12,
   },
+  closeButton: {
+    width: 36,
+    height: 36,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  closeX: {
+    fontFamily: "Figtree_400Regular",
+    fontSize: 22,
+    color: colors.text,
+  },
   headerTitle: {
     ...typography.h1,
     color: colors.text,
     letterSpacing: 0.48,
-  },
-  hangerButton: {
-    width: 50,
-    height: 47,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  plusBadge: {
-    position: "absolute",
-    bottom: 0,
-    right: 0,
-    width: 22,
-    height: 22,
-    borderRadius: 11,
-    backgroundColor: colors.background,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  plusBadgeActive: {
-    backgroundColor: colors.primary,
+    flex: 1,
+    textAlign: "center",
   },
   scroll: {
     flex: 1,
@@ -299,10 +278,10 @@ const styles = StyleSheet.create({
     paddingTop: spacing.elementV * 2,
   },
   breakdownScroll: {
-    paddingHorizontal: spacing.screenH * 2,
+    paddingHorizontal: spacing.screenH,
     paddingTop: 16,
     gap: 10,
-    paddingBottom: 48,
+    paddingBottom: 24,
   },
   sectionTitle: {
     ...typography.subtitle1,
@@ -315,26 +294,15 @@ const styles = StyleSheet.create({
     gap: 12,
     marginTop: 28,
   },
-  statCol: {
-    flex: 1,
-    alignItems: "center",
-    gap: 8,
-  },
   statCard: {
-    width: "100%",
+    flex: 1,
     backgroundColor: colors.primaryMid,
     borderRadius: spacing.radius,
     paddingHorizontal: 14,
     paddingVertical: 14,
-    flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    gap: 8,
-  },
-  statValueRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
+    gap: 4,
   },
   statValue: {
     fontFamily: "Figtree_700Bold",
@@ -346,11 +314,9 @@ const styles = StyleSheet.create({
     fontFamily: "Figtree_400Regular",
     fontSize: 12,
     lineHeight: 16,
-    color: colors.text,
-  },
-  bottomBar: {
-    height: 36,
-    backgroundColor: colors.background,
+    color: colors.white,
+    opacity: 0.85,
+    textAlign: "center",
   },
   errorCard: {
     borderWidth: 1,
@@ -386,14 +352,14 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 3,
   },
-  ratingGreat: {
-    backgroundColor: "#D6F0DA",
+  ratingGood: {
+    backgroundColor: "#71D56180",
   },
   ratingAverage: {
-    backgroundColor: "#FFF5CC",
+    backgroundColor: "#FEEFBC",
   },
   ratingPoor: {
-    backgroundColor: colors.destructiveLight,
+    backgroundColor: "#FFAFA480",
   },
   ratingLabel: {
     fontFamily: "Figtree_700Bold",
@@ -427,13 +393,18 @@ const styles = StyleSheet.create({
     textTransform: "uppercase",
     letterSpacing: 1,
   },
+  bottomButtonWrapper: {
+    paddingHorizontal: spacing.screenH,
+    paddingBottom: Platform.OS === "ios" ? 108 : 78,
+    paddingTop: 8,
+    backgroundColor: colors.background,
+    alignItems: "center",
+  },
   scanButton: {
     backgroundColor: colors.primary,
-    borderRadius: 10,
-    paddingHorizontal: 15,
-    paddingVertical: 16,
-    marginTop: 25,
-    marginHorizontal: spacing.screenH * 2.5,
+    borderRadius: spacing.radius,
+    paddingVertical: 14,
+    paddingHorizontal: 48,
     alignItems: "center",
     justifyContent: "center",
     shadowColor: "#000",

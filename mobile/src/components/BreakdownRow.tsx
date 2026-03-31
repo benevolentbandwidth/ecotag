@@ -29,8 +29,18 @@ export function BreakdownRow({ label, kgValue, subtitle, pillLabel }: Props) {
             <Text style={styles.badgeText}>{kgText}</Text>
           </View>
           {pillLabel ? (
-            <View style={[styles.pill, pillLabel === "Poor" && styles.pillPoor, pillLabel === "Average" && styles.pillAverage]}>
-              <Text style={styles.pillText}>{pillLabel}</Text>
+            <View style={[
+              styles.pill,
+              pillLabel === "Poor" && styles.pillPoor,
+              pillLabel === "Average" && styles.pillAverage,
+              pillLabel === "Good" && styles.pillGood,
+            ]}>
+              <Text style={[
+                styles.pillText,
+                pillLabel === "Poor" && styles.pillTextPoor,
+                pillLabel === "Average" && styles.pillTextAverage,
+                pillLabel === "Good" && styles.pillTextGood,
+              ]}>{pillLabel}</Text>
             </View>
           ) : null}
         </View>
@@ -111,7 +121,6 @@ const styles = StyleSheet.create({
     letterSpacing: 0.32,
   },
   pill: {
-    backgroundColor: "#71D561",
     borderRadius: 26,
     paddingHorizontal: 12,
     paddingVertical: 3,
@@ -119,16 +128,27 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   pillPoor: {
-    backgroundColor: "#F2614E",
+    backgroundColor: "#FFAFA480",
   },
   pillAverage: {
-    backgroundColor: "#F5A623",
+    backgroundColor: "#FEEFBC",
+  },
+  pillGood: {
+    backgroundColor: "#71D56180",
   },
   pillText: {
     fontFamily: "Figtree_400Regular",
     fontSize: 12,
     lineHeight: 15,
-    color: colors.white,
     letterSpacing: 0.24,
+  },
+  pillTextPoor: {
+    color: "#F2614E",
+  },
+  pillTextAverage: {
+    color: "#F5A623",
+  },
+  pillTextGood: {
+    color: "#17412D",
   },
 });

@@ -62,8 +62,14 @@ export default function OnboardingScreen() {
     <View style={styles.screen}>
       <View style={styles.heroContainer}>
         <View style={styles.contentContainer}>
-          {step === 0 ? <ScanGarmentIcon /> : <ViewResultsIcon />} 
-          <View>
+          <View style={{ marginBottom: 12 }}>
+            {step === 0 ? <ScanGarmentIcon /> : (
+              <View style={{ transform: [{ translateX: 16 }] }}>
+                <ViewResultsIcon />
+              </View>
+            )}
+          </View>
+          <View style={{ marginBottom: 20 }}>
             <Text style={styles.stepLabel}>{slide.step}</Text>
             <Text style={styles.title}>{slide.title}</Text>
           </View>
@@ -89,19 +95,18 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.background,
     paddingHorizontal: spacing.screenH,
-    paddingBottom: 48,
+    paddingBottom: 130,
     paddingTop: 24,
   },
   heroContainer: {
     flex: 1,
-    justifyContent: "space-evenly",
   },
   contentContainer: {
     flex: 1,
     width: "100%",
-    gap: 15,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-end",
+    paddingBottom: 43,
   },
   image: {
     width: 190,
@@ -130,9 +135,8 @@ const styles = StyleSheet.create({
     width: 190,
   },
   footer: {
-    gap: 30,
+    gap: 43,
     alignItems: "center",
-    // width: "100%",
   },
   buttonWrapper: {
     alignItems: "center",

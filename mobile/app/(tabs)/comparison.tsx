@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  Platform,
   View,
   Text,
   StyleSheet,
@@ -11,7 +12,7 @@ import { useLocalSearchParams, useRouter } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 import Svg, { Path } from "react-native-svg";
-import { colors, spacing, typography } from "../src/theme";
+import { colors, spacing, typography } from "../../src/theme";
 
 type Garment = {
   id: string;
@@ -69,17 +70,18 @@ function computeScore(
 }
 
 /** Mirrors the label/threshold logic in ResultsScreen's ecoRating useMemo. */
-function scoreToRating(score: number): { label: string; color: string } {
-  if (score < 0) return { label: "N/A", color: colors.disabled };
-  if (score < 40) return { label: "Poor", color: "#D94D4D" };
-  if (score < 60) return { label: "Average", color: "#F5A623" };
-  return { label: "Great", color: "#336D3D" };
+function scoreToRating(score: number): { label: string; color: string; bgColor: string } {
+  if (score < 0) return { label: "N/A", color: colors.disabled, bgColor: "transparent" };
+  if (score < 40) return { label: "Poor", color: "#F2614E", bgColor: "#FFAFA480" };
+  if (score < 60) return { label: "Average", color: "#F5A623", bgColor: "#FEEFBC" };
+  return { label: "Good", color: "#17412D", bgColor: "#71D56180" };
 }
 
 function getEcoRating(garment: Garment): {
   score: number;
   label: string;
   color: string;
+  bgColor: string;
 } {
   const benchmarkKg = parseBenchmark(garment.result_json);
   const score = computeScore(garment.co2e_grams / 1000, benchmarkKg);
@@ -173,15 +175,12 @@ export default function ComparisonView() {
                         : `${(co2Kg * 1000).toFixed(0)} g`}
                     </Text>
                   </View>
-                  <Text
-                    style={[styles.cardRating, { color: itemRating.color }]}
-                  >
-                    {itemRating.label}
-                  </Text>
-                  {itemRating.score >= 0 && (
-                    <Text style={[styles.cardScore, { color: itemRating.color }]}>
-                      {itemRating.score}%
-                    </Text>
+                  {itemRating.label !== "N/A" && (
+                    <View style={[styles.ratingPill, { backgroundColor: itemRating.bgColor }]}>
+                      <Text style={[styles.ratingPillText, { color: itemRating.color }]}>
+                        {itemRating.label}
+                      </Text>
+                    </View>
                   )}
                 </View>
               </View>
@@ -216,12 +215,7 @@ export default function ComparisonView() {
                 <Text style={[styles.summaryValue, { color: rating.color }]}>
                   {rating.label}
                 </Text>
-                {rating.score >= 0 && (
-                  <Text style={[styles.summaryScore, { color: rating.color }]}>
-                    {rating.score}%
-                  </Text>
-                )}
-                <Text style={styles.summaryLabel}>Eco Rating</Text>
+                <Text style={styles.summaryLabel}>Rating</Text>
               </View>
             </View>
           </View>
@@ -235,6 +229,7 @@ export default function ComparisonView() {
         </Pressable>
       </View>
     </SafeAreaView>
+
   );
 }
 
@@ -264,7 +259,7 @@ const styles = StyleSheet.create({
   scrollContent: {
     paddingHorizontal: spacing.screenH,
     paddingTop: 8,
-    paddingBottom: 100,
+    paddingBottom: 24,
   },
   cardsRow: {
     flexDirection: "row",
@@ -329,17 +324,17 @@ const styles = StyleSheet.create({
     color: colors.white,
     fontSize: 16,
   },
-  cardRating: {
-    fontFamily: typography.h1.fontFamily,
-    fontSize: 13,
+  ratingPill: {
+    borderRadius: 20,
+    paddingHorizontal: 10,
+    paddingVertical: 3,
     marginTop: 2,
-    textAlign: "center",
   },
-  cardScore: {
-    fontFamily: typography.h1.fontFamily,
-    fontSize: 11,
-    textAlign: "center",
-    opacity: 0.75,
+  ratingPillText: {
+    fontFamily: "Figtree_400Regular",
+    fontSize: 12,
+    lineHeight: 15,
+    letterSpacing: 0.24,
   },
   summaryCard: {
     backgroundColor: colors.white,
@@ -377,12 +372,6 @@ const styles = StyleSheet.create({
     color: colors.text,
     textAlign: "center",
   },
-  summaryScore: {
-    fontFamily: typography.h1.fontFamily,
-    fontSize: 13,
-    textAlign: "center",
-    opacity: 0.75,
-  },
   summaryLabel: {
     ...typography.bodySmall,
     color: colors.disabled,
@@ -390,16 +379,16 @@ const styles = StyleSheet.create({
     fontSize: 11,
   },
   bottomBar: {
-    position: "absolute",
-    bottom: 100,
-    left: 0,
-    right: 0,
+    paddingHorizontal: spacing.screenH,
+    paddingTop: 8,
+    paddingBottom: Platform.OS === "ios" ? 120 : 90,
     alignItems: "center",
+    backgroundColor: colors.background,
   },
   addButton: {
     backgroundColor: colors.primary,
     borderRadius: spacing.radius,
-    paddingHorizontal: 36,
+    paddingHorizontal: 48,
     paddingVertical: 14,
     minWidth: 200,
     alignItems: "center",
