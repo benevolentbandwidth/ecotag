@@ -11,16 +11,42 @@ The project has two main parts:
 
 ## Table of Contents
 
-1. [Requirements](#requirements)
-2. [Getting an OpenAI API Key](#getting-an-openai-api-key)
-3. [Backend Setup](#backend-setup)
-4. [Mobile App Setup](#mobile-app-setup)
+1. [Features & Pages](#features--pages)
+2. [Requirements](#requirements)
+3. [Getting an OpenAI API Key](#getting-an-openai-api-key)
+4. [Backend Setup](#backend-setup)
+5. [Mobile App Setup](#mobile-app-setup)
    - [Option A: iOS Simulator on Mac (Xcode)](#option-a-ios-simulator-on-mac-xcode)
    - [Option B: Real iPhone with Expo Go](#option-b-real-iphone-with-expo-go)
-5. [Using the App](#using-the-app)
-6. [Troubleshooting](#troubleshooting)
-7. [Android Support](#android-support)
-8. [Running Without an OpenAI Key (Mock Mode)](#running-without-an-openai-key-mock-mode)
+6. [Using the App](#using-the-app)
+7. [Troubleshooting](#troubleshooting)
+8. [Android Support](#android-support)
+9. [Running Without an OpenAI Key (Mock Mode)](#running-without-an-openai-key-mock-mode)
+
+---
+
+## Features & Pages
+
+### Onboarding
+A guided two-step walkthrough that introduces new users to the app's core workflow: scanning a garment tag and viewing the results.
+
+### Home
+A dashboard showing your two most recent scans with their CO2 values and EcoRatings. Provides quick access to the scanner and a "View All" link to your full closet history.
+
+### Scan
+Point your phone camera at a clothing care tag and take a photo, or pick an image from your photo library. The app sends the image to the backend, where an AI vision model extracts the materials, country of origin, and care instructions.
+
+### Results
+After a scan, the app displays a detailed emissions breakdown covering material production, manufacturing, transport, care, and end-of-life. Each garment receives an **EcoRating** (Poor, Average, or Good) based on how its CO2 footprint compares to industry benchmarks, shown as a color-coded badge and gauge.
+
+### Closet
+Browse all your scanned garments or just the ones you've saved. Search by name, view material composition and emissions data, and delete items you no longer need.
+
+### Comparison
+Select multiple garments to compare their environmental impact side-by-side. Each card shows its EcoRating pill, and the view highlights your overall wardrobe eco-score alongside the highest-impact items.
+
+### About
+Background on the Benevolent Bandwidth Foundation and the principles behind EcoTag.
 
 ---
 
@@ -161,10 +187,11 @@ A QR code will appear in Terminal. Open the **Camera** app on your iPhone, point
 
 ## Using the App
 
-1. **Scan** -- Open the Scan tab, point your camera at a clothing tag, and take a photo (or pick one from your photo library)
-2. **Results** -- The app sends the image to the backend for AI analysis, then shows the extracted materials, country of origin, care instructions, and a CO2 emissions breakdown. You can save a scan to your closet from the results screen.
-3. **Home** -- View your most recent scans
-4. **Closet** -- Use the dropdown to switch between "Your Closet" (garments you've saved) and "Recent Scans" (all past scans). You can search, edit, and delete items from either view.
+1. **Home** -- View your most recent scans with their CO2 values and EcoRatings, and jump straight to the scanner
+2. **Scan** -- Open the Scan tab, point your camera at a clothing tag, and take a photo (or pick one from your photo library)
+3. **Results** -- The app sends the image to the backend for AI analysis, then shows the extracted materials, country of origin, care instructions, a CO2 emissions breakdown, and an EcoRating. You can save a scan to your closet from the results screen.
+4. **Closet** -- Browse your saved garments or all recent scans. Search, view details, and delete items.
+5. **Comparison** -- Select multiple garments to compare their environmental impact side-by-side with EcoRating badges
 
 ---
 
