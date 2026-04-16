@@ -8,7 +8,7 @@ import { SQLiteDatabase } from "expo-sqlite";
 const CACHE_MAX_ENTRIES = 50;
 
 // inactivity TTL: cache is cleared if no activity for this duration
-const TTL_MS = 24 * 60 * 60 * 1000; // 24 hours
+const TTL_MS = 3 * 60 * 60 * 1000; // 3 hours
 const LAST_ACTIVITY_KEY = "cache_last_activity";
 
 // get the last activity time for the cache
