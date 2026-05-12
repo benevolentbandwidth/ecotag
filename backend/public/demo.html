@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EcoTag Demo</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f5f5f0;
+      color: #1a1a1a;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 48px 16px;
+    }
+
+    header { text-align: center; margin-bottom: 40px; }
+    header h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.5px; }
+    header p { margin-top: 8px; color: #666; font-size: 0.95rem; }
+
+    .card {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 32px;
+      width: 100%;
+      max-width: 520px;
+    }
+
+    .upload-area {
+      border: 2px dashed #ccc;
+      border-radius: 8px;
+      padding: 40px 24px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .upload-area:hover, .upload-area.drag-over {
+      border-color: #4a7c59;
+      background: #f0f7f2;
+    }
+    .upload-area input[type="file"] { display: none; }
+    .upload-area .icon { font-size: 2.5rem; margin-bottom: 12px; }
+    .upload-area p { color: #555; font-size: 0.9rem; }
+    .upload-area .filename { margin-top: 10px; font-weight: 600; color: #4a7c59; font-size: 0.9rem; }
+
+    #preview {
+      margin-top: 16px;
+      display: none;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #e0e0e0;
+    }
+    #preview img { display: block; width: 100%; max-height: 260px; object-fit: contain; background: #fafafa; }
+
+    button[type="submit"] {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background: #4a7c59;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    button[type="submit"]:hover:not(:disabled) { background: #3a6347; }
+    button[type="submit"]:disabled { background: #a0bfa9; cursor: not-allowed; }
+
+    #status { margin-top: 16px; font-size: 0.88rem; color: #888; text-align: center; min-height: 20px; }
+
+    #result { margin-top: 24px; display: none; }
+    #result h2 { font-size: 1rem; font-weight: 600; margin-bottom: 16px; color: #333; }
+
+    .field { margin-bottom: 14px; }
+    .field label { display: block; font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #888; margin-bottom: 4px; }
+    .field .value { font-size: 0.95rem; color: #1a1a1a; }
+
+    .materials { display: flex; flex-wrap: wrap; gap: 8px; }
+    .material-pill {
+      background: #f0f7f2;
+      border: 1px solid #c4ddc9;
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 0.85rem;
+      color: #2d5a3d;
+    }
+
+    .care-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .care-item { background: #fafafa; border: 1px solid #eee; border-radius: 6px; padding: 8px 10px; font-size: 0.82rem; }
+    .care-item .care-label { color: #999; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 2px; }
+
+    .emissions-box {
+      background: #f0f7f2;
+      border: 1px solid #c4ddc9;
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .emissions-total { font-size: 1.6rem; font-weight: 700; color: #2d5a3d; }
+    .emissions-total span { font-size: 0.85rem; font-weight: 400; color: #555; margin-left: 4px; }
+    .emissions-breakdown { margin-top: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 4px 16px; }
+    .breakdown-row { display: flex; justify-content: space-between; font-size: 0.82rem; color: #555; padding: 3px 0; border-bottom: 1px solid #deeee3; }
+    .breakdown-row:last-child { border-bottom: none; }
+
+    .error-box {
+      background: #fff5f5;
+      border: 1px solid #fcc;
+      border-radius: 8px;
+      padding: 16px;
+      color: #b00;
+      font-size: 0.9rem;
+    }
+
+    .cache-badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: #e8f4ed;
+      color: #2d5a3d;
+      border: 1px solid #c4ddc9;
+    }
+
+    .samples { margin-top: 16px; }
+    .samples p { font-size: 0.82rem; color: #888; margin-bottom: 8px; }
+    .sample-thumbs { display: flex; gap: 10px; }
+    .sample-thumb {
+      width: 72px;
+      height: 72px;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 2px solid #e0e0e0;
+      cursor: pointer;
+      transition: border-color 0.15s;
+    }
+    .sample-thumb:hover { border-color: #4a7c59; }
+    .sample-thumb.selected { border-color: #4a7c59; box-shadow: 0 0 0 2px #c4ddc9; }
+
+    footer {
+      margin-top: 32px;
+      font-size: 0.82rem;
+      color: #888;
+      display: flex;
+      gap: 20px;
+    }
+    footer a { color: #4a7c59; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🌿 EcoTag</h1>
+    <p>Upload a clothing tag to see its materials, care instructions, and carbon footprint.</p>
+    <p style="margin-top: 6px; font-size: 0.82rem; color: #999;">No submitted data is retained.</p>
+  </header>
+
+  <div class="card">
+    <form id="form">
+      <div class="upload-area" id="drop-zone">
+        <input type="file" id="file-input" name="image" accept="image/*" />
+        <div class="icon">📷</div>
+        <p>Drop an image here or <strong>click to browse</strong></p>
+        <div class="filename" id="filename"></div>
+      </div>
+
+      <div class="samples">
+        <p>Or try a sample:</p>
+        <div class="sample-thumbs">
+          <img class="sample-thumb" src="/samples/sample1.jpg" alt="Sample tag 1" data-src="/samples/sample1.jpg" data-name="sample1.jpg" />
+          <img class="sample-thumb" src="/samples/sample2.jpg" alt="Sample tag 2" data-src="/samples/sample2.jpg" data-name="sample2.jpg" />
+        </div>
+      </div>
+
+      <div id="preview"><img id="preview-img" src="" alt="Preview" /></div>
+
+      <button type="submit" id="submit-btn" disabled>Analyze Tag</button>
+    </form>
+
+    <div id="status"></div>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    const dropZone = document.getElementById('drop-zone');
+    const fileInput = document.getElementById('file-input');
+    const filenameEl = document.getElementById('filename');
+    const submitBtn = document.getElementById('submit-btn');
+    const preview = document.getElementById('preview');
+    const previewImg = document.getElementById('preview-img');
+    const statusEl = document.getElementById('status');
+    const resultEl = document.getElementById('result');
+
+    let sampleUrl = null;
+
+    document.querySelectorAll('.sample-thumb').forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        document.querySelectorAll('.sample-thumb').forEach(t => t.classList.remove('selected'));
+        thumb.classList.add('selected');
+        sampleUrl = thumb.dataset.src;
+        filenameEl.textContent = thumb.dataset.name;
+        previewImg.src = sampleUrl;
+        preview.style.display = 'block';
+        resultEl.style.display = 'none';
+        statusEl.textContent = '';
+        submitBtn.disabled = false;
+      });
+    });
+
+    dropZone.addEventListener('click', () => fileInput.click());
+
+    dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+    dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+    dropZone.addEventListener('drop', e => {
+      e.preventDefault();
+      dropZone.classList.remove('drag-over');
+      if (e.dataTransfer.files[0]) setFile(e.dataTransfer.files[0]);
+    });
+
+    const VALID_EXTENSIONS = new Set(['jpg', 'jpeg', 'png']);
+    const MAX_BYTES = 10 * 1024 * 1024;
+
+    function getExtension(filename) {
+      return filename.split('.').pop().toLowerCase();
+    }
+
+    function isValidImage(file) {
+      return VALID_EXTENSIONS.has(getExtension(file.name));
+    }
+
+    function isValidSize(file) {
+      return file.size <= MAX_BYTES;
+    }
+
+    fileInput.addEventListener('change', () => {
+      if (fileInput.files[0]) {
+        sampleUrl = null;
+        document.querySelectorAll('.sample-thumb').forEach(t => t.classList.remove('selected'));
+        setFile(fileInput.files[0]);
+      }
+    });
+
+    function setFile(file) {
+      resultEl.style.display = 'none';
+      statusEl.textContent = '';
+
+      if (!isValidImage(file)) {
+        filenameEl.textContent = '';
+        submitBtn.disabled = true;
+        preview.style.display = 'none';
+        showError(`"${file.name}" is not a supported format. Please upload a .jpg or .png file.`);
+        return;
+      }
+
+      if (!isValidSize(file)) {
+        filenameEl.textContent = '';
+        submitBtn.disabled = true;
+        preview.style.display = 'none';
+        showError(`"${file.name}" exceeds the 10 MB limit.`);
+        return;
+      }
+
+      filenameEl.textContent = file.name;
+      submitBtn.disabled = false;
+      previewImg.src = URL.createObjectURL(file);
+      preview.style.display = 'block';
+    }
+
+    document.getElementById('form').addEventListener('submit', async e => {
+      e.preventDefault();
+      const file = fileInput.files[0];
+      if (!file && !sampleUrl) return;
+      if (file && (!isValidImage(file) || !isValidSize(file))) return;
+
+      submitBtn.disabled = true;
+      statusEl.textContent = 'Analyzing…';
+      resultEl.style.display = 'none';
+
+      const fd = new FormData();
+      if (file) {
+        fd.append('image', file);
+      } else {
+        const blob = await fetch(sampleUrl).then(r => r.blob());
+        fd.append('image', blob, sampleUrl.split('/').pop());
+      }
+
+      try {
+        const res = await fetch('/api/tag', { method: 'POST', body: fd });
+        const cacheStatus = res.headers.get('X-Cache-Status') || '';
+        const data = await res.json();
+
+        if (!res.ok) {
+          showError('Sorry, could not process this file.');
+          return;
+        }
+
+        showResult(data, cacheStatus);
+      } catch (err) {
+        showError('Sorry, could not process this file.');
+      } finally {
+        submitBtn.disabled = false;
+        statusEl.textContent = '';
+      }
+    });
+
+    function showError(msg) {
+      statusEl.textContent = '';
+      resultEl.innerHTML = `<div class="error-box">${msg}</div>`;
+      resultEl.style.display = 'block';
+    }
+
+    function fmt(val) { return val ?? '—'; }
+
+    function showResult(data, cacheStatus) {
+      const p = data.parsed || {};
+      const e = data.emissions || {};
+      const bd = e.breakdown || {};
+
+      const materialsHtml = (p.materials || []).length
+        ? `<div class="materials">${p.materials.map(m => `<span class="material-pill">${m.pct}% ${m.fiber}</span>`).join('')}</div>`
+        : '<span class="value">—</span>';
+
+      const care = p.care || {};
+      const careHtml = `
+        <div class="care-grid">
+          ${[['Washing', care.washing], ['Drying', care.drying], ['Ironing', care.ironing], ['Dry cleaning', care.dry_cleaning]]
+            .map(([label, val]) => `<div class="care-item"><div class="care-label">${label}</div>${fmt(val?.replace(/_/g, ' '))}</div>`).join('')}
+        </div>`;
+
+      const breakdownHtml = Object.entries(bd)
+        .map(([k, v]) => `<div class="breakdown-row"><span>${k.replace(/_/g, ' ')}</span><span>${v} kg</span></div>`)
+        .join('');
+
+      const cacheHtml = cacheStatus
+        ? `<div class="field"><label>Cache</label><span class="cache-badge">${cacheStatus}</span></div>`
+        : '';
+
+      resultEl.innerHTML = `
+        <h2>Results</h2>
+        <div class="field"><label>Country of Origin</label><span class="value">${fmt(p.country)}</span></div>
+        <div class="field"><label>Materials</label>${materialsHtml}</div>
+        <div class="field"><label>Care Instructions</label>${careHtml}</div>
+        <div class="field">
+          <label>Carbon Footprint</label>
+          <div class="emissions-box">
+            <div class="emissions-total">${e.total_kgco2e ?? '—'}<span>kg CO₂e</span></div>
+            <div class="emissions-breakdown">${breakdownHtml}</div>
+          </div>
+        </div>
+        ${cacheHtml}
+      `;
+      resultEl.style.display = 'block';
+    }
+  </script>
+
+  <footer>
+    <a href="https://github.com/benevolentbandwidth/ecotag" target="_blank" rel="noopener">EcoTag GitHub</a>
+    <a href="https://benevolentbandwidth.org/" target="_blank" rel="noopener">Made with ❤️ from the Benevolent Bandwidth Foundation</a>
+  </footer>
+</body>
+</html>
