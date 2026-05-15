@@ -4,7 +4,7 @@ EcoTag is a mobile app that estimates the carbon footprint of clothing items by 
 
 The project has two main parts:
 
-- **`backend/`** -- A Node.js server that receives clothing tag images, sends them to OpenAI's vision model for analysis, and calculates CO2 emissions.
+- **`backend/`** -- A Node.js server that receives clothing tag images, sends them to a vision-language model (Google Gemini by default, OpenAI optional) for analysis, and calculates CO2 emissions.
 - **`mobile/`** -- A React Native (Expo) mobile app with a camera interface for scanning tags and viewing results.
 
 ---
@@ -13,7 +13,7 @@ The project has two main parts:
 
 1. [Features & Pages](#features--pages)
 2. [Requirements](#requirements)
-3. [Getting an OpenAI API Key](#getting-an-openai-api-key)
+3. [Choosing a VLM Provider](#choosing-a-vlm-provider)
 4. [Backend Setup](#backend-setup)
 5. [Mobile App Setup](#mobile-app-setup)
    - [Option A: iOS Simulator on Mac (Xcode)](#option-a-ios-simulator-on-mac-xcode)
@@ -21,7 +21,7 @@ The project has two main parts:
 6. [Using the App](#using-the-app)
 7. [Troubleshooting](#troubleshooting)
 8. [Android Support](#android-support)
-9. [Running Without an OpenAI Key (Mock Mode)](#running-without-an-openai-key-mock-mode)
+9. [Running Without an API Key (Mock Mode)](#running-without-an-api-key-mock-mode)
 
 ---
 
@@ -34,7 +34,7 @@ A guided two-step walkthrough that introduces new users to the app's core workfl
 A dashboard showing your two most recent scans with their CO2 values and EcoRatings. Provides quick access to the scanner and a "View All" link to your full closet history.
 
 ### Scan
-Point your phone camera at a clothing care tag and take a photo, or pick an image from your photo library. The app sends the image to the backend, where an AI vision model extracts the materials, country of origin, and care instructions.
+Point your phone camera at a clothing care tag and take a photo, or pick an image from your photo library. The app sends the image to the backend, where a vision-language model extracts the materials, country of origin, and care instructions.
 
 ### Results
 After a scan, the app displays a detailed emissions breakdown covering material production, manufacturing, transport, care, and end-of-life. Each garment receives an **EcoRating** (Poor, Average, or Good) based on how its CO2 footprint compares to industry benchmarks, shown as a color-coded badge and gauge.
@@ -59,16 +59,31 @@ You need the following installed on your Mac:
 
 ---
 
-## Getting an OpenAI API Key
+## Choosing a VLM Provider
 
-EcoTag uses OpenAI's vision model to read clothing tag images. You'll need an API key.
+EcoTag reads clothing tags using a vision-language model (VLM). Two providers are supported; pick one before running the backend.
+
+| Provider | `VLM_PROVIDER` | Default `VLM_MODEL` | API key env var                  |
+|----------|----------------|---------------------|----------------------------------|
+| Google   | `google`       | `gemini-2.5-pro`    | `GOOGLE_GENERATIVE_AI_API_KEY`   |
+| OpenAI   | `openai`       | `gpt-4o`            | `OPENAI_API_KEY`                 |
+
+Selection happens **at server start** via environment variables in `backend/.env`. To switch providers, edit the env file and restart the backend -- there is no per-request override.
+
+> **Note:** Both providers are pay-per-use. Each tag scan costs a fraction of a cent on Gemini Pro or a few cents on GPT-4o.
+
+### Getting a Google Gemini key (recommended)
+
+1. Sign in at [Google AI Studio](https://aistudio.google.com/apikey)
+2. Click **"Create API key"**
+3. Copy the key -- you'll paste it into `backend/.env` in the next section.
+
+### Getting an OpenAI key (optional)
 
 1. Create an account (or sign in) at [platform.openai.com](https://platform.openai.com/signup)
 2. Go to [API keys](https://platform.openai.com/api-keys) and click **"Create new secret key"**
 3. Name it (e.g., "EcoTag") and click **Create**
 4. **Copy the key immediately** -- it starts with `sk-proj-` and won't be shown again
-
-> **Note:** OpenAI API usage is pay-per-use. Each tag scan costs a few cents. New accounts typically receive free credits.
 
 ---
 
@@ -92,11 +107,23 @@ npm install
 cp .env.example .env
 ```
 
-Open `backend/.env` in any text editor and replace the placeholder with your real OpenAI key:
+Open `backend/.env` in any text editor and fill in the key for the provider you chose above.
 
+**For Gemini (default):**
+
+```bash
+VLM_PROVIDER=google
+GOOGLE_GENERATIVE_AI_API_KEY=your-key-here
 ```
-OPENAI_API_KEY=sk-proj-your-actual-key-here
+
+**For OpenAI:**
+
+```bash
+VLM_PROVIDER=openai
+OPENAI_API_KEY=sk-proj-your-key-here
 ```
+
+Override the default model with `VLM_MODEL=...` if you want a different one (e.g., `gemini-2.5-flash`).
 
 ### 4. Start the server
 
@@ -205,8 +232,10 @@ A QR code will appear in Terminal. Open the **Camera** app on your iPhone, point
 
 ### Backend returns 502 (UPSTREAM_ERROR)
 
-- Your OpenAI API key is likely missing or invalid
-- Check `backend/.env` and verify `OPENAI_API_KEY` is set correctly (starts with `sk-proj-`, no extra spaces)
+- The API key for your selected `VLM_PROVIDER` is likely missing or invalid
+- For `VLM_PROVIDER=google`: check that `GOOGLE_GENERATIVE_AI_API_KEY` is set in `backend/.env`
+- For `VLM_PROVIDER=openai`: check that `OPENAI_API_KEY` is set in `backend/.env` (starts with `sk-proj-`, no extra spaces)
+- The model id in `VLM_MODEL` may not exist for the selected provider
 
 ### Xcode / simulator issues
 
@@ -226,13 +255,13 @@ Android has **not been tested yet**. The app includes Android configuration in `
 
 ---
 
-## Running Without an OpenAI Key (Mock Mode)
+## Running Without an API Key (Mock Mode)
 
-To try the app without an OpenAI key, start the backend in mock mode:
+To try the app without a Gemini or OpenAI key, start the backend in mock mode:
 
 ```bash
 cd backend
 MOCK_OCR=1 node server.js
 ```
 
-This returns fake (but realistic-looking) tag data instead of calling the AI. Useful for testing the full app flow without any API costs.
+This returns fake (but realistic-looking) tag data instead of calling the VLM. Useful for testing the full app flow without any API costs.

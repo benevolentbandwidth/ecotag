@@ -224,14 +224,19 @@ test("POST /api/tag cache disabled forces MISS", async () => {
   assert.equal(second.headers["x-cache-status"], "MISS");
 });
 
-const liveEnabled = process.env.E2E_LIVE === "1" && !!process.env.OPENAI_API_KEY;
+const liveProvider = (process.env.VLM_PROVIDER ?? "google").toLowerCase();
+const liveKey =
+  liveProvider === "openai"
+    ? process.env.OPENAI_API_KEY
+    : process.env.GOOGLE_GENERATIVE_AI_API_KEY;
+const liveEnabled = process.env.E2E_LIVE === "1" && !!liveKey;
 
 if (liveEnabled) {
-  test("POST /api/tag live OpenAI test", async () => {
+  test(`POST /api/tag live VLM test (${liveProvider})`, async () => {
     const res = await request(app).post("/api/tag").attach("image", fixtureImage);
     assert.equal(res.status, 200);
     assertTagResponseContract(res.body);
   });
 } else {
-  test("POST /api/tag live OpenAI test", { skip: true }, () => {});
+  test("POST /api/tag live VLM test", { skip: true }, () => {});
 }

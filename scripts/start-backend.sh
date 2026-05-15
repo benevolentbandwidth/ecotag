@@ -15,5 +15,6 @@ if [ ! -d "$BACKEND_DIR/node_modules" ]; then
   npm install --prefix "$BACKEND_DIR"
 fi
 
+cd "$BACKEND_DIR"
 echo "Starting backend on port ${PORT:-3001}..."
-exec node "$BACKEND_DIR/server.js"
+exec node server.js

@@ -3,6 +3,7 @@
 
 import express from "express";
 import tagRouter from "./api/tag.js";
+import { checkVLMStartupConfig } from "./ai/vlm.js";
 import { fileURLToPath, URL } from "node:url";
 
 export const app = express();
@@ -18,6 +19,7 @@ const PORT = process.env.PORT || 3001;
 const isEntrypoint = process.argv[1] === fileURLToPath(import.meta.url);
 
 if (isEntrypoint) {
+  checkVLMStartupConfig();
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
   });
