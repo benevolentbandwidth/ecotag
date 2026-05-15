@@ -1,0 +1,34 @@
+steps:
+  # 1. Build Docker image from backend/Dockerfile
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - -t
+      - us-east1-docker.pkg.dev/b2-ecotag/cloud-run-source-deploy/ecotag-app-service:$COMMIT_SHA
+      - -f
+      - backend/Dockerfile
+      - backend
+
+  # 2. Push image to Artifact Registry
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - push
+      - us-east1-docker.pkg.dev/b2-ecotag/cloud-run-source-deploy/ecotag-app-service:$COMMIT_SHA
+
+  # 3. Deploy pushed image to Cloud Run
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    entrypoint: gcloud
+    args:
+      - run
+      - deploy
+      - ecotag-app-service
+      - --image
+      - us-east1-docker.pkg.dev/b2-ecotag/cloud-run-source-deploy/ecotag-app-service:$COMMIT_SHA
+      - --region
+      - us-east1
+      - --platform
+      - managed
+      - --quiet
+
+images:
+  - us-east1-docker.pkg.dev/b2-ecotag/cloud-run-source-deploy/ecotag-app-service:$COMMIT_SHA
