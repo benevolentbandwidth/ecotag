@@ -3,7 +3,7 @@
 
 import express from "express";
 import multer from "multer";
-import * as gpt from "../ai/gpt.js";
+import * as vlm from "../ai/vlm.js";
 import { extractMockTagFromImageBuffer } from "../ai/mock.js";
 import { estimateEmissions } from "../ai/emissions.js";
 import { getBenchmark } from "../ai/benchmarks.js";
@@ -13,7 +13,7 @@ import { isMockOcrEnabled } from "../cache/config.js";
 
 const router = express.Router();
 const upload = multer({ dest: "/tmp/uploads/" });
-let tagExtractor = gpt.extractTagFromImage;
+let tagExtractor = vlm.extractTagFromImage;
 
 function isPlainObject(value) {
   return !!value && typeof value === "object" && !Array.isArray(value);
@@ -51,7 +51,7 @@ export function __setTagExtractorForTest(extractor) {
 }
 
 export function __resetTagExtractorForTest() {
-  tagExtractor = gpt.extractTagFromImage;
+  tagExtractor = vlm.extractTagFromImage;
 }
 
 // POST /api/tag - Accepts image upload, returns tag info, CO2 estimate, and economic metrics.
@@ -86,7 +86,8 @@ router.post("/tag", upload.single("image"), async (req, res) => {
       } else {
         parsed = await tagExtractor(dataUrl);
       }
-    } catch {
+    } catch (err) {
+      console.error("[EcoTag] VLM extraction failed:", err.message || err);
       return res.status(502).json({
         error: {
           code: "UPSTREAM_ERROR",
