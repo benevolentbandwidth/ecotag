@@ -1,5 +1,7 @@
 # EcoTag: Estimating Garment Carbon Footprint from Clothing Labels
 
+Deployment pipeline verified.
+
 EcoTag is a mobile app that estimates the carbon footprint of clothing items by scanning garment care tags. Point your phone camera at a clothing label, and EcoTag uses AI to read the materials, manufacturing origin, and care instructions, then calculates total CO2 emissions across the garment's lifecycle.
 
 The project has two main parts:
