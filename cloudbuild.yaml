@@ -32,3 +32,6 @@ steps:
 
 images:
   - us-east1-docker.pkg.dev/b2-ecotag/cloud-run-source-deploy/ecotag-app-service:$COMMIT_SHA
+
+options:
+  logging: CLOUD_LOGGING_ONLY
