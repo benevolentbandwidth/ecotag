@@ -1,0 +1,24 @@
+{
+  "ocr_text": "Made in Philippines. 65% polyester, 33% viscose, 2% elastane. Machine wash cold with like colors. Non-chlorine bleach only. Tumble dry low. Iron on lowest setting.",
+  "country": "Philippines",
+  "materials": [
+    {
+      "fiber": "Polyester",
+      "pct": 65
+    },
+    {
+      "fiber": "Viscose",
+      "pct": 33
+    },
+    {
+      "fiber": "Elastane",
+      "pct": 2
+    }
+  ],
+  "care": {
+    "washing": "machine_wash_cold",
+    "drying": "tumble_dry_low",
+    "ironing": "iron_low",
+    "dry_cleaning": null
+  }
+}

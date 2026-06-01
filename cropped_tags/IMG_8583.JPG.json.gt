@@ -1,0 +1,11 @@
+{
+  "ocr_text": "Made in China. Hand wash cold. Do not bleach. Reshape while damp. Dry flat. Cool iron only if needed. Dry clean. French hand-wash text repeats care instructions.",
+  "country": "China",
+  "materials": [],
+  "care": {
+    "washing": "hand_wash_cold",
+    "drying": "lay_flat_to_dry",
+    "ironing": "iron_low",
+    "dry_cleaning": "dry_clean"
+  }
+}

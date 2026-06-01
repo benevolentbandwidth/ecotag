@@ -102,16 +102,17 @@ def main():
             errors += 1
             continue
 
-        print(f"{path}", end=" ... ", flush=True)
+        progress_stream = sys.stderr if args.json_output else sys.stdout
+        print(f"{path}", end=" ... ", flush=True, file=progress_stream)
         try:
             data, headers = submit(path, args.url)
-            print("ok")
+            print("ok", file=progress_stream)
             if args.json_output:
                 results.append({"file": str(path), "result": data})
             else:
                 print(format_result(data, headers))
         except requests.HTTPError as e:
-            print(f"HTTP {e.response.status_code}")
+            print(f"HTTP {e.response.status_code}", file=progress_stream)
             try:
                 err = e.response.json()
                 print(f"  Error: {err['error']['code']}: {err['error']['message']}", file=sys.stderr)
@@ -119,11 +120,11 @@ def main():
                 print(f"  {e}", file=sys.stderr)
             errors += 1
         except requests.ConnectionError:
-            print("connection refused")
+            print("connection refused", file=progress_stream)
             print(f"  Is the backend running at {args.url}?", file=sys.stderr)
             errors += 1
         except Exception as e:
-            print(f"failed")
+            print(f"failed", file=progress_stream)
             print(f"  {e}", file=sys.stderr)
             errors += 1
 

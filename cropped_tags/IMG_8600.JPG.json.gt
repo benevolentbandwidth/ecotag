@@ -1,0 +1,16 @@
+{
+  "ocr_text": "Made in Vietnam. 100% cotton. Dry clean. Partial care text is visible below.",
+  "country": "Vietnam",
+  "materials": [
+    {
+      "fiber": "Cotton",
+      "pct": 100
+    }
+  ],
+  "care": {
+    "washing": null,
+    "drying": null,
+    "ironing": null,
+    "dry_cleaning": "dry_clean"
+  }
+}

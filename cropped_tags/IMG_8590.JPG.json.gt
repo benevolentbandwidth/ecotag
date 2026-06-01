@@ -1,0 +1,28 @@
+{
+  "ocr_text": "Made in Cambodia. Body 80% cotton, 20% polyester. Trim 98% cotton, 2% spandex. Trimming and decoration excluded. Care instructions are not visible in this crop.",
+  "country": "Cambodia",
+  "materials": [
+    {
+      "fiber": "Cotton",
+      "pct": 80
+    },
+    {
+      "fiber": "Polyester",
+      "pct": 20
+    },
+    {
+      "fiber": "Cotton",
+      "pct": 98
+    },
+    {
+      "fiber": "Spandex",
+      "pct": 2
+    }
+  ],
+  "care": {
+    "washing": null,
+    "drying": null,
+    "ironing": null,
+    "dry_cleaning": null
+  }
+}
