@@ -1,0 +1,24 @@
+{
+  "ocr_text": "49% rayon, 31% polyester, 20% nylon. Origin and care instructions are not visible in this crop.",
+  "country": null,
+  "materials": [
+    {
+      "fiber": "Rayon",
+      "pct": 49
+    },
+    {
+      "fiber": "Polyester",
+      "pct": 31
+    },
+    {
+      "fiber": "Nylon",
+      "pct": 20
+    }
+  ],
+  "care": {
+    "washing": null,
+    "drying": null,
+    "ironing": null,
+    "dry_cleaning": null
+  }
+}

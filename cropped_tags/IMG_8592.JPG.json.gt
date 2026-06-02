@@ -1,0 +1,16 @@
+{
+  "ocr_text": "Made in Vietnam. US/GB: 100% merino extra fine wool. Machine wash cold gentle cycle. Close fasteners. Wash in mesh bag. Use mild detergent. Wash separately. Non-chlorine bleach when needed. Reshape and dry flat. Cool iron. Professional clean P symbol.",
+  "country": "Vietnam",
+  "materials": [
+    {
+      "fiber": "Merino",
+      "pct": 100
+    }
+  ],
+  "care": {
+    "washing": "machine_wash_gentle",
+    "drying": "lay_flat_to_dry",
+    "ironing": "iron_low",
+    "dry_cleaning": "dry_clean"
+  }
+}

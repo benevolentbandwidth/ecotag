@@ -1,0 +1,24 @@
+{
+  "ocr_text": "Made in Peru. 52% modal, 24% polyester, 24% cotton. Machine wash cold with like colors. Only non-chlorine bleach when needed. Tumble dry low. Iron on lowest setting.",
+  "country": "Peru",
+  "materials": [
+    {
+      "fiber": "Modal",
+      "pct": 52
+    },
+    {
+      "fiber": "Polyester",
+      "pct": 24
+    },
+    {
+      "fiber": "Cotton",
+      "pct": 24
+    }
+  ],
+  "care": {
+    "washing": "machine_wash_cold",
+    "drying": "tumble_dry_low",
+    "ironing": "iron_low",
+    "dry_cleaning": null
+  }
+}

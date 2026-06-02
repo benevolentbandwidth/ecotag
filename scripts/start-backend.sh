@@ -5,7 +5,7 @@ BACKEND_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../backend" && pwd)"
 
 if [ ! -f "$BACKEND_DIR/.env" ]; then
   echo "Error: $BACKEND_DIR/.env not found."
-  echo "Copy .env.example and fill in your OPENAI_API_KEY:"
+  echo "Copy .env.example and fill in the API key for your selected VLM_PROVIDER:"
   echo "  cp $BACKEND_DIR/.env.example $BACKEND_DIR/.env"
   exit 1
 fi

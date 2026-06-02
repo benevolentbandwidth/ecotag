@@ -1,0 +1,16 @@
+{
+  "ocr_text": "100% cashmere. Dry clean or hand wash cold. Do not twist or wring. Do not bleach. Reshape and lay flat to dry. Warm iron if needed.",
+  "country": null,
+  "materials": [
+    {
+      "fiber": "Cashmere",
+      "pct": 100
+    }
+  ],
+  "care": {
+    "washing": "hand_wash_cold",
+    "drying": "lay_flat_to_dry",
+    "ironing": "iron_medium",
+    "dry_cleaning": "dry_clean"
+  }
+}

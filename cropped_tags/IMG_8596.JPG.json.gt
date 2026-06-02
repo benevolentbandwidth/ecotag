@@ -1,0 +1,24 @@
+{
+  "ocr_text": "Made in China. 52% viscose, 36% nylon, 12% polyester. Machine wash cold with like colors. Only non-chlorine bleach when needed. Tumble dry low. Warm iron if necessary.",
+  "country": "China",
+  "materials": [
+    {
+      "fiber": "Viscose",
+      "pct": 52
+    },
+    {
+      "fiber": "Nylon",
+      "pct": 36
+    },
+    {
+      "fiber": "Polyester",
+      "pct": 12
+    }
+  ],
+  "care": {
+    "washing": "machine_wash_cold",
+    "drying": "tumble_dry_low",
+    "ironing": "iron_medium",
+    "dry_cleaning": null
+  }
+}
