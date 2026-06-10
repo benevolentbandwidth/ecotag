@@ -1,0 +1,11 @@
+{
+  "ocr_text": "HAND WASH COLD, DO NOT BLEACH, RESHAPE WHILE DAMP, DRY FLAT, COOL IRON ONLY IF NEEDED, OR DRY CLEAN. LAVER A LA MAIN A L'EAU FROIDE, NE PAS JAVELISER, REMODELER PENDANT QUE L'ARTICLE EST ENCORE HUMIDE, SECHER A PLAT, REPASSAGE DOUX SI NECESSAIRE, OU NETTOYER A SEC. MADE IN CHINA FABRIQUE EN CHINE",
+  "country": "China",
+  "materials": [],
+  "care": {
+    "washing": "hand_wash_cold",
+    "drying": "lay_flat_to_dry",
+    "ironing": "iron_low",
+    "dry_cleaning": "dry_clean"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "ocr_text": "70% RAYON 30% NYLON EXCLUSIVE OF DECORATION MADE IN CHINA RN 103715 TURN GARMENT INSIDE OUT HAND WASH COLD DO NOT BLEACH LAY FLAT TO DRY WARM IRON IF NEEDED DO NOT IRON ON DECORATION",
+  "country": "China",
+  "materials": [
+    { "fiber": "Rayon", "pct": 70 },
+    { "fiber": "Nylon", "pct": 30 }
+  ],
+  "care": {
+    "washing": "hand_wash_cold",
+    "drying": "lay_flat_to_dry",
+    "ironing": "iron_medium",
+    "dry_cleaning": null
+  }
+}

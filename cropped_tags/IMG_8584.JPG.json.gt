@@ -1,0 +1,19 @@
+{
+  "ocr_text": "BODY: 55% MERINO WOOL, 25% RECYCLED NYLON, 20% COTTON RIB TRIM: 52% MERINO WOOL, 28% RECYCLED NYLON, 19% COTTON, 1% ELASTANE CORPS: 55% LAINE MERINOS, 25% NYLON RECYCLE, 20% COTON GARNITURE COTELEE: 52% LAINE MERINOS, 28% NYLON RECYCLE, 19% COTON, 1% ELASTHANNE CA 23725 RN 122354",
+  "country": null,
+  "materials": [
+    { "fiber": "Merino wool", "pct": 55 },
+    { "fiber": "Recycled nylon", "pct": 25 },
+    { "fiber": "Cotton", "pct": 20 },
+    { "fiber": "Merino wool", "pct": 52 },
+    { "fiber": "Recycled nylon", "pct": 28 },
+    { "fiber": "Cotton", "pct": 19 },
+    { "fiber": "Elastane", "pct": 1 }
+  ],
+  "care": {
+    "washing": null,
+    "drying": null,
+    "ironing": null,
+    "dry_cleaning": null
+  }
+}

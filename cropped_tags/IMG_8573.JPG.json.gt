@@ -1,0 +1,11 @@
+{
+  "ocr_text": "MACHINE WASH COLD DO NOT BLEACH TUMBLE DRY LOW HEAT COOL IRON",
+  "country": null,
+  "materials": [],
+  "care": {
+    "washing": "machine_wash_cold",
+    "drying": "tumble_dry_low",
+    "ironing": "iron_low",
+    "dry_cleaning": null
+  }
+}

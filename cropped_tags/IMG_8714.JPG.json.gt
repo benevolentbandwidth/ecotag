@@ -1,0 +1,15 @@
+{
+  "ocr_text": "SHELL: 100% NYLON LINING: 100% RECYCLED POLYESTER FILLING: 100% RECYCLED POLYESTER MACHINE WASH COLD WITH LIKE COLORS. GENTLE CYCLE. ONLY NON-CHLORINE BLEACH IF NEEDED. TUMBLE DRY LOW. REMOVE PROMPTLY. DO NOT IRON. DO NOT DRY CLEAN.",
+  "country": null,
+  "materials": [
+    { "fiber": "Nylon", "pct": 100 },
+    { "fiber": "Recycled Polyester", "pct": 100 },
+    { "fiber": "Recycled Polyester", "pct": 100 }
+  ],
+  "care": {
+    "washing": "machine_wash_gentle",
+    "drying": "tumble_dry_low",
+    "ironing": "do_not_iron",
+    "dry_cleaning": null
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "ocr_text": "BODY: 100% POLYESTER LINING: 100% POLYESTER TRONC: 100% POLYESTER DOUBLURE: 100% POLYESTER CA 23725 RN 122354",
+  "country": null,
+  "materials": [
+    { "fiber": "Polyester", "pct": 100 },
+    { "fiber": "Polyester", "pct": 100 },
+    { "fiber": "Polyester", "pct": 100 },
+    { "fiber": "Polyester", "pct": 100 }
+  ],
+  "care": {
+    "washing": null,
+    "drying": null,
+    "ironing": null,
+    "dry_cleaning": null
+  }
+}

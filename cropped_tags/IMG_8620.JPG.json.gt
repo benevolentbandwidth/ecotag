@@ -1,0 +1,11 @@
+{
+  "ocr_text": "Hand wash cold, lay flat to dry or professional dry clean",
+  "country": null,
+  "materials": [],
+  "care": {
+    "washing": "hand_wash_cold",
+    "drying": "lay_flat_to_dry",
+    "ironing": null,
+    "dry_cleaning": "dry_clean"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "ocr_text": "51% RAYON 28% POLYESTER 21% NYLON CUT:3006281 STYLE 3705499 MADE IN CHINA CARE ON REVERSE",
+  "country": "China",
+  "materials": [
+    { "fiber": "Rayon", "pct": 51 },
+    { "fiber": "Polyester", "pct": 28 },
+    { "fiber": "Nylon", "pct": 21 }
+  ],
+  "care": {
+    "washing": null,
+    "drying": null,
+    "ironing": null,
+    "dry_cleaning": null
+  }
+}

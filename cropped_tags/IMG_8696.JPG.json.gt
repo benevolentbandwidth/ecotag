@@ -1,0 +1,14 @@
+{
+  "ocr_text": "55% COTTON / 45% VISCOSE TURN GARMENT INSIDE OUT MACHINE WASH COLD WITH LIKE COLORS GENTLE CYCLE ONLY NON-CHLORINE BLEACH IF NEEDED TUMBLE DRY LOW, COOL IRON IF NEEDED RN17730 VN1317080",
+  "country": null,
+  "materials": [
+    { "fiber": "Cotton", "pct": 55 },
+    { "fiber": "Viscose", "pct": 45 }
+  ],
+  "care": {
+    "washing": "machine_wash_gentle",
+    "drying": "tumble_dry_low",
+    "ironing": "iron_low",
+    "dry_cleaning": null
+  }
+}

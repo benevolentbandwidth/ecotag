@@ -1,0 +1,15 @@
+{
+  "ocr_text": "83% POLYESTER 12% RAYON 5% SPANDEX",
+  "country": null,
+  "materials": [
+    { "fiber": "Polyester", "pct": 83 },
+    { "fiber": "Rayon", "pct": 12 },
+    { "fiber": "Spandex", "pct": 5 }
+  ],
+  "care": {
+    "washing": null,
+    "drying": null,
+    "ironing": null,
+    "dry_cleaning": null
+  }
+}

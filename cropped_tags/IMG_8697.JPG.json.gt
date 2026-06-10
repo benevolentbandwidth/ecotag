@@ -1,0 +1,15 @@
+{
+  "ocr_text": "90% RECYCLED POLYESTER / 8% WOOL / 2% SPANDEX MACHINE WASH COLD WITH LIKE COLORS GENTLE CYCLE ONLY NON-CHLORINE BLEACH IF NEEDED LAY FLAT TO DRY WARM IRON IF NEEDED RN17730 VN1268582",
+  "country": null,
+  "materials": [
+    { "fiber": "Recycled Polyester", "pct": 90 },
+    { "fiber": "Wool", "pct": 8 },
+    { "fiber": "Spandex", "pct": 2 }
+  ],
+  "care": {
+    "washing": "machine_wash_gentle",
+    "drying": "lay_flat_to_dry",
+    "ironing": "iron_medium",
+    "dry_cleaning": null
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "ocr_text": "100% CASHMERE DRY CLEAN ONLY. MADE IN CHINA",
+  "country": "China",
+  "materials": [
+    { "fiber": "Cashmere", "pct": 100 }
+  ],
+  "care": {
+    "washing": null,
+    "drying": null,
+    "ironing": null,
+    "dry_cleaning": "dry_clean_only"
+  }
+}

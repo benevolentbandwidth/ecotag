@@ -1,0 +1,14 @@
+{
+  "ocr_text": "STYLE# ISW1638 RN# 142577 70% RAYON 30% POLYESTER MADE IN CHINA",
+  "country": "China",
+  "materials": [
+    { "fiber": "Rayon", "pct": 70 },
+    { "fiber": "Polyester", "pct": 30 }
+  ],
+  "care": {
+    "washing": null,
+    "drying": null,
+    "ironing": null,
+    "dry_cleaning": null
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "ocr_text": "48% VISCOSE, 31% POLYESTER, 18% NYLON, 3% ELASTANE 48% VISCOSE, 31% POLYESTER, 18% NYLON, 3% ELASTHANNE CA 23725 RN 122354",
+  "country": null,
+  "materials": [
+    { "fiber": "Viscose", "pct": 48 },
+    { "fiber": "Polyester", "pct": 31 },
+    { "fiber": "Nylon", "pct": 18 },
+    { "fiber": "Elastane", "pct": 3 }
+  ],
+  "care": {
+    "washing": null,
+    "drying": null,
+    "ironing": null,
+    "dry_cleaning": null
+  }
+}

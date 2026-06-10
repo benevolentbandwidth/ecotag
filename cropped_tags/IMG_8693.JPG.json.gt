@@ -1,0 +1,14 @@
+{
+  "ocr_text": "55% VISCOSE / 45% NYLON MACHINE WASH COLD WITH LIKE COLORS. GENTLE CYCLE. ONLY NON-CHLORINE BLEACH IF NEEDED. LAY FLAT TO DRY. WARM IRON IF NEEDED. RN17730 VN1268582",
+  "country": null,
+  "materials": [
+    { "fiber": "Viscose", "pct": 55 },
+    { "fiber": "Nylon", "pct": 45 }
+  ],
+  "care": {
+    "washing": "machine_wash_gentle",
+    "drying": "lay_flat_to_dry",
+    "ironing": "iron_medium",
+    "dry_cleaning": null
+  }
+}

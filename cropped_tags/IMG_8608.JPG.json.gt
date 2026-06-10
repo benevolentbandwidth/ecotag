@@ -1,0 +1,16 @@
+{
+  "ocr_text": "58% RAYON 24% POLYESTER 13% METALLIC 5% ELASTANE 58% RAYONNE 24% POLYESTER 13% METALLIQUE 5% ELASTHANNE 58% RAYON 24% POLIESTER 13% METALICO 5% ELASTANO MADE IN TURKEY",
+  "country": "Turkey",
+  "materials": [
+    { "fiber": "Rayon", "pct": 58 },
+    { "fiber": "Polyester", "pct": 24 },
+    { "fiber": "Metallic", "pct": 13 },
+    { "fiber": "Elastane", "pct": 5 }
+  ],
+  "care": {
+    "washing": null,
+    "drying": null,
+    "ironing": null,
+    "dry_cleaning": null
+  }
+}

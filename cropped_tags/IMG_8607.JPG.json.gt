@@ -1,0 +1,11 @@
+{
+  "ocr_text": "MACHINE WASH COLD WITH LIKE COLORS WITH MILD DETERGENT Laver en machine a froid avec des couleurs similaires avec detergent doux ONLY NON-CHLORINE BLEACH WHEN NEEDED Utiliser uniquement un agent blanchissant non decolorant si besoin est TUMBLE DRY LOW, REMOVE PROMPTLY Secher en machine a basse temperature, sortir rapidement COOL IRON IF NEEDED Repasser a fer tiede si necessaire OR DRY CLEAN",
+  "country": null,
+  "materials": [],
+  "care": {
+    "washing": "machine_wash_cold",
+    "drying": "tumble_dry_low",
+    "ironing": "iron_low",
+    "dry_cleaning": "dry_clean"
+  }
+}

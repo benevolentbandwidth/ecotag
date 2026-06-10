@@ -1,0 +1,11 @@
+{
+  "ocr_text": "MACHINE WASH COLD SEPARATELY GENTLE CYCLE DO NOT BLEACH LAY FLAT TO DRY COOL IRON IF NEEDED",
+  "country": null,
+  "materials": [],
+  "care": {
+    "washing": "machine_wash_gentle",
+    "drying": "lay_flat_to_dry",
+    "ironing": "iron_low",
+    "dry_cleaning": null
+  }
+}

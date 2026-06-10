@@ -1,0 +1,11 @@
+{
+  "ocr_text": "MACHINE WASH COLD WITH LIKE COLOURS, DO NOT BLEACH, DRY FLAT, COOL IRON ONLY IF NEEDED, OR DRY CLEAN LAVER À LA MACHINE À L'EAU FROIDE AVEC COULEURS SEMBLABLES, NE PAS JAVELISER, SÉCHER À PLAT, REPASSAGE DOUX SI NÉCESSAIRE, OU NETTOYER À SEC MADE IN VIETNAM",
+  "country": "Vietnam",
+  "materials": [],
+  "care": {
+    "washing": "machine_wash_cold",
+    "drying": "lay_flat_to_dry",
+    "ironing": "iron_low",
+    "dry_cleaning": "dry_clean"
+  }
+}

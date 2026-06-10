@@ -1,0 +1,13 @@
+{
+  "ocr_text": "Made In China Fabrique En Chine Hergestellt In China Vervaardigd In China hecho en china 100% Cashmere /Cachemire / Kaschmir /Kasjmier / cashmere Exclusive Of Elastic /Sans Elastique /Ohne Gummizug / Behalve Elastiek / excluyendo el elastico Hand Wash Cold Separately. Non-Chlorine Bleach Only. Reshape And Lay Flat To Dry. Iron On Lowest Setting.",
+  "country": "China",
+  "materials": [
+    { "fiber": "Cashmere", "pct": 100 }
+  ],
+  "care": {
+    "washing": "hand_wash_cold",
+    "drying": "lay_flat_to_dry",
+    "ironing": "iron_low",
+    "dry_cleaning": null
+  }
+}

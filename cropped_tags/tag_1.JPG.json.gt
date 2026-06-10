@@ -1,0 +1,13 @@
+{
+  "ocr_text": "Made In Guatemala Fabriqué Au Guatemala Hergestellt In Guatemala Vervaardigd In Guatemala グアテマラ製 Hecho En Guatemala 100%Cotton/Coton/ Baumwolle/Katoen/綿/ Algodón",
+  "country": "Guatemala",
+  "materials": [
+    { "fiber": "Cotton", "pct": 100 }
+  ],
+  "care": {
+    "washing": null,
+    "drying": null,
+    "ironing": null,
+    "dry_cleaning": null
+  }
+}

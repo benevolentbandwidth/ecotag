@@ -1,0 +1,16 @@
+{
+  "ocr_text": "77% RECYCLED POLYESTER / 11% NYLON / 8% WOOL / 4% SPANDEX TURN GARMENT INSIDE OUT MACHINE WASH COLD WITH LIKE COLORS, GENTLE CYCLE ONLY NON-CHLORINE BLEACH IF NEEDED RESHAPE AND LAY FLAT TO DRY COOL IRON IF NEEDED",
+  "country": null,
+  "materials": [
+    { "fiber": "Recycled Polyester", "pct": 77 },
+    { "fiber": "Nylon", "pct": 11 },
+    { "fiber": "Wool", "pct": 8 },
+    { "fiber": "Spandex", "pct": 4 }
+  ],
+  "care": {
+    "washing": "machine_wash_gentle",
+    "drying": "lay_flat_to_dry",
+    "ironing": "iron_low",
+    "dry_cleaning": null
+  }
+}

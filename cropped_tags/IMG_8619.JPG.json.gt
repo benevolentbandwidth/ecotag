@@ -1,0 +1,15 @@
+{
+  "ocr_text": "63%Rayon//Rayon Kunstseide/Raion 32%Nylon//Nylon Nylon/Nylon 5%Spandex/Elastano /Elastan/Elastan MADE IN CHINA",
+  "country": "China",
+  "materials": [
+    { "fiber": "Rayon", "pct": 63 },
+    { "fiber": "Nylon", "pct": 32 },
+    { "fiber": "Spandex", "pct": 5 }
+  ],
+  "care": {
+    "washing": null,
+    "drying": null,
+    "ironing": null,
+    "dry_cleaning": null
+  }
+}

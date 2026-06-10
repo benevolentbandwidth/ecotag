@@ -1,0 +1,15 @@
+{
+  "ocr_text": "SHELL: 95% NYLON / 5% SPANDEX LINING : 100% RECYCLED POLYESTER WASH INSIDE OUT. MACHINE WASH COLD SEPARATELY. GENTLE CYCLE. ONLY NON-CHLORINE BLEACH IF NEEDED. TUMBLE DRY LOW. REMOVE PROMPTLY. DO NOT IRON. RN17730 VN1989909",
+  "country": null,
+  "materials": [
+    { "fiber": "Nylon", "pct": 95 },
+    { "fiber": "Spandex", "pct": 5 },
+    { "fiber": "Recycled Polyester", "pct": 100 }
+  ],
+  "care": {
+    "washing": "machine_wash_gentle",
+    "drying": "tumble_dry_low",
+    "ironing": "do_not_iron",
+    "dry_cleaning": null
+  }
+}

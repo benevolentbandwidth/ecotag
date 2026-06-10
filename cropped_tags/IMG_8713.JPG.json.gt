@@ -1,0 +1,15 @@
+{
+  "ocr_text": "77% RECYCLED POLYESTER / 11% LYOCELL / 12% SPANDEX MACHINE WASH COLD WITH LIKE COLORS. ONLY NON-CHLORINE BLEACH IF NEEDED. TUMBLE DRY LOW. REMOVE PROMPTLY. COOL IRON IF NEEDED. DO NOT IRON ON LABEL. RN17730 VN1068795 MADE IN NICARAGUA",
+  "country": "Nicaragua",
+  "materials": [
+    { "fiber": "Recycled Polyester", "pct": 77 },
+    { "fiber": "Lyocell", "pct": 11 },
+    { "fiber": "Spandex", "pct": 12 }
+  ],
+  "care": {
+    "washing": "machine_wash_cold",
+    "drying": "tumble_dry_low",
+    "ironing": "iron_low",
+    "dry_cleaning": null
+  }
+}

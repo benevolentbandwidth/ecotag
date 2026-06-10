@@ -1,0 +1,13 @@
+{
+  "ocr_text": "100% COTTON (5% RECYCLED COTTON) EXCLUSIVE OF DECORATION MACHINE WASH COLD SEPARATELY. GENTLE CYCLE. ONLY NON-CHLORINE BLEACH IF NEEDED. TUMBLE DRY LOW. REMOVE PROMPTLY. WARM IRON IF NEEDED.",
+  "country": null,
+  "materials": [
+    { "fiber": "Cotton", "pct": 100 }
+  ],
+  "care": {
+    "washing": "machine_wash_gentle",
+    "drying": "tumble_dry_low",
+    "ironing": "iron_medium",
+    "dry_cleaning": null
+  }
+}

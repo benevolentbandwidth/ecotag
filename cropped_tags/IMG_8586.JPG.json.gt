@@ -1,0 +1,14 @@
+{
+  "ocr_text": "60% Cotton / Katoen / Baumwolle / Coton 40% Acrylic / Acryl / Polyacryl / Acrylique",
+  "country": null,
+  "materials": [
+    { "fiber": "Cotton", "pct": 60 },
+    { "fiber": "Acrylic", "pct": 40 }
+  ],
+  "care": {
+    "washing": null,
+    "drying": null,
+    "ironing": null,
+    "dry_cleaning": null
+  }
+}

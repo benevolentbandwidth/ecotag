@@ -1,0 +1,11 @@
+{
+  "ocr_text": "MACHINE WASH SEPARATELY IN COLD WATER DO NOT BLEACH DRY FLAT IRON AT LOW TEMPERATURE",
+  "country": null,
+  "materials": [],
+  "care": {
+    "washing": "machine_wash_cold",
+    "drying": "lay_flat_to_dry",
+    "ironing": "iron_low",
+    "dry_cleaning": null
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "ocr_text": "US MADE IN CHINA CA FABRIQUE EN CHINE MX HECHO EN CHINA US 52%VISCOSE 28%POLYESTER 20%NYLON EXCLUSIVE OF TRIMS CA 52% VISCOSE 28% POLYESTER 20% NYLON HORS GARNITURES MX 52% VISCOSA 28% POLIESTER 20% NYLON EXCLUYENDO ADORNOS US HAND WASH SEPARATELY IN COLD WATER, DO NOT BLEACH, LAY FLAT TO DRY, DO NOT IRON",
+  "country": "China",
+  "materials": [
+    { "fiber": "Viscose", "pct": 52 },
+    { "fiber": "Polyester", "pct": 28 },
+    { "fiber": "Nylon", "pct": 20 }
+  ],
+  "care": {
+    "washing": "hand_wash_cold",
+    "drying": "lay_flat_to_dry",
+    "ironing": "do_not_iron",
+    "dry_cleaning": null
+  }
+}
