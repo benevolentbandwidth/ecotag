@@ -1,0 +1,11 @@
+{
+  "ocr_text": "DRY CLEAN ONLY. NETTOYAGE A SEC SEULEMENT. MADE IN VIETNAM FABRIQUE AU VIETNAM",
+  "country": "Vietnam",
+  "materials": [],
+  "care": {
+    "washing": null,
+    "drying": null,
+    "ironing": null,
+    "dry_cleaning": "dry_clean_only"
+  }
+}

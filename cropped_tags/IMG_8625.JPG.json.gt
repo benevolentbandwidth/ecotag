@@ -1,0 +1,14 @@
+{
+  "ocr_text": "80% RAYON/VISCOSE/VISCOSA 20% NYLON/POLYAMIDE/NAILON S HAND WASH SEPARATELY IN COLD WATER DO NOT BLEACH LAY FLAT DO DRY IRON ON LOWEST SETTING AS NEEDED",
+  "country": null,
+  "materials": [
+    { "fiber": "Rayon", "pct": 80 },
+    { "fiber": "Nylon", "pct": 20 }
+  ],
+  "care": {
+    "washing": "hand_wash_cold",
+    "drying": "lay_flat_to_dry",
+    "ironing": "iron_low",
+    "dry_cleaning": null
+  }
+}

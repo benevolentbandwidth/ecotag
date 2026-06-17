@@ -1,0 +1,11 @@
+{
+  "ocr_text": "Machine wash cold, gentle cycle with like colors. Non-chlorine bleach only. Tumble dry low. Warm iron as needed.",
+  "country": null,
+  "materials": [],
+  "care": {
+    "washing": "machine_wash_gentle",
+    "drying": "tumble_dry_low",
+    "ironing": "iron_medium",
+    "dry_cleaning": null
+  }
+}

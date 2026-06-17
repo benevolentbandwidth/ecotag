@@ -1,0 +1,14 @@
+{
+  "ocr_text": "70% RAYON 30% POLYESTER RN 165979 MACHINE WASH COLD GENTLE CYCLE WITH LIKE COLORS DO NOT BLEACH RESHAPE AND DRY FLAT COOL IRON IF NEEDED OR DRY CLEAN",
+  "country": null,
+  "materials": [
+    { "fiber": "Rayon", "pct": 70 },
+    { "fiber": "Polyester", "pct": 30 }
+  ],
+  "care": {
+    "washing": "machine_wash_gentle",
+    "drying": "lay_flat_to_dry",
+    "ironing": "iron_low",
+    "dry_cleaning": "dry_clean"
+  }
+}

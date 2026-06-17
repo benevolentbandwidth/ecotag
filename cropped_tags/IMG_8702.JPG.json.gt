@@ -1,0 +1,18 @@
+{
+  "ocr_text": "Made in Cambodia Hecho en Camboya BODY: 72% NYLON / 28% SPANDEX FRONT LINING: 88% NYLON / 12% SPANDEX BACK LINING: 72% NYLON / 28% SPANDEX REMOVE PADS BEFORE WASHING MACHINE WASH COLD SEPARATELY GENTLE CYCLE ONLY NON-CHLORINE BLEACH IF NEEDED TUMBLE DRY LOW REMOVE PROMPTLY COOL IRON IF NEEDED",
+  "country": "Cambodia",
+  "materials": [
+    { "fiber": "Nylon", "pct": 72 },
+    { "fiber": "Spandex", "pct": 28 },
+    { "fiber": "Nylon", "pct": 88 },
+    { "fiber": "Spandex", "pct": 12 },
+    { "fiber": "Nylon", "pct": 72 },
+    { "fiber": "Spandex", "pct": 28 }
+  ],
+  "care": {
+    "washing": "machine_wash_gentle",
+    "drying": "tumble_dry_low",
+    "ironing": "iron_low",
+    "dry_cleaning": null
+  }
+}

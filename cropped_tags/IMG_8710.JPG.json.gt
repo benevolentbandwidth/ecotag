@@ -1,0 +1,15 @@
+{
+  "ocr_text": "91% RECYCLED POLYESTER/POLIESTER RECICLADO 8% WOOL/LANA 1% SPANDEX RN17730 VN1989869 MADE IN CAMBODIA /",
+  "country": "Cambodia",
+  "materials": [
+    { "fiber": "Recycled Polyester", "pct": 91 },
+    { "fiber": "Wool", "pct": 8 },
+    { "fiber": "Spandex", "pct": 1 }
+  ],
+  "care": {
+    "washing": null,
+    "drying": null,
+    "ironing": null,
+    "dry_cleaning": null
+  }
+}

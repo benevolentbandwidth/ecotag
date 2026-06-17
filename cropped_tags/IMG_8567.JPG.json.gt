@@ -1,0 +1,14 @@
+{
+  "ocr_text": "80% SILK/SOIE 20% NYLON CA#00445 RN#85188 Made in China",
+  "country": "China",
+  "materials": [
+    { "fiber": "Silk", "pct": 80 },
+    { "fiber": "Nylon", "pct": 20 }
+  ],
+  "care": {
+    "washing": null,
+    "drying": null,
+    "ironing": null,
+    "dry_cleaning": null
+  }
+}

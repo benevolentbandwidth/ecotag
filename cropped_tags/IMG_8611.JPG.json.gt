@@ -1,0 +1,11 @@
+{
+  "ocr_text": "TURN GARMENT INSIDE OUT MACHINE WASH COLD WITH LIKE COLORS GENTLE CYCLE ONLY NON-CHLORINE BLEACH IF NEEDED TUMBLE DRY LOW COOL IRON ON REVERSE SIDE IF NEEDED",
+  "country": null,
+  "materials": [],
+  "care": {
+    "washing": "machine_wash_gentle",
+    "drying": "tumble_dry_low",
+    "ironing": "iron_low",
+    "dry_cleaning": null
+  }
+}

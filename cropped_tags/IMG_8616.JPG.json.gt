@@ -1,0 +1,11 @@
+{
+  "ocr_text": "DRY CLEAN ONLY",
+  "country": null,
+  "materials": [],
+  "care": {
+    "washing": null,
+    "drying": null,
+    "ironing": null,
+    "dry_cleaning": "dry_clean_only"
+  }
+}

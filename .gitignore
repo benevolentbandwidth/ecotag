@@ -19,3 +19,6 @@ backend/uploads/
 
 CLAUDE.md
 read.txt
+
+__pycache__/
+*.pyc

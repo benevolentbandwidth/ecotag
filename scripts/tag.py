@@ -117,15 +117,22 @@ def main():
                 err = e.response.json()
                 print(f"  Error: {err['error']['code']}: {err['error']['message']}", file=sys.stderr)
             except Exception:
+                err = {"error": {"code": f"HTTP_{e.response.status_code}", "message": str(e)}}
                 print(f"  {e}", file=sys.stderr)
+            if args.json_output:
+                results.append({"file": str(path), "result": err})
             errors += 1
         except requests.ConnectionError:
             print("connection refused", file=progress_stream)
             print(f"  Is the backend running at {args.url}?", file=sys.stderr)
+            if args.json_output:
+                results.append({"file": str(path), "result": {"error": {"code": "CONNECTION_REFUSED", "message": f"no backend at {args.url}"}}})
             errors += 1
         except Exception as e:
             print(f"failed", file=progress_stream)
             print(f"  {e}", file=sys.stderr)
+            if args.json_output:
+                results.append({"file": str(path), "result": {"error": {"code": "REQUEST_FAILED", "message": str(e)}}})
             errors += 1
 
     if args.json_output and results:

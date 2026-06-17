@@ -1,0 +1,13 @@
+{
+  "ocr_text": "100% Organic Cotton GLOBAL ORGANIC TEXTILE STANDARD GOTS Organic CU 1245496 Machine wash cold with like colors. Tumble dry low. Do not bleach. Made in India",
+  "country": "India",
+  "materials": [
+    { "fiber": "Organic Cotton", "pct": 100 }
+  ],
+  "care": {
+    "washing": "machine_wash_cold",
+    "drying": "tumble_dry_low",
+    "ironing": null,
+    "dry_cleaning": null
+  }
+}

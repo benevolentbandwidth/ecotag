@@ -1,0 +1,3197 @@
+[
+  {
+    "file": "cropped_tags\\IMG_8560.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "STYLE# ISW1638\nRN# 142577\n70%RAYON\n30%POLYESTER\nMADE IN\nCHINA",
+        "country": "China",
+        "materials": [
+          {
+            "fiber": "Rayon",
+            "pct": 70
+          },
+          {
+            "fiber": "Polyester",
+            "pct": 30
+          }
+        ],
+        "care": {
+          "washing": "hand_wash_cold",
+          "drying": "lay_flat_to_dry",
+          "ironing": "iron_low",
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 2.75,
+        "breakdown": {
+          "materials": 2.22,
+          "manufacturing": 0.18,
+          "washing": 0.18,
+          "drying": 0,
+          "ironing": 0.18,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "China",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8561.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "BODY: 100% POLYESTER\nLINING: 100% POLYESTER\nTRONC: 100% POLYESTER\nDOUBLURE: 100% POLYESTER\nCA 23725 RN 122354",
+        "country": null,
+        "materials": [
+          {
+            "fiber": "Polyester",
+            "pct": 100
+          }
+        ],
+        "care": {
+          "washing": null,
+          "drying": null,
+          "ironing": null,
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 3.85,
+        "breakdown": {
+          "materials": 3.33,
+          "manufacturing": 0.18,
+          "washing": 0.35,
+          "drying": 0,
+          "ironing": 0,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "unknown",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8563.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "DRY CLEAN ONLY.\nNETTOYAGE \u00c0 SEC SEULEMENT.\nMADE IN VIETNAM\nFABRIQU\u00c9 AU VIETNAM",
+        "country": "VIETNAM",
+        "materials": [],
+        "care": {
+          "washing": null,
+          "drying": null,
+          "ironing": null,
+          "dry_cleaning": "dry_clean_only"
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 3.31,
+        "breakdown": {
+          "materials": 1.75,
+          "manufacturing": 0.16,
+          "washing": 0,
+          "drying": 0,
+          "ironing": 0,
+          "dry_cleaning": 1.4
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "VIETNAM",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8564.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "Made in Bangladesh\nFabriqu\u00e9 en Bangladesh\nHecho en Bangladesh\nO/N 241102\nP/N 08797811\n40\nclevercare.info\nGB 70% VISCOSE. 30% POLYAMIDE.",
+        "country": "Bangladesh",
+        "materials": [
+          {
+            "fiber": "Viscose",
+            "pct": 70
+          },
+          {
+            "fiber": "Polyamide",
+            "pct": 30
+          }
+        ],
+        "care": {
+          "washing": "machine_wash_warm",
+          "drying": "do_not_tumble_dry",
+          "ironing": "iron_medium",
+          "dry_cleaning": "dry_clean"
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 7.1,
+        "breakdown": {
+          "materials": 3.04,
+          "manufacturing": 0.21,
+          "washing": 2.1,
+          "drying": 0,
+          "ironing": 0.35,
+          "dry_cleaning": 1.4
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "Bangladesh",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8567.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "80%SILK/SOIE\n20%NYLON\nCA#00445\nRN#95188\nMade in China",
+        "country": "China",
+        "materials": [
+          {
+            "fiber": "Silk",
+            "pct": 80
+          },
+          {
+            "fiber": "Nylon",
+            "pct": 20
+          }
+        ],
+        "care": {
+          "washing": null,
+          "drying": null,
+          "ironing": null,
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 2.97,
+        "breakdown": {
+          "materials": 2.45,
+          "manufacturing": 0.18,
+          "washing": 0.35,
+          "drying": 0,
+          "ironing": 0,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "China",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8568.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "HAND WASH COLD, DO NOT\nBLEACH, RESHAPE WHILE DAMP.\nDRY FLAT, COOL IRON ONLY IF\nNEEDED, OR DRY CLEAN.\nLAVER \u00c0 LA MAIN \u00c0 L'EAU\nFROIDE, NE PAS JAVELISER,\nREMODELER PENDANT QUE\nL'ARTICLE EST ENCORE HUMIDE,\nS\u00c9CHER \u00c0 PLAT, REPASSAGE\nDOUX SI N\u00c9CESSAIRE, OU\nNETTOYER \u00c0 SEC.\n\nMADE IN CHINA\nFABRIQU\u00c9 EN CHINE",
+        "country": "China",
+        "materials": [],
+        "care": {
+          "washing": "hand_wash_cold",
+          "drying": "lay_flat_to_dry",
+          "ironing": "iron_low",
+          "dry_cleaning": "dry_clean"
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 3.68,
+        "breakdown": {
+          "materials": 1.75,
+          "manufacturing": 0.18,
+          "washing": 0.18,
+          "drying": 0,
+          "ironing": 0.18,
+          "dry_cleaning": 1.4
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "China",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8569.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "57% VISCOSE, 43% POLYESTER\nEXCLUSIVE OF ELASTIC\n57% VISCOSE, 43% POLYESTER\n\u00c0 L'EXCLUSION DE L'\u00c9LASTIQUE",
+        "country": null,
+        "materials": [
+          {
+            "fiber": "Viscose",
+            "pct": 57
+          },
+          {
+            "fiber": "Polyester",
+            "pct": 43
+          }
+        ],
+        "care": {
+          "washing": null,
+          "drying": null,
+          "ironing": null,
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 3.15,
+        "breakdown": {
+          "materials": 2.63,
+          "manufacturing": 0.18,
+          "washing": 0.35,
+          "drying": 0,
+          "ironing": 0,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "unknown",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8570.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "48% VISCOSE, 31% POLYESTER,\n18% NYLON, 3% ELASTANE\n48% VISCOSE, 31% POLYESTER,\n18% NYLON, 3% \u00c9LASTHANNE\nCA 23725 RN 122354",
+        "country": null,
+        "materials": [
+          {
+            "fiber": "Viscose",
+            "pct": 48
+          },
+          {
+            "fiber": "Polyester",
+            "pct": 31
+          },
+          {
+            "fiber": "Nylon",
+            "pct": 18
+          },
+          {
+            "fiber": "Elastane",
+            "pct": 3
+          }
+        ],
+        "care": {
+          "washing": null,
+          "drying": null,
+          "ironing": null,
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 3.82,
+        "breakdown": {
+          "materials": 3.3,
+          "manufacturing": 0.18,
+          "washing": 0.35,
+          "drying": 0,
+          "ironing": 0,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "unknown",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8571.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "SELF:\n100% COTTON\nLINING:\n100% POLYESTER\nMADE IN CHINA",
+        "country": "China",
+        "materials": [
+          {
+            "fiber": "Cotton",
+            "pct": 100
+          },
+          {
+            "fiber": "Polyester",
+            "pct": 100
+          }
+        ],
+        "care": {
+          "washing": null,
+          "drying": null,
+          "ironing": null,
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 5.95,
+        "breakdown": {
+          "materials": 5.07,
+          "manufacturing": 0.18,
+          "washing": 0.7,
+          "drying": 0,
+          "ironing": 0,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "China",
+          "washes_lifetime": 100
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8574.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "100% Organic Cotton\nGLOBAL ORGANIC TEXTILE STANDARD\nGOTS\nOrganic\nCU 1245496\nMachine wash cold\nwith like colors. Tumble\ndry low. Do not bleach.\nMade in India",
+        "country": "India",
+        "materials": [
+          {
+            "fiber": "Organic Cotton",
+            "pct": 100
+          }
+        ],
+        "care": {
+          "washing": "machine_wash_cold",
+          "drying": "tumble_dry_low",
+          "ironing": null,
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 7.72,
+        "breakdown": {
+          "materials": 0.88,
+          "manufacturing": 0.19,
+          "washing": 0.35,
+          "drying": 6.3,
+          "ironing": 0,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "India",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8575.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "Body/Corps:\n53%Cotton/Algod\u00f3n\n47%Polyester/Polyester\nRib/Costilla:\n49%Cotton/Algod\u00f3n\n49%Polyester/Polyester\n2%Spandex/Elasthanne\n\nEXCLUSIVE OF DECORATION\nEXCLUYENDO DECORATION\n\nRN 50369\nSTYLE 9920\n\nMade in Cambodia\nHecho en Camboya",
+        "country": "Cambodia",
+        "materials": [
+          {
+            "fiber": "Cotton",
+            "pct": 53
+          },
+          {
+            "fiber": "Polyester",
+            "pct": 47
+          },
+          {
+            "fiber": "Cotton",
+            "pct": 49
+          },
+          {
+            "fiber": "Polyester",
+            "pct": 49
+          },
+          {
+            "fiber": "Spandex",
+            "pct": 2
+          }
+        ],
+        "care": {
+          "washing": null,
+          "drying": null,
+          "ironing": null,
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 6.08,
+        "breakdown": {
+          "materials": 5.19,
+          "manufacturing": 0.19,
+          "washing": 0.7,
+          "drying": 0,
+          "ironing": 0,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "Cambodia",
+          "washes_lifetime": 100
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8579.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "MACHINE WASH COLD WITH LIKE COLOURS, ONLY NON-CHLORINE BLEACH WHEN NEEDED, TUMBLE DRY LOW, COOL IRON ONLY IF NEEDED, DO NOT DRY CLEAN LAVER \u00c0 LA MACHINE \u00c0 L'EAU FROIDE AVEC COULEURS SEMBLABLES, UTILISER SEULEMENT UN JAVELLISANT SANS CHLORE AU BESOIN, S\u00c9CHER \u00c0 BASSE TEMP\u00c9RATURE, REPASSAGE DOUX SI N\u00c9CESSAIRE, NE PAS NETTOYER \u00c0 SEC MADE IN CHINA FABRIQU\u00c9 EN CHINE",
+        "country": "China",
+        "materials": [],
+        "care": {
+          "washing": "machine_wash_cold",
+          "drying": "tumble_dry_low",
+          "ironing": "iron_low",
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 8.75,
+        "breakdown": {
+          "materials": 1.75,
+          "manufacturing": 0.18,
+          "washing": 0.35,
+          "drying": 6.3,
+          "ironing": 0.18,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "China",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8583.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "HAND WASH COLD, DO NOT BLEACH, RESHAPE WHILE DAMP, DRY FLAT, COOL IRON ONLY IF NEEDED, OR DRY CLEAN.\nLAVER \u00c0 LA MAIN \u00c0 L'EAU FROIDE, NE PAS JAVELISER, REMODELER PENDANT QUE L'ARTICLE EST ENCORE HUMIDE, S\u00c9CHER \u00c0 PLAT, REPASSAGE DOUX SI N\u00c9CESSAIRE, OU NETTOYER \u00c0 SEC.\nMADE IN CHINA\nFABRIQUE EN CHINE",
+        "country": "China",
+        "materials": [],
+        "care": {
+          "washing": "hand_wash_cold",
+          "drying": "lay_flat_to_dry",
+          "ironing": "iron_low",
+          "dry_cleaning": "dry_clean"
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 3.68,
+        "breakdown": {
+          "materials": 1.75,
+          "manufacturing": 0.18,
+          "washing": 0.18,
+          "drying": 0,
+          "ironing": 0.18,
+          "dry_cleaning": 1.4
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "China",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8584.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "BODY: 55% MERINO WOOL, 25%\nRECYCLED NYLON, 20% COTTON\nRIB TRIM: 52% MERINO WOOL,\n28% RECYCLED NYLON, 19%\nCOTTON, 1% ELASTANE.\nCORPS: 55% LAINE M\u00c9RINOS, 25%\nNYLON RECYCL\u00c9, 20% COTON\nGARNITURE C\u00d4TEL\u00c9E: 52% LAINE\nM\u00c9RINOS, 28% NYLON RECYCL\u00c9,\n19% COTON, 1% \u00c9LASTHANNE\nCA 23725 RN 122354",
+        "country": null,
+        "materials": [
+          {
+            "fiber": "Merino Wool",
+            "pct": 55
+          },
+          {
+            "fiber": "Recycled Nylon",
+            "pct": 25
+          },
+          {
+            "fiber": "Cotton",
+            "pct": 20
+          }
+        ],
+        "care": {
+          "washing": null,
+          "drying": null,
+          "ironing": null,
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 2.28,
+        "breakdown": {
+          "materials": 1.75,
+          "manufacturing": 0.18,
+          "washing": 0.35,
+          "drying": 0,
+          "ironing": 0,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "unknown",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8585.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "Made In China\nFabriqu\u00e9 En Chine\nHergestellt In China\nVervaardigd In China\n\u4e2d\u56fd\u88fd\nhecho en china\n100% Cashmere / Cachemire /\nKaschmir / Kasjmier /\n\u30ab\u30b7\u30df\u30e4 / cashmere\nExclusive Of Elastic / Sans\n\u00c9lastique / Ohne Gummizug /\nBehalve Elastiek / \u4f38\u7e2e\u7d20\u6750\u3092\n\u9664\u304f / excluyendo el el\u00e1stico\nHand Wash Cold Separately.\nNon-Chlorine Bleach Only.\nReshape And Lay Flat To Dry.\nIron On Lowest Setting.",
+        "country": "China",
+        "materials": [
+          {
+            "fiber": "Cashmere",
+            "pct": 100
+          }
+        ],
+        "care": {
+          "washing": "hand_wash_cold",
+          "drying": "lay_flat_to_dry",
+          "ironing": "iron_low",
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 53.02,
+        "breakdown": {
+          "materials": 52.5,
+          "manufacturing": 0.18,
+          "washing": 0.18,
+          "drying": 0,
+          "ironing": 0.18,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "China",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8586.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "60% Cotton / Katoen / Baumwolle\n/ Coton\n40% Acrylic / Acryl / Polyacryl /\nAcrylique",
+        "country": null,
+        "materials": [
+          {
+            "fiber": "Cotton",
+            "pct": 60
+          },
+          {
+            "fiber": "Acrylic",
+            "pct": 40
+          }
+        ],
+        "care": {
+          "washing": null,
+          "drying": null,
+          "ironing": null,
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 3.39,
+        "breakdown": {
+          "materials": 2.87,
+          "manufacturing": 0.18,
+          "washing": 0.35,
+          "drying": 0,
+          "ironing": 0,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "unknown",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8587.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "RN # 123722\n100% COTTON\nMACHINE WASH\nCOLD\nGENTLE CYCLE\nTUMBLE DRY LOW\nLIGHT IRON\nMADE IN USA",
+        "country": "USA",
+        "materials": [
+          {
+            "fiber": "Cotton",
+            "pct": 100
+          }
+        ],
+        "care": {
+          "washing": "machine_wash_gentle",
+          "drying": "tumble_dry_low",
+          "ironing": "iron_low",
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 8.59,
+        "breakdown": {
+          "materials": 1.75,
+          "manufacturing": 0.02,
+          "washing": 0.35,
+          "drying": 6.3,
+          "ironing": 0.18,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "USA",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8588.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "Made In Peru\nFabriqu\u00e9 Au P\u00e9rou\nHergestellt In Peru\nVervaardigd In Peru\n\u30da\u30eb\u30fc\u88fd\nhecho en per\u00fa\n52% Modal /Modal /Modal /\nModal /\u30ec\u30fc\u30e8\u30f3 /modal\n24% Polyester /Polyester /\nPolyester /Polyester /\n\u30dd\u30ea\u30a8\u30b9\u30c6\u30eb /poli\u00e9ster\n24% Cotton /Coton /\nBaumwolle /Katoen /\u7dbf /\nalgod\u00f3n\nMachine Wash Cold With Like\nColors. Non-Chlorine Bleach\nOnly. Tumble Dry Low. Iron\nOn Lowest Setting.",
+        "country": "Peru",
+        "materials": [
+          {
+            "fiber": "Modal",
+            "pct": 52
+          },
+          {
+            "fiber": "Polyester",
+            "pct": 24
+          },
+          {
+            "fiber": "Cotton",
+            "pct": 24
+          }
+        ],
+        "care": {
+          "washing": "machine_wash_cold",
+          "drying": "tumble_dry_low",
+          "ironing": "iron_low",
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 9.21,
+        "breakdown": {
+          "materials": 2.31,
+          "manufacturing": 0.07,
+          "washing": 0.35,
+          "drying": 6.3,
+          "ironing": 0.18,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "Peru",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8590.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "MADE IN CAMBODIA.\nBODY: 80% COTTON / 20% POLYESTER.\nTRIM: 98% COTTON / 2% SPANDEX.\nEXCLUSIVE OF TRIMMING AND DECORATION.",
+        "country": "Cambodia",
+        "materials": [
+          {
+            "fiber": "Cotton",
+            "pct": 80
+          },
+          {
+            "fiber": "Polyester",
+            "pct": 20
+          },
+          {
+            "fiber": "Cotton",
+            "pct": 98
+          },
+          {
+            "fiber": "Spandex",
+            "pct": 2
+          }
+        ],
+        "care": {
+          "washing": null,
+          "drying": null,
+          "ironing": null,
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 4.88,
+        "breakdown": {
+          "materials": 3.99,
+          "manufacturing": 0.19,
+          "washing": 0.7,
+          "drying": 0,
+          "ironing": 0,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "Cambodia",
+          "washes_lifetime": 100
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8591.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "Made In Philippines\nFabriqu\u00e9 Aux Philippines\nHergestellt In Den Philippinen\nVervaardigd In De Filippijnen\n\u30d5\u30a3\u30ea\u30d4\u30f3\u88fd\nhecho en filipinas\n65% Polyester /Polyester /\nPolyester /Polyester /\n\u30dd\u30ea\u30a8\u30b9\u30c6\u30eb /poli\u00e9ster\n33% Viscose Viscose /\nViskose Viscose /\n\u30ec\u30fc\u30e8\u30f3 /viscosa\n2% Elastane /\u00c9lasthanne /\nElastan /Elastaan /\n\u30dd\u30ea\u30a6\u30ec\u30bf\u30f3 /elastano\nMachine Wash Cold With Like\nColors. Non-Chlorine Bleach\nOnly. Tumble Dry Low. Iron\nOn Lowest Setting.",
+        "country": "Philippines",
+        "materials": [
+          {
+            "fiber": "Polyester",
+            "pct": 65
+          },
+          {
+            "fiber": "Viscose",
+            "pct": 33
+          },
+          {
+            "fiber": "Elastane",
+            "pct": 2
+          }
+        ],
+        "care": {
+          "washing": "machine_wash_cold",
+          "drying": "tumble_dry_low",
+          "ironing": "iron_low",
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 10.05,
+        "breakdown": {
+          "materials": 3.06,
+          "manufacturing": 0.16,
+          "washing": 0.35,
+          "drying": 6.3,
+          "ironing": 0.18,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "Philippines",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8592.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "MADE IN VIETNAM\nRN 54023 / CA 17897\n\u25a0 US/GB: 100% MERINO EXTRA FINE\nWOOL\n1166\nMACHINE WASH COLD GENTLE\nCYCLE / CLOSE ALL FASTENERS\nBEFORE WASHING / WASH IN MESH\nBAG / USE MILD DETERGENT / WASH\nSEPARATELY / ONLY NON-CHLORINE\nBLEACH WHEN NEEDED / RESHAPE\nAND DRY FLAT / COOL IRON\nDISTRIBUIDO POR",
+        "country": "Vietnam",
+        "materials": [
+          {
+            "fiber": "Merino Wool",
+            "pct": 100
+          }
+        ],
+        "care": {
+          "washing": "machine_wash_gentle",
+          "drying": "lay_flat_to_dry",
+          "ironing": "iron_low",
+          "dry_cleaning": "dry_clean"
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 3.83,
+        "breakdown": {
+          "materials": 1.75,
+          "manufacturing": 0.16,
+          "washing": 0.35,
+          "drying": 0,
+          "ironing": 0.18,
+          "dry_cleaning": 1.4
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "Vietnam",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8593.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "50% MERINO WOOL\n/LAINEM\u00c9RINOS\n50%ACRYLIC/ACRYLIQUE\nRN#154138\nMADE IN CHINA",
+        "country": "China",
+        "materials": [
+          {
+            "fiber": "Merino Wool",
+            "pct": 50
+          },
+          {
+            "fiber": "Acrylic",
+            "pct": 50
+          }
+        ],
+        "care": {
+          "washing": null,
+          "drying": null,
+          "ironing": null,
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 3.68,
+        "breakdown": {
+          "materials": 3.15,
+          "manufacturing": 0.18,
+          "washing": 0.35,
+          "drying": 0,
+          "ironing": 0,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "China",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8595.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "SHELL:\n100% POLYESTER\nLINING:\n100% POLYESTER\n\nETOFFE EXTERIEURE:\n100% POLYESTER\nDOUBLURE:\n100% POLYESTER\n\nTELA EXTERIOR:\n100% POLIESTER\nFORRO:\n100% POLIESTER\n\nMADE IN CHINA",
+        "country": "China",
+        "materials": [
+          {
+            "fiber": "Polyester",
+            "pct": 100
+          }
+        ],
+        "care": {
+          "washing": null,
+          "drying": null,
+          "ironing": null,
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 3.85,
+        "breakdown": {
+          "materials": 3.33,
+          "manufacturing": 0.18,
+          "washing": 0.35,
+          "drying": 0,
+          "ironing": 0,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "China",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8596.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "52% VISCOSE\n36% NYLON\n12% POLYESTER\nMACHINE WASH COLD\nWITH LIKE COLORS\nONLY NON-CHLORINE\nBLEACH WHEN NEEDED\nTUMBLE DRY LOW\nWARM IRON IF NECESSARY\nMADE IN CHINA",
+        "country": "China",
+        "materials": [
+          {
+            "fiber": "Viscose",
+            "pct": 52
+          },
+          {
+            "fiber": "Nylon",
+            "pct": 36
+          },
+          {
+            "fiber": "Polyester",
+            "pct": 12
+          }
+        ],
+        "care": {
+          "washing": "machine_wash_cold",
+          "drying": "tumble_dry_low",
+          "ironing": "iron_medium",
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 10.56,
+        "breakdown": {
+          "materials": 3.38,
+          "manufacturing": 0.18,
+          "washing": 0.35,
+          "drying": 6.3,
+          "ironing": 0.35,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "China",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8599.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "100% CASHMERE\nDRY CLEAN\nOR HAND WASH COLD\nDO NOT TWIST OR WRING\nDO NOT BLEACH\nRESHAPE AND LAY\nFLAT TO DRY\nWARM IRON IF NEEDED",
+        "country": null,
+        "materials": [
+          {
+            "fiber": "Cashmere",
+            "pct": 100
+          }
+        ],
+        "care": {
+          "washing": "hand_wash_cold",
+          "drying": "lay_flat_to_dry",
+          "ironing": "iron_medium",
+          "dry_cleaning": "dry_clean"
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 54.6,
+        "breakdown": {
+          "materials": 52.5,
+          "manufacturing": 0.18,
+          "washing": 0.18,
+          "drying": 0,
+          "ironing": 0.35,
+          "dry_cleaning": 1.4
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "unknown",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8600.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "MATERIAL\n100%COTTON\nDRY CLEAN ONLY\nMADE IN VIET NAM",
+        "country": "Viet Nam",
+        "materials": [
+          {
+            "fiber": "Cotton",
+            "pct": 100
+          }
+        ],
+        "care": {
+          "washing": null,
+          "drying": null,
+          "ironing": null,
+          "dry_cleaning": "dry_clean_only"
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 3.33,
+        "breakdown": {
+          "materials": 1.75,
+          "manufacturing": 0.18,
+          "washing": 0,
+          "drying": 0,
+          "ironing": 0,
+          "dry_cleaning": 1.4
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "Viet Nam",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8601.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "100% CASHMERE\n\nDRY CLEAN\nOR HAND WASH COLD\nDO NOT TWIST OR WRING\nDO NOT BLEACH\nRESHAPE AND LAY\nFLAT TO DRY\nWARM IRON IF NEEDED",
+        "country": null,
+        "materials": [
+          {
+            "fiber": "Cashmere",
+            "pct": 100
+          }
+        ],
+        "care": {
+          "washing": "hand_wash_cold",
+          "drying": "lay_flat_to_dry",
+          "ironing": "iron_medium",
+          "dry_cleaning": "dry_clean"
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 54.6,
+        "breakdown": {
+          "materials": 52.5,
+          "manufacturing": 0.18,
+          "washing": 0.18,
+          "drying": 0,
+          "ironing": 0.35,
+          "dry_cleaning": 1.4
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "unknown",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8602.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "49% RAYON\n31% POLYESTER\n20% NYLON",
+        "country": null,
+        "materials": [
+          {
+            "fiber": "Rayon",
+            "pct": 49
+          },
+          {
+            "fiber": "Polyester",
+            "pct": 31
+          },
+          {
+            "fiber": "Nylon",
+            "pct": 20
+          }
+        ],
+        "care": {
+          "washing": null,
+          "drying": null,
+          "ironing": null,
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 3.46,
+        "breakdown": {
+          "materials": 2.94,
+          "manufacturing": 0.18,
+          "washing": 0.35,
+          "drying": 0,
+          "ironing": 0,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "unknown",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8604.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "MADE IN CHINA\n73% ACRYLIC\n24% POLYESTER\n3% SPANDEX\n\nHAND WASH COLD\nSEPARATELY\nUSE ONLY NON-CHLORINE\nBLEACH IF NEEDED\nRESHAPE AND\nLAY FLAT TO DRY\nUSE LOW IRON\nIF NECESSARY",
+        "country": "China",
+        "materials": [
+          {
+            "fiber": "Acrylic",
+            "pct": 73
+          },
+          {
+            "fiber": "Polyester",
+            "pct": 24
+          },
+          {
+            "fiber": "Spandex",
+            "pct": 3
+          }
+        ],
+        "care": {
+          "washing": "hand_wash_cold",
+          "drying": "lay_flat_to_dry",
+          "ironing": "iron_low",
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 4.96,
+        "breakdown": {
+          "materials": 4.43,
+          "manufacturing": 0.18,
+          "washing": 0.18,
+          "drying": 0,
+          "ironing": 0.18,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "China",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8606.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "50% PIMA COTTON/\nCOTON PIMA\n50% MODAL/MODAL\nM/M\nMADE IN PERU\nFABRIQU\u00c9",
+        "country": "Peru",
+        "materials": [
+          {
+            "fiber": "Pima Cotton",
+            "pct": 50
+          },
+          {
+            "fiber": "Modal",
+            "pct": 50
+          }
+        ],
+        "care": {
+          "washing": null,
+          "drying": null,
+          "ironing": null,
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 2.43,
+        "breakdown": {
+          "materials": 2.01,
+          "manufacturing": 0.07,
+          "washing": 0.35,
+          "drying": 0,
+          "ironing": 0,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "Peru",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8608.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "58% RAYON\n24% POLYESTER\n13% METALLIC\n5% ELASTANE\n\n58% RAYONNE\n24% POLYESTER\n13% M\u00c9TALLIQUE\n5% ELASTHANNE\n\n58% RAY\u00d3N\n24% POLI\u00c9STER\n13% MET\u00c1LICO\n5% ELASTANO\n\nMADE IN TURKEY",
+        "country": "Turkey",
+        "materials": [
+          {
+            "fiber": "Rayon",
+            "pct": 58
+          },
+          {
+            "fiber": "Polyester",
+            "pct": 24
+          },
+          {
+            "fiber": "Metallic",
+            "pct": 13
+          },
+          {
+            "fiber": "Elastane",
+            "pct": 5
+          }
+        ],
+        "care": {
+          "washing": null,
+          "drying": null,
+          "ironing": null,
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 3.02,
+        "breakdown": {
+          "materials": 2.57,
+          "manufacturing": 0.11,
+          "washing": 0.35,
+          "drying": 0,
+          "ironing": 0,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "Turkey",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8610.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "83% POLYESTER\n12% RAYON\n5% SPANDEX",
+        "country": null,
+        "materials": [
+          {
+            "fiber": "Polyester",
+            "pct": 83
+          },
+          {
+            "fiber": "Rayon",
+            "pct": 12
+          },
+          {
+            "fiber": "Spandex",
+            "pct": 5
+          }
+        ],
+        "care": {
+          "washing": null,
+          "drying": null,
+          "ironing": null,
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 4.02,
+        "breakdown": {
+          "materials": 3.49,
+          "manufacturing": 0.18,
+          "washing": 0.35,
+          "drying": 0,
+          "ironing": 0,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "unknown",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8612.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "MADE IN VIETNAM\nFABRIQU\u00c9 AU VIETNAM\nHECHO EN VIETNAM",
+        "country": "Vietnam",
+        "materials": [],
+        "care": {
+          "washing": null,
+          "drying": null,
+          "ironing": null,
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 2.26,
+        "breakdown": {
+          "materials": 1.75,
+          "manufacturing": 0.16,
+          "washing": 0.35,
+          "drying": 0,
+          "ironing": 0,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "Vietnam",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8614.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "US MADE IN CHINA\nCA FABRIQU\u00c9 EN CHINE\nMX HECHO EN CHINA\nUS 52%VISCOSE\n28%POLYESTER 20%NYLON\nEXCLUSIVE OF TRIMS\nCA 52% VISCOSE\n28% POLYESTER 20% NYLON\nHORS GARNITURES\nMX 52% VISCOSA\n28% POLI\u00c9STER 20% NYLON\nEXCLUYENDO ADORNOS\nUS HAND WASH SEPARATELY\nIN COLD WATER, DO NOT\nBLEACH, LAY FLAT TO DRY,\nDO NOT IRON",
+        "country": "China",
+        "materials": [
+          {
+            "fiber": "Viscose",
+            "pct": 52
+          },
+          {
+            "fiber": "Polyester",
+            "pct": 28
+          },
+          {
+            "fiber": "Nylon",
+            "pct": 20
+          }
+        ],
+        "care": {
+          "washing": "hand_wash_cold",
+          "drying": "lay_flat_to_dry",
+          "ironing": "do_not_iron",
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 3.42,
+        "breakdown": {
+          "materials": 3.07,
+          "manufacturing": 0.18,
+          "washing": 0.18,
+          "drying": 0,
+          "ironing": 0,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "China",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8615.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "100% ACRYLIQUE\nMADE IN TAIWAN R.O.C.\n[hand wash symbol]\n[do not bleach symbol]\n[lay flat to dry symbol]\n[do not iron symbol]\n[do not dry clean symbol]",
+        "country": "Taiwan R.O.C.",
+        "materials": [
+          {
+            "fiber": "Acrylic",
+            "pct": 100
+          }
+        ],
+        "care": {
+          "washing": "hand_wash_cold",
+          "drying": "lay_flat_to_dry",
+          "ironing": "do_not_iron",
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 4.9,
+        "breakdown": {
+          "materials": 4.55,
+          "manufacturing": 0.18,
+          "washing": 0.18,
+          "drying": 0,
+          "ironing": 0,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "Taiwan R.O.C.",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8617.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "70% RAYON\n30% NYLON\nEXCLUSIVE OF\nDECORATION\nMADE IN CHINA\nRN 103715\n\nTURN GARMENT\nINSIDE OUT\nHAND WASH COLD\nDO NOT BLEACH\nLAY FLAT TO DRY\nWARM IRON\nIF NEEDED\nDO NOT IRON ON\nDECORATION",
+        "country": "China",
+        "materials": [
+          {
+            "fiber": "Rayon",
+            "pct": 70
+          },
+          {
+            "fiber": "Nylon",
+            "pct": 30
+          }
+        ],
+        "care": {
+          "washing": "hand_wash_cold",
+          "drying": "lay_flat_to_dry",
+          "ironing": "iron_medium",
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 3.5,
+        "breakdown": {
+          "materials": 2.8,
+          "manufacturing": 0.18,
+          "washing": 0.18,
+          "drying": 0,
+          "ironing": 0.35,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "China",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8618.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "70% RAYON\n30% POLYESTER\nRN 165979\nMACHINE WASH\nCOLD\nGENTLE CYCLE\nWITH LIKE COLORS\nDO NOT BLEACH\nRESHAPE AND\nDRY FLAT\nCOOL IRON\nIF NEEDED\nOR DRY CLEAN",
+        "country": null,
+        "materials": [
+          {
+            "fiber": "Rayon",
+            "pct": 70
+          },
+          {
+            "fiber": "Polyester",
+            "pct": 30
+          }
+        ],
+        "care": {
+          "washing": "machine_wash_gentle",
+          "drying": "lay_flat_to_dry",
+          "ironing": "iron_low",
+          "dry_cleaning": "dry_clean"
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 4.32,
+        "breakdown": {
+          "materials": 2.22,
+          "manufacturing": 0.18,
+          "washing": 0.35,
+          "drying": 0,
+          "ironing": 0.18,
+          "dry_cleaning": 1.4
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "unknown",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8619.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "63%Rayon//Ray\u00f3n Kunstseide/Raion 32%Nylon//Nylon Nylon/Nylon 5%Spandex/Elastano /Elastan/Elastan MADE IN CHINA",
+        "country": "China",
+        "materials": [
+          {
+            "fiber": "Rayon",
+            "pct": 63
+          },
+          {
+            "fiber": "Nylon",
+            "pct": 32
+          },
+          {
+            "fiber": "Spandex",
+            "pct": 5
+          }
+        ],
+        "care": {
+          "washing": null,
+          "drying": null,
+          "ironing": null,
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 3.83,
+        "breakdown": {
+          "materials": 3.31,
+          "manufacturing": 0.18,
+          "washing": 0.35,
+          "drying": 0,
+          "ironing": 0,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "China",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8621.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "MADE IN CHINA\n73% ACRYLIC\n24% POLYESTER\n3% SPANDEX\n\nHAND WASH COLD\nSEPARATELY\nUSE ONLY NON-CHLORINE\nBLEACH IF NEEDED\nRESHAPE AND\nLAY FLAT TO DRY\nUSE LOW IRON\nIF NECESSARY",
+        "country": "China",
+        "materials": [
+          {
+            "fiber": "Acrylic",
+            "pct": 73
+          },
+          {
+            "fiber": "Polyester",
+            "pct": 24
+          },
+          {
+            "fiber": "Spandex",
+            "pct": 3
+          }
+        ],
+        "care": {
+          "washing": "hand_wash_cold",
+          "drying": "lay_flat_to_dry",
+          "ironing": "iron_low",
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 4.96,
+        "breakdown": {
+          "materials": 4.43,
+          "manufacturing": 0.18,
+          "washing": 0.18,
+          "drying": 0,
+          "ironing": 0.18,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "China",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8622.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "60% COTTON\n40% POLYESTER",
+        "country": null,
+        "materials": [
+          {
+            "fiber": "Cotton",
+            "pct": 60
+          },
+          {
+            "fiber": "Polyester",
+            "pct": 40
+          }
+        ],
+        "care": {
+          "washing": null,
+          "drying": null,
+          "ironing": null,
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 2.91,
+        "breakdown": {
+          "materials": 2.38,
+          "manufacturing": 0.18,
+          "washing": 0.35,
+          "drying": 0,
+          "ironing": 0,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "unknown",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8623.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "HAND WASH COLD\nWITH LIKE COLORS\nLAY FLAT TO DRY\nDO NOT BLEACH\nDO NOT TUMBLE\nCOOL IRON IF NEEDED\nRN# 155730\nMADE IN CHINA",
+        "country": "China",
+        "materials": [],
+        "care": {
+          "washing": "hand_wash_cold",
+          "drying": "lay_flat_to_dry",
+          "ironing": "iron_low",
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 2.28,
+        "breakdown": {
+          "materials": 1.75,
+          "manufacturing": 0.18,
+          "washing": 0.18,
+          "drying": 0,
+          "ironing": 0.18,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "China",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8624.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "100% CASHMERE\n\nDRY CLEAN ONLY.\n\nMADE IN CHINA",
+        "country": "China",
+        "materials": [
+          {
+            "fiber": "Cashmere",
+            "pct": 100
+          }
+        ],
+        "care": {
+          "washing": null,
+          "drying": null,
+          "ironing": null,
+          "dry_cleaning": "dry_clean_only"
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 54.08,
+        "breakdown": {
+          "materials": 52.5,
+          "manufacturing": 0.18,
+          "washing": 0,
+          "drying": 0,
+          "ironing": 0,
+          "dry_cleaning": 1.4
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "China",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8625.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "80% RAYON/VISCOSE/\nVISCOSA\n20% NYLON/POLYAMIDE/\nNAILON\nS\nHAND WASH SEPARATELY\nIN COLD WATER\nDO NOT BLEACH\nLAY FLAT DO DRY\nIRON ON LOWEST\nSETTING AS NEEDED",
+        "country": null,
+        "materials": [
+          {
+            "fiber": "Rayon",
+            "pct": 80
+          },
+          {
+            "fiber": "Nylon",
+            "pct": 20
+          }
+        ],
+        "care": {
+          "washing": "hand_wash_cold",
+          "drying": "lay_flat_to_dry",
+          "ironing": "iron_low",
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 2.97,
+        "breakdown": {
+          "materials": 2.45,
+          "manufacturing": 0.18,
+          "washing": 0.18,
+          "drying": 0,
+          "ironing": 0.18,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "unknown",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8626.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "51% RAYON\n28% POLYESTER\n21% NYLON\n\nCUT:3006281\nSTYLE\n3705499\n\nMADE IN CHINA\nCARE ON REVERSE",
+        "country": "China",
+        "materials": [
+          {
+            "fiber": "Rayon",
+            "pct": 51
+          },
+          {
+            "fiber": "Polyester",
+            "pct": 28
+          },
+          {
+            "fiber": "Nylon",
+            "pct": 21
+          }
+        ],
+        "care": {
+          "washing": null,
+          "drying": null,
+          "ironing": null,
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 3.45,
+        "breakdown": {
+          "materials": 2.93,
+          "manufacturing": 0.18,
+          "washing": 0.35,
+          "drying": 0,
+          "ironing": 0,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "China",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8628.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "100% CASHMERE",
+        "country": null,
+        "materials": [
+          {
+            "fiber": "Cashmere",
+            "pct": 100
+          }
+        ],
+        "care": {
+          "washing": null,
+          "drying": null,
+          "ironing": null,
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 53.03,
+        "breakdown": {
+          "materials": 52.5,
+          "manufacturing": 0.18,
+          "washing": 0.35,
+          "drying": 0,
+          "ironing": 0,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "unknown",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8691.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "SHELL: 95% NYLON / 5% SPANDEX\nLINING : 100% RECYCLED POLYESTER\nWASH INSIDE OUT. MACHINE WASH COLD SEPARATELY.\nGENTLE CYCLE. ONLY NON-CHLORINE BLEACH IF\nNEEDED. TUMBLE DRY LOW. REMOVE PROMPTLY. DO\nNOT IRON.\nRN17730 VN1989909",
+        "country": null,
+        "materials": [
+          {
+            "fiber": "Nylon",
+            "pct": 95
+          },
+          {
+            "fiber": "Spandex",
+            "pct": 5
+          },
+          {
+            "fiber": "Recycled Polyester",
+            "pct": 100
+          }
+        ],
+        "care": {
+          "washing": "machine_wash_cold",
+          "drying": "tumble_dry_low",
+          "ironing": "do_not_iron",
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 20.04,
+        "breakdown": {
+          "materials": 6.56,
+          "manufacturing": 0.18,
+          "washing": 0.7,
+          "drying": 12.6,
+          "ironing": 0,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "unknown",
+          "washes_lifetime": 100
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8693.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "55% VISCOSE / 45% NYLON\nMACHINE WASH COLD WITH LIKE COLORS. GENTLE\nCYCLE. ONLY NON-CHLORINE BLEACH IF NEEDED. LAY\nFLAT TO DRY. WARM IRON IF NEEDED.\nRN17730 VN1268582",
+        "country": null,
+        "materials": [
+          {
+            "fiber": "VISCOSE",
+            "pct": 55
+          },
+          {
+            "fiber": "NYLON",
+            "pct": 45
+          }
+        ],
+        "care": {
+          "washing": "machine_wash_gentle",
+          "drying": "lay_flat_to_dry",
+          "ironing": "iron_medium",
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 4.39,
+        "breakdown": {
+          "materials": 3.52,
+          "manufacturing": 0.18,
+          "washing": 0.35,
+          "drying": 0,
+          "ironing": 0.35,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "unknown",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8696.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "55% COTTON / 45% VISCOSE\nTURN GARMENT INSIDE OUT\nMACHINE WASH COLD WITH LIKE COLORS\nGENTLE CYCLE\nONLY NON-CHLORINE BLEACH IF NEEDED\nTUMBLE DRY LOW, COOL IRON IF NEEDED\nRN17730 VN1317080",
+        "country": null,
+        "materials": [
+          {
+            "fiber": "Cotton",
+            "pct": 55
+          },
+          {
+            "fiber": "Viscose",
+            "pct": 45
+          }
+        ],
+        "care": {
+          "washing": "machine_wash_gentle",
+          "drying": "tumble_dry_low",
+          "ironing": "iron_low",
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 8.91,
+        "breakdown": {
+          "materials": 1.91,
+          "manufacturing": 0.18,
+          "washing": 0.35,
+          "drying": 6.3,
+          "ironing": 0.18,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "unknown",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8697.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "90% RECYCLED POLYESTER / 8% WOOL /\n2% SPANDEX\nMACHINE WASH COLD WITH LIKE COLORS\nGENTLE CYCLE\nONLY NON-CHLORINE BLEACH IF NEEDED\nLAY FLAT TO DRY\nWARM IRON IF NEEDED\nRN17730 VN1268582",
+        "country": null,
+        "materials": [
+          {
+            "fiber": "Recycled Polyester",
+            "pct": 90
+          },
+          {
+            "fiber": "Wool",
+            "pct": 8
+          },
+          {
+            "fiber": "Spandex",
+            "pct": 2
+          }
+        ],
+        "care": {
+          "washing": "machine_wash_gentle",
+          "drying": "lay_flat_to_dry",
+          "ironing": "iron_medium",
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 2.59,
+        "breakdown": {
+          "materials": 1.72,
+          "manufacturing": 0.18,
+          "washing": 0.35,
+          "drying": 0,
+          "ironing": 0.35,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "unknown",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8699 2.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "MADE IN\nCHINA",
+        "country": "China",
+        "materials": [],
+        "care": {
+          "washing": null,
+          "drying": null,
+          "ironing": null,
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 2.28,
+        "breakdown": {
+          "materials": 1.75,
+          "manufacturing": 0.18,
+          "washing": 0.35,
+          "drying": 0,
+          "ironing": 0,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "China",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8700.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "91% RECYCLED POLYESTER / 9% SPANDEX\nMACHINE WASH COLD WITH LIKE COLORS. GENTLE CYCLE. ONLY NON CHLORINE BLEACH IF NEEDED.\nTUMBLE DRY LOW. REMOVE PROMPTLY.\nCOOL IRON IF NEEDED. DO NOT IRON ON LABEL.\nRN17730 VN1068795",
+        "country": "Vietnam",
+        "materials": [
+          {
+            "fiber": "Recycled Polyester",
+            "pct": 91
+          },
+          {
+            "fiber": "Spandex",
+            "pct": 9
+          }
+        ],
+        "care": {
+          "washing": "machine_wash_gentle",
+          "drying": "tumble_dry_low",
+          "ironing": "iron_low",
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 8.88,
+        "breakdown": {
+          "materials": 1.9,
+          "manufacturing": 0.16,
+          "washing": 0.35,
+          "drying": 6.3,
+          "ironing": 0.18,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "Vietnam",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8702.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "Made in Cambodia\nHecho en Camboya\n\nBODY:\n72% NYLON /\n28% SPANDEX\nFRONT LINING:\n88% NYLON /\n12% SPANDEX\nBACK LINING:\n72% NYLON /\n28% SPANDEX\n\nREMOVE PADS\nBEFORE WASHING\nMACHINE WASH\nCOLD SEPARATELY\nGENTLE CYCLE\nONLY\nNON-CHLORINE\nBLEACH IF NEEDED\nTUMBLE DRY LOW\nREMOVE PROMPTLY\nCOOL IRON IF\nNEEDED",
+        "country": "Cambodia",
+        "materials": [
+          {
+            "fiber": "Nylon",
+            "pct": 72
+          },
+          {
+            "fiber": "Spandex",
+            "pct": 28
+          },
+          {
+            "fiber": "Nylon",
+            "pct": 88
+          },
+          {
+            "fiber": "Spandex",
+            "pct": 12
+          },
+          {
+            "fiber": "Nylon",
+            "pct": 72
+          },
+          {
+            "fiber": "Spandex",
+            "pct": 28
+          }
+        ],
+        "care": {
+          "washing": "machine_wash_gentle",
+          "drying": "tumble_dry_low",
+          "ironing": "iron_low",
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 39.99,
+        "breakdown": {
+          "materials": 19.32,
+          "manufacturing": 0.19,
+          "washing": 1.05,
+          "drying": 18.9,
+          "ironing": 0.52,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "Cambodia",
+          "washes_lifetime": 150
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8705.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "Made in Cambodia\nHecho en Camboya\n93% LYOCELL /\n7% SPANDEX\nEXCLUSIVE OF\nDECORATION\nMACHINE WASH\nCOLD SEPARATELY\nGENTLE CYCLE\nONLY\nNON-CHLORINE\nBLEACH IF NEEDED\nTUMBLE DRY LOW\nREMOVE PROMPTLY\nCOOL IRON IF\nNEEDED",
+        "country": "Cambodia",
+        "materials": [
+          {
+            "fiber": "Lyocell",
+            "pct": 93
+          },
+          {
+            "fiber": "Spandex",
+            "pct": 7
+          }
+        ],
+        "care": {
+          "washing": "machine_wash_gentle",
+          "drying": "tumble_dry_low",
+          "ironing": "iron_low",
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 9.38,
+        "breakdown": {
+          "materials": 2.36,
+          "manufacturing": 0.19,
+          "washing": 0.35,
+          "drying": 6.3,
+          "ironing": 0.18,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "Cambodia",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8706.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "MADE IN VIETNAM",
+        "country": "Vietnam",
+        "materials": [],
+        "care": {
+          "washing": null,
+          "drying": null,
+          "ironing": null,
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 2.26,
+        "breakdown": {
+          "materials": 1.75,
+          "manufacturing": 0.16,
+          "washing": 0.35,
+          "drying": 0,
+          "ironing": 0,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "Vietnam",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8707.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "90% COTTON/ALGOD\u00d3N\n10% SPANDEX/SPANDEX\nEXCLUSIVE OF DECORATION\nNO INCLUYE LA DECORACION\nXXL\nMADE IN CAMBODIA\nEN CAMBOYA",
+        "country": "Cambodia",
+        "materials": [
+          {
+            "fiber": "Cotton",
+            "pct": 90
+          },
+          {
+            "fiber": "Spandex",
+            "pct": 10
+          }
+        ],
+        "care": {
+          "washing": null,
+          "drying": null,
+          "ironing": null,
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 3.17,
+        "breakdown": {
+          "materials": 2.63,
+          "manufacturing": 0.19,
+          "washing": 0.35,
+          "drying": 0,
+          "ironing": 0,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "Cambodia",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8708.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "99% RECYCLED POLYESTER / 1% SPANDEX\nMACHINE WASH COLD WITH LIKE COLORS. ONLY\nNON CHLORINE BLEACH IF NEEDED. TUMBLE DRY\nLOW. REMOVE PROMPTLY. COOL IRON IF NEEDED.",
+        "country": null,
+        "materials": [
+          {
+            "fiber": "Recycled Polyester",
+            "pct": 99
+          },
+          {
+            "fiber": "Spandex",
+            "pct": 1
+          }
+        ],
+        "care": {
+          "washing": "machine_wash_cold",
+          "drying": "tumble_dry_low",
+          "ironing": "iron_low",
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 8.14,
+        "breakdown": {
+          "materials": 1.14,
+          "manufacturing": 0.18,
+          "washing": 0.35,
+          "drying": 6.3,
+          "ironing": 0.18,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "unknown",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8709.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "61% RECYCLED POLYESTER / 35% RAYON / 4% SPANDEX\nEXCLUSIVE OF DECORATION\nMACHINE WASH COLD WITH LIKE COLORS\nGENTLE CYCLE\nONLY NON-CHLORINE BLEACH IF NEEDED\nTUMBLE DRY LOW, REMOVE PROMPTLY\nCOOL IRON IF NEEDED",
+        "country": null,
+        "materials": [
+          {
+            "fiber": "Recycled Polyester",
+            "pct": 61
+          },
+          {
+            "fiber": "Rayon",
+            "pct": 35
+          },
+          {
+            "fiber": "Spandex",
+            "pct": 4
+          }
+        ],
+        "care": {
+          "washing": "machine_wash_gentle",
+          "drying": "tumble_dry_low",
+          "ironing": "iron_low",
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 8.67,
+        "breakdown": {
+          "materials": 1.67,
+          "manufacturing": 0.18,
+          "washing": 0.35,
+          "drying": 6.3,
+          "ironing": 0.18,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "unknown",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8710.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "91% RECYCLED\nPOLYESTER/POLI\u00c9STER\nRECICLADO\n8% WOOL/LANA\n1% SPANDEX\nRN17730\nVN1989869\nMADE IN CAMBODIA /",
+        "country": "Cambodia",
+        "materials": [
+          {
+            "fiber": "Recycled Polyester",
+            "pct": 91
+          },
+          {
+            "fiber": "Wool",
+            "pct": 8
+          },
+          {
+            "fiber": "Spandex",
+            "pct": 1
+          }
+        ],
+        "care": {
+          "washing": null,
+          "drying": null,
+          "ironing": null,
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 2.16,
+        "breakdown": {
+          "materials": 1.62,
+          "manufacturing": 0.19,
+          "washing": 0.35,
+          "drying": 0,
+          "ironing": 0,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "Cambodia",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8711.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "100% COTTON (5% RECYCLED COTTON)\nEXCLUSIVE OF DECORATION\nMACHINE WASH COLD SEPARATELY. GENTLE CYCLE.\nONLY NON-CHLORINE BLEACH IF NEEDED. TUMBLE\nDRY LOW. REMOVE PROMPTLY. WARM IRON IF\nNEEDED.",
+        "country": null,
+        "materials": [
+          {
+            "fiber": "Cotton",
+            "pct": 95
+          },
+          {
+            "fiber": "Recycled Cotton",
+            "pct": 5
+          }
+        ],
+        "care": {
+          "washing": "machine_wash_gentle",
+          "drying": "tumble_dry_low",
+          "ironing": "iron_medium",
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 8.92,
+        "breakdown": {
+          "materials": 1.75,
+          "manufacturing": 0.18,
+          "washing": 0.35,
+          "drying": 6.3,
+          "ironing": 0.35,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "unknown",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8712.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "77% RECYCLED POLYESTER / 11% NYLON / 8% WOOL / 4% SPANDEX\nTURN GARMENT INSIDE OUT\nMACHINE WASH COLD WITH LIKE COLORS, GENTLE CYCLE\nONLY NON-CHLORINE BLEACH IF NEEDED\nRESHAPE AND LAY FLAT TO DRY\nCOOL IRON IF NEEDED",
+        "country": null,
+        "materials": [
+          {
+            "fiber": "Recycled Polyester",
+            "pct": 77
+          },
+          {
+            "fiber": "Nylon",
+            "pct": 11
+          },
+          {
+            "fiber": "Wool",
+            "pct": 8
+          },
+          {
+            "fiber": "Spandex",
+            "pct": 4
+          }
+        ],
+        "care": {
+          "washing": "machine_wash_gentle",
+          "drying": "lay_flat_to_dry",
+          "ironing": "iron_low",
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 3.07,
+        "breakdown": {
+          "materials": 2.37,
+          "manufacturing": 0.18,
+          "washing": 0.35,
+          "drying": 0,
+          "ironing": 0.18,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "unknown",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8713.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "77% RECYCLED POLYESTER / 11% LYOCELL / 12% SPANDEX MACHINE WASH COLD WITH LIKE COLORS. ONLY NON-CHLORINE BLEACH IF NEEDED. TUMBLE DRY LOW. REMOVE PROMPTLY. COOL IRON IF NEEDED. DO NOT IRON ON LABEL. RN17730 VN1068795 MADE IN NICARAGUA",
+        "country": "Nicaragua",
+        "materials": [
+          {
+            "fiber": "Recycled Polyester",
+            "pct": 77
+          },
+          {
+            "fiber": "Lyocell",
+            "pct": 11
+          },
+          {
+            "fiber": "Spandex",
+            "pct": 12
+          }
+        ],
+        "care": {
+          "washing": "machine_wash_cold",
+          "drying": "tumble_dry_low",
+          "ironing": "iron_low",
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 9.14,
+        "breakdown": {
+          "materials": 2.26,
+          "manufacturing": 0.05,
+          "washing": 0.35,
+          "drying": 6.3,
+          "ironing": 0.18,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "Nicaragua",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\IMG_8714.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "SHELL: 100% NYLON\nLINING: 100% RECYCLED POLYESTER\nFILLING: 100% RECYCLED POLYESTER\nMACHINE WASH COLD WITH LIKE COLORS. GENTLE\nCYCLE. ONLY NON-CHLORINE BLEACH IF NEEDED.\nTUMBLE DRY LOW. REMOVE PROMPTLY. DO NOT IRON.\nDO NOT DRY CLEAN.",
+        "country": null,
+        "materials": [
+          {
+            "fiber": "Nylon",
+            "pct": 100
+          },
+          {
+            "fiber": "Recycled Polyester",
+            "pct": 100
+          },
+          {
+            "fiber": "Recycled Polyester",
+            "pct": 100
+          }
+        ],
+        "care": {
+          "washing": "machine_wash_cold",
+          "drying": "tumble_dry_low",
+          "ironing": "do_not_iron",
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 27.48,
+        "breakdown": {
+          "materials": 7.35,
+          "manufacturing": 0.18,
+          "washing": 1.05,
+          "drying": 18.9,
+          "ironing": 0,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "unknown",
+          "washes_lifetime": 150
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\tag_1.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "Made In Guatemala\nFabriqu\u00e9 Au Guatemala\nHergestellt In Guatemala\nVervaardigd In Guatemala\n\u30b0\u30a2\u30c6\u30de\u30e9\u88fd\nHecho En Guatemala\n\n100%Cotton/Coton/\nBaumwolle/Katoen/\u7dbf/\nAlgod\u00f3n",
+        "country": "Guatemala",
+        "materials": [
+          {
+            "fiber": "Cotton",
+            "pct": 100
+          }
+        ],
+        "care": {
+          "washing": null,
+          "drying": null,
+          "ironing": null,
+          "dry_cleaning": null
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 2.15,
+        "breakdown": {
+          "materials": 1.75,
+          "manufacturing": 0.05,
+          "washing": 0.35,
+          "drying": 0,
+          "ironing": 0,
+          "dry_cleaning": 0
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "Guatemala",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  },
+  {
+    "file": "cropped_tags\\tag_5.JPG",
+    "result": {
+      "parsed": {
+        "ocr_text": "MACHINE WASH COLD WITH LIKE COLOURS, DO NOT BLEACH, DRY FLAT, COOL IRON ONLY IF NEEDED, OR DRY CLEAN LAVER \u00c0 LA MACHINE \u00c0 L'EAU FROIDE AVEC COULEURS SEMBLABLES, NE PAS JAVELISER, S\u00c9CHER \u00c0 PLAT, REPASSAGE DOUX SI N\u00c9CESSAIRE, OU NETTOYER \u00c0 SEC MADE IN VIETNAM",
+        "country": "Vietnam",
+        "materials": [],
+        "care": {
+          "washing": "machine_wash_cold",
+          "drying": "lay_flat_to_dry",
+          "ironing": "iron_low",
+          "dry_cleaning": "dry_clean"
+        }
+      },
+      "emissions": {
+        "total_kgco2e": 3.83,
+        "breakdown": {
+          "materials": 1.75,
+          "manufacturing": 0.16,
+          "washing": 0.35,
+          "drying": 0,
+          "ironing": 0.18,
+          "dry_cleaning": 1.4
+        },
+        "assumptions": {
+          "weight_kg": 0.35,
+          "origin": "Vietnam",
+          "washes_lifetime": 50
+        }
+      },
+      "benchmark_kgco2e": 10.95,
+      "benchmark_breakdown": {
+        "materials": 2.38,
+        "manufacturing": 0.18,
+        "washing": 2.1,
+        "drying": 6.3,
+        "ironing": 0,
+        "dry_cleaning": 0
+      }
+    }
+  }
+]

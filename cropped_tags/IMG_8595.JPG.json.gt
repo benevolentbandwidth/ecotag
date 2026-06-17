@@ -1,0 +1,14 @@
+{
+  "ocr_text": "SHELL. 100% POLYESTER LINING: 100% POLYESTER ETOFFE EXTERIEURE: 100% POLYESTER DOUBLURE: 100% POLYESTER TELA EXTERIOR: 100% POLIESTER FORRO: 100% POLIESTER MADE IN CHINA",
+  "country": "China",
+  "materials": [
+    { "fiber": "Polyester", "pct": 100 },
+    { "fiber": "Polyester", "pct": 100 }
+  ],
+  "care": {
+    "washing": null,
+    "drying": null,
+    "ironing": null,
+    "dry_cleaning": null
+  }
+}

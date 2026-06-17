@@ -1,0 +1,14 @@
+{
+  "ocr_text": "99% RECYCLED POLYESTER / 1% SPANDEX MACHINE WASH COLD WITH LIKE COLORS. ONLY NON CHLORINE BLEACH IF NEEDED. TUMBLE DRY LOW. REMOVE PROMPTLY. COOL IRON IF NEEDED.",
+  "country": null,
+  "materials": [
+    { "fiber": "Recycled Polyester", "pct": 99 },
+    { "fiber": "Spandex", "pct": 1 }
+  ],
+  "care": {
+    "washing": "machine_wash_cold",
+    "drying": "tumble_dry_low",
+    "ironing": "iron_low",
+    "dry_cleaning": null
+  }
+}

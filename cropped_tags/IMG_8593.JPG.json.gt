@@ -1,0 +1,14 @@
+{
+  "ocr_text": "50%MERINO WOOL /LAINE MERINOS 50%ACRYLIC/ACRYLIQUE RN#154138 MADE IN CHINA",
+  "country": "China",
+  "materials": [
+    { "fiber": "Merino wool", "pct": 50 },
+    { "fiber": "Acrylic", "pct": 50 }
+  ],
+  "care": {
+    "washing": null,
+    "drying": null,
+    "ironing": null,
+    "dry_cleaning": null
+  }
+}

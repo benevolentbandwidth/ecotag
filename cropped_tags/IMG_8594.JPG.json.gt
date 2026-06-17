@@ -1,0 +1,11 @@
+{
+  "ocr_text": "HAND WASH COLD DO NOT BLEACH LAY FLAT TO DRY OR DRY CLEAN",
+  "country": null,
+  "materials": [],
+  "care": {
+    "washing": "hand_wash_cold",
+    "drying": "lay_flat_to_dry",
+    "ironing": null,
+    "dry_cleaning": "dry_clean"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "ocr_text": "RN # 123722 100% COTTON MACHINE WASH COLD GENTLE CYCLE TUMBLE DRY LOW LIGHT IRON MADE IN USA",
+  "country": "USA",
+  "materials": [
+    { "fiber": "Cotton", "pct": 100 }
+  ],
+  "care": {
+    "washing": "machine_wash_gentle",
+    "drying": "tumble_dry_low",
+    "ironing": "iron_low",
+    "dry_cleaning": null
+  }
+}

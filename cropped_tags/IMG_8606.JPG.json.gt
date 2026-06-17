@@ -1,0 +1,14 @@
+{
+  "ocr_text": "50% PIMA COTTON/ COTON PIMA 50% MODAL/MODAL M/M MADE IN PERU FABRIQUE",
+  "country": "Peru",
+  "materials": [
+    { "fiber": "Pima Cotton", "pct": 50 },
+    { "fiber": "Modal", "pct": 50 }
+  ],
+  "care": {
+    "washing": null,
+    "drying": null,
+    "ironing": null,
+    "dry_cleaning": null
+  }
+}

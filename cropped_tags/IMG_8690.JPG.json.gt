@@ -1,0 +1,11 @@
+{
+  "ocr_text": "Cold Hand Wash Wash Colors Separately Use Approved Detergent Do Not Bleach Do Not Soak Do Not Wring Do Not Tumble Dry Dry Flat in Shade Cool Iron on Reverse Fold To Store Dry Cleanable (P)",
+  "country": null,
+  "materials": [],
+  "care": {
+    "washing": "hand_wash_cold",
+    "drying": "lay_flat_to_dry",
+    "ironing": "iron_low",
+    "dry_cleaning": "dry_clean"
+  }
+}

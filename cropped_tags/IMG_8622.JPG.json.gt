@@ -1,0 +1,14 @@
+{
+  "ocr_text": "60% COTTON 40% POLYESTER",
+  "country": null,
+  "materials": [
+    { "fiber": "Cotton", "pct": 60 },
+    { "fiber": "Polyester", "pct": 40 }
+  ],
+  "care": {
+    "washing": null,
+    "drying": null,
+    "ironing": null,
+    "dry_cleaning": null
+  }
+}

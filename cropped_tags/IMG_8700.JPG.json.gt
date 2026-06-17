@@ -1,0 +1,14 @@
+{
+  "ocr_text": "91% RECYCLED POLYESTER / 9% SPANDEX MACHINE WASH COLD WITH LIKE COLORS. GENTLE CYCLE. ONLY NON CHLORINE BLEACH IF NEEDED. TUMBLE DRY LOW. REMOVE PROMPTLY. COOL IRON IF NEEDED. DO NOT IRON ON LABEL. RN17730 VN1068795",
+  "country": null,
+  "materials": [
+    { "fiber": "Recycled Polyester", "pct": 91 },
+    { "fiber": "Spandex", "pct": 9 }
+  ],
+  "care": {
+    "washing": "machine_wash_gentle",
+    "drying": "tumble_dry_low",
+    "ironing": "iron_low",
+    "dry_cleaning": null
+  }
+}

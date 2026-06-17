@@ -1,0 +1,14 @@
+{
+  "ocr_text": "57% VISCOSE, 43% POLYESTER EXCLUSIVE OF ELASTIC 57% VISCOSE, 43% POLYESTER A L'EXCLUSION DE L'ELASTIQUE",
+  "country": null,
+  "materials": [
+    { "fiber": "Viscose", "pct": 57 },
+    { "fiber": "Polyester", "pct": 43 }
+  ],
+  "care": {
+    "washing": null,
+    "drying": null,
+    "ironing": null,
+    "dry_cleaning": null
+  }
+}

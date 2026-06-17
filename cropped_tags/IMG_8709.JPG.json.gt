@@ -1,0 +1,15 @@
+{
+  "ocr_text": "61% RECYCLED POLYESTER / 35% RAYON / 4% SPANDEX EXCLUSIVE OF DECORATION MACHINE WASH COLD WITH LIKE COLORS GENTLE CYCLE ONLY NON-CHLORINE BLEACH IF NEEDED TUMBLE DRY LOW, REMOVE PROMPTLY COOL IRON IF NEEDED",
+  "country": null,
+  "materials": [
+    { "fiber": "Recycled Polyester", "pct": 61 },
+    { "fiber": "Rayon", "pct": 35 },
+    { "fiber": "Spandex", "pct": 4 }
+  ],
+  "care": {
+    "washing": "machine_wash_gentle",
+    "drying": "tumble_dry_low",
+    "ironing": "iron_low",
+    "dry_cleaning": null
+  }
+}

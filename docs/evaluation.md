@@ -73,3 +73,37 @@ The scorer reports per-field precision, recall, and F1 for:
 `NO_TAG_DETECTED` and other error responses are treated as empty parsed output. If the ground truth has visible fields, those become false negatives.
 
 Use `--pct-tolerance N` to allow material percentages to differ by `N` percentage points. Use `--check-sklearn` to compare scalar-field scoring with scikit-learn if it is installed.
+
+## NO_TAG_DETECTED
+
+When the system can't find a tag it returns `NO_TAG_DETECTED`. `tag.py --json` now
+records these (and any other error) as an entry with an `error` body instead of
+dropping them, so `predictions.json` has one row per image. The scorer treats an
+error/empty prediction as **a miss on every field the ground truth has** (a false
+negative), which is the intended policy for "the system produced nothing."
+
+To make this explicit for the whole set, backfill any still-missing images as
+`NO_TAG_DETECTED` before scoring:
+
+```bash
+python scripts/tag.py "cropped_tags/*.JPG" --json > predictions.json
+# any image absent from predictions.json (an older run, a crash) -> add an
+# explicit {"file": ..., "result": {"error": {"code": "NO_TAG_DETECTED"}}} entry,
+# producing predictions.complete.json
+```
+
+## Analyzing results
+
+`scripts/analyze_eval.py` builds on the scorer to answer two questions:
+
+```bash
+python scripts/analyze_eval.py --predictions-file predictions.complete.json \
+  --json-out docs/eval-results.json
+```
+
+- **Learning curve** — how overall and per-field P/R/F change as the ground-truth
+  set grows (a deterministic cumulative curve plus a Monte-Carlo mean±std curve).
+- **Groupings** — per-group P/R/F for natural groupings (content type, material
+  complexity, language, fiber tier) to see whether some kinds of crop score worse.
+
+The written-up results are in [evaluation-findings.md](evaluation-findings.md).

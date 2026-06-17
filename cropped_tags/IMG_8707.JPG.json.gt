@@ -1,0 +1,14 @@
+{
+  "ocr_text": "90% COTTON/ALGODON 10% SPANDEX/SPANDEX EXCLUSIVE OF DECORATION NO INCLUYE LA DECORACION XXL MADE IN CAMBODIA",
+  "country": "Cambodia",
+  "materials": [
+    { "fiber": "Cotton", "pct": 90 },
+    { "fiber": "Spandex", "pct": 10 }
+  ],
+  "care": {
+    "washing": null,
+    "drying": null,
+    "ironing": null,
+    "dry_cleaning": null
+  }
+}

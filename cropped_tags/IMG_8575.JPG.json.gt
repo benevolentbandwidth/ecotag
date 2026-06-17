@@ -1,0 +1,17 @@
+{
+  "ocr_text": "Body/Corps: 53%Cotton/Algodon 47%Polyester/Polyester Rib/Costilla: 49%Cotton/Algodon 49%Polyester/Polyester 2%Spandex/Elasthanne EXCLUSIVE OF DECORATION EXCLUYENDO DECORATION RN 50369 STYLE 9920 Made in Cambodia Hecho en Camboya",
+  "country": "Cambodia",
+  "materials": [
+    { "fiber": "Cotton", "pct": 53 },
+    { "fiber": "Polyester", "pct": 47 },
+    { "fiber": "Cotton", "pct": 49 },
+    { "fiber": "Polyester", "pct": 49 },
+    { "fiber": "Spandex", "pct": 2 }
+  ],
+  "care": {
+    "washing": null,
+    "drying": null,
+    "ironing": null,
+    "dry_cleaning": null
+  }
+}

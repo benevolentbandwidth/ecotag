@@ -1,0 +1,14 @@
+{
+  "ocr_text": "Made in Bangladesh Fabrique en Bangladesh Hecho en Bangladesh O/N 241102 P/N 08797811 clevercare.info GB 70% VISCOSE, 30% POLYAMIDE.",
+  "country": "Bangladesh",
+  "materials": [
+    { "fiber": "Viscose", "pct": 70 },
+    { "fiber": "Polyamide", "pct": 30 }
+  ],
+  "care": {
+    "washing": "machine_wash_warm",
+    "drying": "do_not_tumble_dry",
+    "ironing": "iron_medium",
+    "dry_cleaning": "dry_clean"
+  }
+}
